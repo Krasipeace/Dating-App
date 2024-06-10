@@ -5,7 +5,9 @@ Dating App build with Next.js
 ## Tech Stack
 
 - [Next.js](https://nextjs.org/)
+- [NextUI](https://nextui.org/)
 - [React](https://react.dev/)
+- [react-icons](https://react-icons.github.io/react-icons/)
 - [TailwindCSS](https://tailwindcss.com/)
 
 ## Getting Started
