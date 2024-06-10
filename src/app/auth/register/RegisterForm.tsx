@@ -1,18 +1,18 @@
 "use client"
 
-import { LoginSchema, loginSchema } from "@/lib/schemas/loginSchema";
+import { RegisterSchema, registerSchema } from "@/lib/schemas/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
-import { GiPadlock } from "react-icons/gi";
+import { GiArchiveRegister } from "react-icons/gi";
 
-export default function LoginForm() {
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm<LoginSchema>({
-        resolver: zodResolver(loginSchema),
+export default function RegisterForm() {
+    const { register, handleSubmit, formState: { errors, isValid } } = useForm<RegisterSchema>({
+        resolver: zodResolver(registerSchema),
         mode: "onTouched"
     });
 
-    const onSubmit = (data: LoginSchema) => {
+    const onSubmit = (data: RegisterSchema) => {
         console.log(data);
     }
 
@@ -21,15 +21,23 @@ export default function LoginForm() {
             <CardHeader className="flex flex-col items-center justify-center">
                 <div className="flex flex-col gap-2 items-center text-secondary">
                     <div className="flex flex-row items-center gap-2">
-                        <GiPadlock size={20} />
-                        <h2 className="text-2xl font-bold">Login</h2>
+                        <GiArchiveRegister size={30} />
+                        <h2 className="text-2xl font-bold">Register</h2>
                     </div>
-                    <p className="text-neutral-500">Fill in your e-mail and password to login</p>
+                    <p className="text-neutral-500">Welcome to HeartBound</p>
                 </div>
             </CardHeader>
             <CardBody>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-4">
+                        <Input
+                            label="Name"
+                            variant="bordered"
+                            {...register("name")}
+                            defaultValue=""
+                            isInvalid={!!errors.name}
+                            errorMessage={errors.name?.message}
+                        />
                         <Input
                             label="Email"
                             variant="bordered"
@@ -48,7 +56,7 @@ export default function LoginForm() {
                             errorMessage={errors.password?.message}
                         />
                         <Button isDisabled={!isValid} fullWidth color="secondary" type="submit">
-                            Login
+                            Register
                         </Button>
                     </div>
                 </form>

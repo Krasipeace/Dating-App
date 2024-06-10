@@ -1,5 +1,9 @@
+import RegisterForm from "./RegisterForm";
+
 export default function RegisterPage() {
     return (
-        <div>Register</div>
+        <div className="flex items-start justify-center vertical-center">
+            <RegisterForm />
+        </div>
     )
 }
