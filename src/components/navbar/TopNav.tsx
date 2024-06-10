@@ -1,6 +1,6 @@
-import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
-import { LuHeartHandshake } from "react-icons/lu";
+import { Button, Link, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import NavLink from "./NavLink";
+import { GiHalfHeart } from "react-icons/gi";
 
 export default function TopNav() {
     return (
@@ -17,7 +17,7 @@ export default function TopNav() {
             }}
         >
             <NavbarBrand as={Link} href="/">
-                <LuHeartHandshake size={40} className="text-orange-400" />
+                <GiHalfHeart size={50} className="text-orange-400" />
                 <div className="font-bold text-3xl flex">
                     <span className="text-red-900">Heart</span>
                     <span className="text-orange-400">Bound</span>

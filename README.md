@@ -8,7 +8,9 @@ Dating App build with Next.js
 - [NextUI](https://nextui.org/)
 - [React](https://react.dev/)
 - [react-icons](https://react-icons.github.io/react-icons/)
+- [React Hook Form](https://www.react-hook-form.com/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [Zod](https://zod.dev/)
 
 ## Getting Started
 
