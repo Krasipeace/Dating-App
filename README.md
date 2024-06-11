@@ -13,6 +13,7 @@ Dating App build with Next.js
 - [TailwindCSS](https://tailwindcss.com/)
 - [Zod](https://zod.dev/)
 - [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
+- [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 
 ## Getting Started
 
