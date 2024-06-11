@@ -6,11 +6,13 @@ Dating App build with Next.js
 
 - [Next.js](https://nextjs.org/)
 - [NextUI](https://nextui.org/)
+- [NextAuth.js](https://authjs.dev/getting-started/installation)
 - [React](https://react.dev/)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [React Hook Form](https://www.react-hook-form.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Zod](https://zod.dev/)
+- [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
 
 ## Getting Started
 

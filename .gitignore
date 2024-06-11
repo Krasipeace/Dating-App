@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# global env(secrets) files
+.env
+
 # vercel
 .vercel
 
