@@ -1,19 +1,9 @@
-import { Button, Link } from "@nextui-org/react";
-import { FaRegSmile } from "react-icons/fa";
-
 export default function Home() {
 	return (
 		<div>
-			<h1 className="text-3xl text-red-500 font-bold">test</h1>
-			<Button
-				as={Link}
-				href="/members"
-				color="primary"
-				variant="bordered"
-				startContent={<FaRegSmile size={20} />}
-			>
-				Click me...
-			</Button>
+			<div className="flex justify-center vertical-center">
+				<h1 className="homePageTitle bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 inline-block text-transparent bg-clip-text">Welcome to HeartBound</h1>
+			</div>
 		</div>
 	);
 }

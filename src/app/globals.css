@@ -4,6 +4,10 @@
 
 @layer components {
     .vertical-center {
-        height: calc(90vh - 64px);
+        height: calc(74vh - 62px);
+    }
+
+    .homePageTitle {
+        font-size: 2em;
     }
 }

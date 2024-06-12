@@ -17,10 +17,13 @@ Dating App build with Next.js
 
 ## Getting Started
 
-First, run the development server:
-
+Run development server:
 ```bash
 npm run dev
+```
+Run Prisma studio
+```bash
+npx prisma studio
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

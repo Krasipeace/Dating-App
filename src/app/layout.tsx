@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import TopNav from "@/components/navbar/TopNav";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "HeartBound",
@@ -22,6 +23,7 @@ export default function RootLayout({
             {children}
           </main>
         </Providers>
+        <Footer />
       </body>
     </html>
   );
