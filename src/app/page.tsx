@@ -32,7 +32,7 @@ export default async function Home() {
 				</div>
 			) : (
 				<div>
-					<GifHandler gifUrl="https://i.imgur.com/v2pbvcz.gif" altText="front-page-image" width="1152" height="648" />
+					<GifHandler gifUrl="https://i.imgur.com/Jw7WhXd.gif" altText="front-page-image" width="1152" height="648" />
 				</div>
 			)}
 		</div>
