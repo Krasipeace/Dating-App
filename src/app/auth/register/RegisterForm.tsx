@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { GiArchiveRegister } from "react-icons/gi";
+import { toast } from "react-toastify";
 
 export default function RegisterForm() {
     const { register, handleSubmit, setError, formState: { errors, isValid, isSubmitting } } = useForm<RegisterSchema>({
@@ -18,6 +19,7 @@ export default function RegisterForm() {
 
         if (result.status === "success") {
             console.log("User registered successfully");
+            toast.success("Registration Successful");
         } else {
             if (Array.isArray(result.error)) {
                 result.error.forEach((e) => {
