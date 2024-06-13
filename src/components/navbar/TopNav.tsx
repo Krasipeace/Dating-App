@@ -1,8 +1,13 @@
-import { Button, Link, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
+import { Button, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import NavLink from "./NavLink";
+import Link from "next/link";
 import { GiHalfHeart } from "react-icons/gi";
+import { auth } from "@/auth";
+import UserMenu from "./UserMenu";
 
-export default function TopNav() {
+export default async function TopNav() {
+    const session = await auth();
+
     return (
         <Navbar
             maxWidth="xl"
@@ -29,8 +34,14 @@ export default function TopNav() {
                 <NavLink href="/messages" label="Messages" />
             </NavbarContent>
             <NavbarContent justify="end">
-                <Button as={Link} href="/auth/login" variant="bordered" className="text-green-100">Login</Button>
-                <Button as={Link} href="/auth/register" variant="bordered" className="text-green-100">Register</Button>
+                {session?.user ? (
+                    <UserMenu user={session.user} />
+                ) : (
+                    <>
+                        <Button as={Link} href="/auth/login" variant="bordered" className="text-green-100">Login</Button>
+                        <Button as={Link} href="/auth/register" variant="bordered" className="text-green-100">Register</Button>
+                    </>
+                )}
             </NavbarContent>
         </Navbar>
     )

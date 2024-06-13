@@ -20,6 +20,7 @@ export default function LoginForm() {
         const result = await signInUser(data);
         if (result.status === "success") {
             router.push("/members");
+            router.refresh();
             toast.success("Login Successful");
         } else {
             toast.error(result.error as string);
