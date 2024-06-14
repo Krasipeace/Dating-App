@@ -42,7 +42,7 @@ export default function memberSidebar({ member }: MemberSidebarProps) {
                         <Link
                             href={link.href}
                             key={link.name}
-                            className={`block rounded ${pathName === link.href ? "text-secondary" : "hover:text-secondary-50"}`}
+                            className={`block rounded ${pathName === link.href ? "text-secondary" : "hover:text-secondary-300"}`}
                         >
                             {link.name}
                         </Link>

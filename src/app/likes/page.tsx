@@ -1,5 +1,13 @@
-export default function LikesPage() {
+import { fetchCurrentUserLikesIds, fetchLikedMembers } from "../actions/likeActions";
+import LikesTab from "./likesTab";
+
+export default async function LikesPage({ searchParams }: { searchParams: { type: string } }) {
+    const likeIds = await fetchCurrentUserLikesIds();
+    const members = await fetchLikedMembers(searchParams.type);
+
     return (
-        <div>Likes</div>
+        <div>
+            <LikesTab members={members} likeIds={likeIds} />
+        </div>
     )
 }
