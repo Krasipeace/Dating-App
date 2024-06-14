@@ -25,10 +25,7 @@
       "@/*": [
         "./src/*"
       ]
-    },
-    "types": [
-      "@types/lodash"
-    ]
+    }
   },
   "include": [
     "next-env.d.ts",
