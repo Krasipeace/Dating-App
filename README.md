@@ -15,6 +15,7 @@ Dating App build with Next.js
 - [Zod](https://zod.dev/)
 - [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
+- [Date-fns](https://date-fns.org/)
 
 ## Getting Started
 
