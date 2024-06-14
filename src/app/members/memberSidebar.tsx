@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { calculateAge } from "@/lib/utilities";
 import { MemberSidebarProps } from "@/types/memberSidebarProps";
@@ -8,15 +8,8 @@ import { usePathname } from "next/navigation";
 import React from "react"
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 
-export default function memberSidebar({ member }: MemberSidebarProps) {
-    const pathName = usePathname();
-    const basePath = `/members/${member.userId}`;
-
-    const navLinks = [
-        { name: "Profile", href: `${basePath}` },
-        { name: "Photos", href: `${basePath}/photos` },
-        { name: "Chat", href: `${basePath}/chat` },
-    ];
+export default function memberSidebar({ member, navLinks }: MemberSidebarProps) {
+    const pathname = usePathname();
 
     return (
         <Card className="w-full mt-10 items-center h-[70vh]">
@@ -42,7 +35,7 @@ export default function memberSidebar({ member }: MemberSidebarProps) {
                         <Link
                             href={link.href}
                             key={link.name}
-                            className={`block rounded ${pathName === link.href ? "text-secondary" : "hover:text-secondary-300"}`}
+                            className={`block rounded ${pathname === link.href ? "text-secondary" : "hover:text-secondary-300"}`}
                         >
                             {link.name}
                         </Link>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import LikeButton from "@/components/LikeButton";
 import { calculateAge } from "@/lib/utilities";
