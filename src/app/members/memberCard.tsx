@@ -1,4 +1,4 @@
-import { calculateAge } from "@/lib/util";
+import { calculateAge } from "@/lib/utilities";
 import { MemberCardProps } from "@/types/memberCardProps";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
@@ -9,6 +9,7 @@ export default function memberCard({ member }: MemberCardProps) {
             fullWidth
             as={Link}
             href={`/members/${member.userId}`}
+            isPressable
         >
             <Image
                 isZoomed
