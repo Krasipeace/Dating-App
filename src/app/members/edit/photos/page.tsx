@@ -3,6 +3,7 @@ import { getMemberPhotosByUserId } from "@/app/actions/memberActions";
 import DeleteButton from "@/components/DeleteButton";
 import StarButton from "@/components/StarButton";
 import { CardBody, CardHeader, Divider, Image } from "@nextui-org/react";
+import MemberPhotoUpload from "./MemberPhotoUpload";
 
 export default async function PhotosPage() {
     const userId = await getAuthUserId();
@@ -13,6 +14,9 @@ export default async function PhotosPage() {
             <CardHeader className="text-2xl font-semibold text-secondary">Update Photos</CardHeader>
             <Divider />
             <CardBody>
+                <div className="pt-5 pl-5">
+                    <MemberPhotoUpload />
+                </div>
                 <div className="grid grid-cols-5 gap-3 p-5">
                     {photos && photos.map(photo => (
                         <div key={photo.id} className="relative">
