@@ -12,7 +12,7 @@ export default async function ProfileEditPage() {
 
     return (
         <>
-            <CardHeader className="text-2xl font-semibold text-secondary">Edit Profile</CardHeader>
+            <CardHeader className="text-2xl font-semibold text-secondary">Update Profile</CardHeader>
             <Divider />
             <CardBody>
                 <EditForm member={member} />
