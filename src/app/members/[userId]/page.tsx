@@ -1,5 +1,5 @@
 import { getMemberByUserId } from "@/app/actions/memberActions"
-import { CardBody, CardHeader, Divider } from "@nextui-org/react";
+import CardWrapper from "@/components/CardWrapper";
 import { notFound } from "next/navigation";
 
 export default async function MemberDetailsPage({ params }: { params: { userId: string } }) {
@@ -8,10 +8,6 @@ export default async function MemberDetailsPage({ params }: { params: { userId: 
     if (!member) return notFound();
 
     return (
-        <>
-            <CardHeader className="text-2xl font-semibold text-secondary">{member?.name}&#39;s Profile</CardHeader>
-            <Divider />
-            <CardBody>{member.description}</CardBody>
-        </>
+        <CardWrapper header="Profile" body={<div>{member.description}</div>} />
     )
 }
