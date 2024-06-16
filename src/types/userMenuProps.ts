@@ -1,5 +1,8 @@
 import { Session } from "next-auth"
 
 export type UserMenuProps = {
-    user: Session["user"];
+    userInfo: {
+        name: string | null;
+        image: string | null;
+    } | null;
 }

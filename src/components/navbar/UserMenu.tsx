@@ -7,7 +7,7 @@ import Link from "next/link";
 import { GiExitDoor } from "react-icons/gi";
 import { LiaUserEditSolid } from "react-icons/lia";
 
-export default function UserMenu({ user }: UserMenuProps) {
+export default function UserMenu({ userInfo }: UserMenuProps) {
     return (
         <Dropdown placement="bottom-end">
             <DropdownTrigger>
@@ -16,15 +16,15 @@ export default function UserMenu({ user }: UserMenuProps) {
                     as="button"
                     className="transition-transform"
                     color="secondary"
-                    name={user?.name || "user avatar"}
+                    name={userInfo?.name || "user avatar"}
                     size="sm"
-                    src={user?.image || "/images/user.png"}
+                    src={userInfo?.image || "/images/user.png"}
                 />
             </DropdownTrigger>
             <DropdownMenu variant="flat" aria-label="User actions menu">
                 <DropdownSection showDivider>
                     <DropdownItem isReadOnly as="span" className="h-14 flex flex-row" aria-label="username">
-                        Logged in as {user?.name}
+                        Logged in as <span className="font-semibold">{userInfo?.name}</span>
                     </DropdownItem>
                 </DropdownSection>
                 <DropdownItem as={Link} href="/members/edit" endContent={<LiaUserEditSolid size={20} />}>

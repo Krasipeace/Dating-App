@@ -4,9 +4,11 @@ import Link from "next/link";
 import { GiHalfHeart } from "react-icons/gi";
 import { auth } from "@/auth";
 import UserMenu from "./UserMenu";
+import { getUserInfo } from "@/app/actions/userActions";
 
 export default async function TopNav() {
     const session = await auth();
+    const userInfo = session?.user && await getUserInfo();
 
     return (
         <Navbar
@@ -34,8 +36,8 @@ export default async function TopNav() {
                 <NavLink href="/messages" label="Messages" />
             </NavbarContent>
             <NavbarContent justify="end">
-                {session?.user ? (
-                    <UserMenu user={session.user} />
+                {userInfo ? (
+                    <UserMenu userInfo={userInfo} />
                 ) : (
                     <>
                         <Button as={Link} href="/auth/login" variant="bordered" className="text-green-100">Login</Button>
