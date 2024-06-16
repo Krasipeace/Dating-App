@@ -20,14 +20,33 @@ Dating App build with Next.js
 
 ### Getting Started
 
-Run development server:
-```bash
-npm run dev
-```
-Run Prisma studio
-```bash
-npx prisma studio
-```
+- Run development server:
+    ```bash
+    npm run dev
+    ```
+
+- Postgres DB as Docker Container set-up
+
+    ```bash
+    docker compose up -d
+    ```
+
+    ```bash
+    npx prisma generate
+    ```
+
+    ```bash
+    npx prisma db push
+    ```
+
+    ```bash
+    npx prisma db seed
+    ```
+
+- Run Prisma studio
+    ```bash
+    npx prisma studio
+    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
