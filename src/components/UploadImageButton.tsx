@@ -14,7 +14,7 @@ export default function UploadImageButton({ onUploadImage }: UploadImageButtonPr
             className="flex items-center gap-2 bg-secondary text-white rounded-lg py-2 px-4 hover:bg-secondary/70"
         >
             <MdAddPhotoAlternate size={30} />
-            Add new image
+            Upload image
         </CldUploadButton>
     )
 }

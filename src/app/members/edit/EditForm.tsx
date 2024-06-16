@@ -30,7 +30,8 @@ export default function EditForm({ member }: EditFormProps) {
     }, [member, reset]);
 
     const onSubmit = async (data: MemberEditSchema) => {
-        const result = await updateProfile(data);
+        const nameUpdated = data.name !== member.name;
+        const result = await updateProfile(data, nameUpdated);
 
         if (result.status === "success") {
             toast.success("Profile Updated");
