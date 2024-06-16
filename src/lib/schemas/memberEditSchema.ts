@@ -3,8 +3,8 @@ import { z } from "zod";
 export const memberEditSchema = z.object({
     name: z.string().min(1, {
         message: "Name is required!"
-    }).max(80, {
-        message: "Name can be at max 80 characters long."
+    }).max(50, {
+        message: "Name can be at max 50 characters long."
     }),
     description: z.string().min(10, {
         message: "Write something about yourself"
@@ -14,12 +14,12 @@ export const memberEditSchema = z.object({
     city: z.string().min(2, {
         message: "City is required!"
     }).max(176, {
-        message: "Did you know... Longest City name on Earth is 176 symbols long ;)"
+        message: "City name can be at max 85 characters long"
     }),
     country: z.string().min(2, {
         message: "Country is required!"
     }).max(56, {
-        message: "Did you know... Longest country name on Earth is 56 symbols long ;)"
+        message: "Country name can be at max 56 characters long"
     })
 })
 

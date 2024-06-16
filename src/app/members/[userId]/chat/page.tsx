@@ -1,6 +1,6 @@
 import { CardHeader, Divider, CardBody } from "@nextui-org/react"
 
-export default function ChatPage() {
+export default async function ChatPage() {
     return (
         <>
             <CardHeader className="text-2xl font-semibold text-secondary">Chat</CardHeader>

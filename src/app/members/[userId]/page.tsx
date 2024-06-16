@@ -9,7 +9,7 @@ export default async function MemberDetailsPage({ params }: { params: { userId: 
 
     return (
         <>
-            <CardHeader className="text-2xl font-semibold text-secondary">Profile</CardHeader>
+            <CardHeader className="text-2xl font-semibold text-secondary">{member?.name}&#39;s Profile</CardHeader>
             <Divider />
             <CardBody>{member.description}</CardBody>
         </>

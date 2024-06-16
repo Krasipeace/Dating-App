@@ -1,6 +1,6 @@
 "use client";
 
-import { calculateAge } from "@/lib/utilities";
+import { calculateAge, transformImageUrl } from "@/lib/utilities";
 import { MemberSidebarProps } from "@/types/memberSidebarProps";
 import { Button, Card, CardBody, CardFooter, Divider, Image } from "@nextui-org/react";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function memberSidebar({ member, navLinks }: MemberSidebarProps) 
             <Image
                 height={200}
                 width={200}
-                src={member.image || "/images/user.png"}
+                src={transformImageUrl(member.image) || "/images/user.png"}
                 alt="User profile avatar"
                 className="rounded-full mt-6 aspect-square object-cover"
             />
