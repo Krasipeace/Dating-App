@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import React from "react"
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 
-export default function memberSidebar({ member, navLinks }: MemberSidebarProps) {
+export default function MemberSidebar({ member, navLinks }: MemberSidebarProps) {
     const pathname = usePathname();
 
     return (

@@ -6,7 +6,7 @@ import { MemberCardProps } from "@/types/memberCardProps";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
 
-export default function memberCard({ member, likeIds }: MemberCardProps) {
+export default function MemberCard({ member, likeIds }: MemberCardProps) {
     const hasLiked = likeIds.includes(member.userId);
 
     const preventLinkAction = (e: React.MouseEvent) => {
