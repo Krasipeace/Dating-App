@@ -16,7 +16,7 @@ export default function LikeButton({ targetId, hasLiked }: LikeButtonProps) {
     return (
         <div onClick={toggleLike} className="relative hover:opacity-80 transition cursor-pointer">
             <IoMdHeartEmpty size={28} className="fill-white absolute -top-[2px] -right[2px]" />
-            <IoMdHeart size={24} className={hasLiked ? "fill-rose-500" : "fill-neutral-500/70"} />
+            <IoMdHeart size={26} className={hasLiked ? "fill-rose-500" : "fill-neutral-500/70"} />
         </div>
     )
 }

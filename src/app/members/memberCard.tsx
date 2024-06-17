@@ -1,7 +1,7 @@
 "use client";
 
 import LikeButton from "@/components/LikeButton";
-import { calculateAge, transformImageUrl } from "@/lib/utilities";
+import { calculateAge, longNameHandler, transformImageUrl } from "@/lib/utilities";
 import { MemberCardProps } from "@/types/memberCardProps";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export default function MemberCard({ member, likeIds }: MemberCardProps) {
             </div>
             <CardFooter className="flex justify-start bg-black overflow-hidden absolute bottom-0 z-10 bg-dark-gradient">
                 <div className="flex flex-col text-white">
-                    <span className="font-semibold">{member.name}, {calculateAge(member.birthDate)}</span>
+                    <span className="font-semibold">{longNameHandler(member)}, {calculateAge(member.birthDate)}</span>
                     <span className="text-sm">{member.city}</span>
                 </div>
             </CardFooter>

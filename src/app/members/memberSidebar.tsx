@@ -1,6 +1,6 @@
 "use client";
 
-import { calculateAge, transformImageUrl } from "@/lib/utilities";
+import { calculateAge, calculateNameLength, transformImageUrl } from "@/lib/utilities";
 import { MemberSidebarProps } from "@/types/memberSidebarProps";
 import { Button, Card, CardBody, CardFooter, Divider, Image } from "@nextui-org/react";
 import Link from "next/link";
@@ -22,7 +22,7 @@ export default function MemberSidebar({ member, navLinks }: MemberSidebarProps) 
             />
             <CardBody>
                 <div className="flex flex-col items-center">
-                    <div className="text-2xl">
+                    <div className={calculateNameLength(member)}>
                         {member.name}, {calculateAge(member.birthDate)}
                     </div>
                     <div className="text-sm text-neutral-500">

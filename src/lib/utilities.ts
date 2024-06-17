@@ -1,3 +1,4 @@
+import { Member } from "@prisma/client";
 import { FieldValues, Path, UseFormSetError } from "react-hook-form";
 import { ZodIssue } from "zod";
 
@@ -10,6 +11,38 @@ export function calculateAge(date: Date) {
     if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) age--;
 
     return age;
+}
+
+export function calculateNameLength(member: Member) {
+    const nameLength = member.name.length;
+    let textSize;
+
+    if (nameLength <= 10) {
+        textSize = "text-2xl";
+    } else if (nameLength <= 20) {
+        textSize = "text-xl";
+    } else if (nameLength <= 30) {
+        textSize = "text-lg";
+    } else if (nameLength <= 40) {
+        textSize = "text-md";
+    } else {
+        textSize = "text-sm";
+    }
+
+    return textSize;
+}
+
+export function longNameHandler(member: Member) {
+    const nameLength = member.name.length;
+    let shortName;
+
+    if (nameLength > 10) {
+        shortName = member.name.slice(0, 10) + "...";
+    } else {
+        shortName = member.name;
+    }
+
+    return shortName;
 }
 
 export function handleFormServerErrors<TFieldValues extends FieldValues>(errorResponse: { error: string | ZodIssue[] }, setError: UseFormSetError<TFieldValues>) {
