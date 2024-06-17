@@ -36,8 +36,8 @@ export function longNameHandler(member: Member) {
     const nameLength = member.name.length;
     let shortName;
 
-    if (nameLength > 10) {
-        shortName = member.name.slice(0, 10) + "...";
+    if (nameLength > 12) {
+        shortName = member.name.slice(0, 12) + "...";
     } else {
         shortName = member.name;
     }
