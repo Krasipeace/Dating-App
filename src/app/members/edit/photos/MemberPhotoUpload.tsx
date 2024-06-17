@@ -11,9 +11,10 @@ export default function MemberPhotoUpload() {
     const onAddImage = async (result: CloudinaryUploadWidgetResults) => {
         if (result.info && typeof result.info === "object") {
             await addImage(result.info.secure_url, result.info.public_id);
+            toast.success("Image uploaded");
             router.refresh();
         } else {
-            toast.error("Image has not been uploaded");
+            toast.error("Problem occurred! Image has not been uploaded");
         }
     }
 

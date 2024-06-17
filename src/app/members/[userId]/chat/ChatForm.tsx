@@ -3,10 +3,12 @@
 import { MessageSchema, messageSchema } from "@/lib/schemas/messageSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, Input } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form"
 import { HiPaperAirplane } from "react-icons/hi2";
 
 export default function ChatForm() {
+    const router = useRouter();
     const { register, handleSubmit, reset, formState: { isSubmitting, isValid, errors } } = useForm<MessageSchema>({
         resolver: zodResolver(messageSchema)
     });
