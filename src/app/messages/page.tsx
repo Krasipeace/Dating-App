@@ -1,5 +1,18 @@
-export default function MessagesPage() {
+import { getMessagesByContainer } from "../actions/messageActions";
+import MessageSidebar from "./MessageSidebar";
+
+export default async function MessagesPage({ searchParams }: { searchParams: { container: string } }) {
+    const messages = await getMessagesByContainer(searchParams.container);
+    console.log(messages);
+
     return (
-        <div>Messages</div>
+        <div className="grid grid-col-12 gap-5 h-[70vh] mt-10">
+            <div className="col-span-2">
+                <MessageSidebar />
+            </div>
+            <div className="col-span-10">
+                msg content
+            </div>
+        </div>
     )
 }
