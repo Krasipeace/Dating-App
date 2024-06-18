@@ -16,7 +16,9 @@ export function calculateAge(date: Date) {
 export function dateTimeFormatHandler(date: Date) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     
-    return `${date.getDate()}/${months[date.getMonth()]}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}.${date.getSeconds()}`;
+    const padWithZero = (num: number) => num.toString().padStart(2, '0');
+
+    return `${date.getDate()}/${months[date.getMonth()]}/${date.getFullYear()} ${padWithZero(date.getHours())}:${padWithZero(date.getMinutes())}.${padWithZero(date.getSeconds())}`;
 }
 
 export function calculateNameLength(member: Member) {

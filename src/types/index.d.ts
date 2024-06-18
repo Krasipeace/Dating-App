@@ -8,10 +8,11 @@ type MessageDto = {
     text: string;
     created: string;
     dateRead: string | null;
-    senderId: string | null;
+    senderId?: string | null;
+    senderName?: string;
     senderImage?: string | null;
-    recipientId: string;
-    recipientName: string;
+    recipientId?: string;
+    recipientName?: string;
     recipientImage?: string | null;
 }
 
