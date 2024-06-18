@@ -13,6 +13,12 @@ export function calculateAge(date: Date) {
     return age;
 }
 
+export function dateTimeFormatHandler(date: Date) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+    return `${date.getDate()}/${months[date.getMonth()]}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}.${date.getSeconds()}`;
+}
+
 export function calculateNameLength(member: Member) {
     const nameLength = member.name.length;
     let textSize;

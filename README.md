@@ -2,7 +2,7 @@
 
 Simple Dating App build with React and PostgreSQL. 
 
-## Tech Stack
+## Tech Stack / Libraries / Packages
 
 - [Next.js](https://nextjs.org/)
 - [NextUI](https://nextui.org/)
