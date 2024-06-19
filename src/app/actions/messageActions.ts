@@ -71,7 +71,7 @@ export async function getMessageThread(recipientId: string) {
 
 export async function getMessagesByContainer(container: string) {
     try {
-        const userId = getAuthUserId();
+        const userId = await getAuthUserId();
         const selectorConditions = {
             [container === "outbox" ? "senderId" : "recipientId"]: userId,
             ...(container === "outbox" ? { senderDeleted: false } : { recipientDeleted: false })

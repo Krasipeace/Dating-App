@@ -55,8 +55,8 @@ export default function ChatForm() {
                 </Button>
             </div>
             <div className="flex flex-col">
-                {true && (
-                    <p className="text-danger text-sm">{"testing errors"}</p>
+                {errors.root?.serverError && (
+                    <p className="text-danger text-sm">{errors.root.serverError.message}</p>
                 )}
             </div>
         </form>
