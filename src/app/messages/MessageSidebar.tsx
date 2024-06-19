@@ -3,8 +3,7 @@
 import { Chip } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { GoInbox } from "react-icons/go";
-import { MdOutlineOutbox } from "react-icons/md";
+import { MdMoveToInbox, MdOutbox } from "react-icons/md";
 
 export default function MessageSidebar() {
     const searchParams = useSearchParams();
@@ -16,14 +15,14 @@ export default function MessageSidebar() {
         {
             key: "inbox",
             label: "Inbox",
-            icon: GoInbox,
+            icon: MdMoveToInbox,
             chip: true
         },
         {
 
             key: "outbox",
             label: "Outbox",
-            icon: MdOutlineOutbox,
+            icon: MdOutbox,
             chip: false
         }
     ];

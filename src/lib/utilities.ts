@@ -53,12 +53,12 @@ export function longNameHandler(member: Member) {
     return shortName;
 }
 
-export function longMessageHandler(text?: string | null, num = 50) {
+export function longMessageHandler(text?: string | null, size = 50) {
     if (!text) return null;
 
-    if (text.length <= num) return text;
+    if (text.length <= size) return text;
 
-    return text.slice(0, num) + "...";
+    return text.slice(0, size) + "...";
 }
 
 export function handleFormServerErrors<TFieldValues extends FieldValues>(errorResponse: { error: string | ZodIssue[] }, setError: UseFormSetError<TFieldValues>) {
