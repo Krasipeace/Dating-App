@@ -19,8 +19,7 @@ export default function ChatForm() {
 
     useEffect(() => {
         setFocus("text")
-    }, [setFocus])
-
+    }, [setFocus]);
 
     const onSubmit = async (data: MessageSchema) => {
         const result = await createMessage(params.userId, data);
@@ -35,7 +34,7 @@ export default function ChatForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mb-2">
                 <Input
                     fullWidth
                     placeholder="Type here..."
@@ -52,12 +51,12 @@ export default function ChatForm() {
                     isLoading={isSubmitting}
                     isDisabled={!isValid || isSubmitting}
                 >
-                    <HiPaperAirplane size={18} />
+                    <HiPaperAirplane size={16} />
                 </Button>
             </div>
             <div className="flex flex-col">
-                {errors.root?.serverError && (
-                    <p className="text-danger text-sm">{errors.root.serverError.message}</p>
+                {true && (
+                    <p className="text-danger text-sm">{"testing errors"}</p>
                 )}
             </div>
         </form>

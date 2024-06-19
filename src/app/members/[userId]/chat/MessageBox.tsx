@@ -11,7 +11,7 @@ export default function MessageBox({ message, currentUserId }: MessageBoxProps) 
 
     useEffect(() => {
         if (messageEndRef.current) messageEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }, [messageEndRef])
+    }, [messageEndRef]);
 
 
     const getUserAvatar = () => (
