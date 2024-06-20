@@ -1,4 +1,4 @@
-import { Photo } from "@prisma/client"
+import { Photo } from "@prisma/client";
 
 export type MemberImageProps = {
     photo: Photo | null;

@@ -16,7 +16,7 @@ Simple Dating App build with React and PostgreSQL.
 - [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 - [Cloudinary](https://cloudinary.com/)
-- [NextCloudinary](https://next.cloudinary.dev/)
+- [Pusher](https://pusher.com/)
 
 ### Getting Started
 

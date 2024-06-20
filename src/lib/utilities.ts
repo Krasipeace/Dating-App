@@ -82,3 +82,7 @@ export function transformImageUrl(imageUrl?: string | null) {
 
     return `${imageUrl.slice(0, uploadIndex)}${transformation}${imageUrl.slice(uploadIndex)}`
 }
+
+export function getChatId(a: string, b: string) {
+    return a > b ? `${b}-${a}` : `${a}-${b}`
+}

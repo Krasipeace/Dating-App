@@ -1,4 +1,4 @@
-import { MessageDto } from "."
+import { MessageDto } from "@/types";
 
 export type MessageBoxProps = {
     message: MessageDto;
