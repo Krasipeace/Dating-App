@@ -2,7 +2,7 @@
 
 import { MessageDto } from "@/types";
 import { MessageTableProps } from "@/types/messageTableProps";
-import { Avatar, Button, Card, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue } from "@nextui-org/react";
+import { Avatar, Button, Card, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { useRouter, useSearchParams } from "next/navigation"
 import { Key, useCallback, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";

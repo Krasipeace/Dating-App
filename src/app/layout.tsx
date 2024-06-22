@@ -5,26 +5,26 @@ import TopNav from "@/components/navbar/TopNav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "HeartBound",
-  description: "Dating app",
+	title: "HeartBound",
+	description: "Dating app",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        <Providers>
-          <TopNav />
-          <main className="container mx-auto p-10">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body>
+				<Providers>
+					<TopNav />
+					<main className="container mx-auto p-10">
+						{children}
+					</main>
+					<Footer />
+				</Providers>
+			</body>
+		</html>
+	);
 }
