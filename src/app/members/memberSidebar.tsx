@@ -1,5 +1,6 @@
 "use client";
 
+import PresenceIndicator from "@/components/PresenceIndicator";
 import { calculateAge, calculateNameLength, transformImageUrl } from "@/lib/utilities";
 import { MemberSidebarProps } from "@/types/memberSidebarProps";
 import { Button, Card, CardBody, CardFooter, Divider, Image } from "@nextui-org/react";
@@ -20,10 +21,15 @@ export default function MemberSidebar({ member, navLinks }: MemberSidebarProps) 
                 alt="User profile avatar"
                 className="rounded-full mt-6 aspect-square object-cover"
             />
-            <CardBody>
+            <CardBody className="overflow-hidden">
                 <div className="flex flex-col items-center">
-                    <div className={calculateNameLength(member)}>
-                        {member.name}, {calculateAge(member.birthDate)}
+                    <div className="flex">
+                        <div className={calculateNameLength(member)}>
+                            {member.name}, {calculateAge(member.birthDate)}
+                        </div>
+                        <div>
+                            <PresenceIndicator member={member} />
+                        </div>
                     </div>
                     <div className="text-sm text-neutral-500">
                         {member.city}, {member.country}

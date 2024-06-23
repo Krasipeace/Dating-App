@@ -17,6 +17,7 @@ Simple Dating App build with React and PostgreSQL.
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 - [Cloudinary](https://cloudinary.com/)
 - [Pusher](https://pusher.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
 
 ### Getting Started
 

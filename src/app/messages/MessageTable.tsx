@@ -8,6 +8,7 @@ import { Key, useCallback, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
 import { deleteMessage } from "../actions/messageActions";
 import { longMessageHandler } from "@/lib/utilities";
+import PresenceAvatar from "@/components/PresenceAvatar";
 
 export default function MessageTable({ messages }: MessageTableProps) {
     const searchParams = useSearchParams();
@@ -43,9 +44,9 @@ export default function MessageTable({ messages }: MessageTableProps) {
             case "senderName":
                 return (
                     <div className="flex items-center gap-2 cursor-pointer">
-                        <Avatar
-                            alt="User avatar"
-                            src={(isOutbox ? item.recipientImage : item.senderImage) || "images/user.png"}
+                        <PresenceAvatar
+                            userId={isOutbox ? item.recipientId : item.senderId}
+                            source={isOutbox ? item.recipientImage : item.senderImage}
                         />
                         <span>{cellValue}</span>
                     </div>
