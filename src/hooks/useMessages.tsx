@@ -10,7 +10,8 @@ export const useMessages = (initialMessages: MessageDto[]) => {
         remove: state.remove,
         messages: state.messages,
         updateUnreadCount: state.updateUnreadCount
-    }))
+    }));
+
     const searchParams = useSearchParams();
     const router = useRouter();
     const isOutbox = searchParams.get("container") === "outbox";

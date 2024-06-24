@@ -24,6 +24,7 @@ export async function createMessage(receiverId: string, data: MessageSchema): Pr
         const messageDto = mapMessageToMessageDto(message);
 
         await pusherServer.trigger(getChatId(userId, receiverId), "message:new", messageDto);
+        await pusherServer.trigger(`private-${receiverId}`, "message:new", messageDto);
 
         return { status: "success", data: messageDto }
     } catch (error) {

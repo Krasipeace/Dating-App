@@ -5,8 +5,8 @@ import { Card, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow }
 import MessageTableCell from "./MessageTableCell";
 import { useMessages } from "@/hooks/useMessages";
 
-export default function MessageTable({ messages }: MessageTableProps) {
-    const { columns, isOutbox, isDeleting, deleteMessage, selectRow } = useMessages(messages);
+export default function MessageTable({ initialMessages }: MessageTableProps) {
+    const { columns, isOutbox, isDeleting, deleteMessage, selectRow, messages } = useMessages(initialMessages);
 
     return (
         <Card className="flex flex-col gap-3 h-[70vh] overflow-auto">
