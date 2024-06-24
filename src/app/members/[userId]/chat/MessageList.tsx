@@ -6,11 +6,21 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { pusherClient } from "@/lib/pusher";
 import { MessageDto } from "@/types";
 import { dateTimeFormatHandler } from "@/lib/utilities";
-import { Channel } from "pusher-js";
+import useMessageStore from "@/hooks/useMessageStore";
 
 export default function MessageList({ initialMessages, currentUserId, chatId }: MessageListProps) {
-    const [messages, setMessages] = useState(initialMessages);
-    const channelRef = useRef<Channel | null>(null);
+    const setReadCount = useRef(false);
+    const [messages, setMessages] = useState(initialMessages.messages);
+    const { updateUnreadCount } = useMessageStore(state => ({
+        updateUnreadCount: state.updateUnreadCount
+    }));
+
+    useEffect(() => {
+        if (!setReadCount.current) {
+            updateUnreadCount(-initialMessages.readCount);
+            setReadCount.current = true;
+        }
+    }, [initialMessages.readCount, updateUnreadCount]);
 
     const handleNewMessage = useCallback((message: MessageDto) => {
         setMessages(prevState => {
@@ -26,19 +36,17 @@ export default function MessageList({ initialMessages, currentUserId, chatId }: 
     }, []);
 
     useEffect(() => {
-        if (!channelRef.current) {
-            channelRef.current = pusherClient.subscribe(chatId);
-            channelRef.current.bind("message:new", handleNewMessage);
-            channelRef.current.bind("messages:read", handleReadMessages);
-        }
+        const channel = pusherClient.subscribe(chatId);
+
+        channel.bind("message:new", handleNewMessage);
+        channel.bind("message:read", handleReadMessages);
 
         return () => {
-            if (channelRef.current && channelRef.current.subscribed) {
-                channelRef.current.unsubscribe();
-                channelRef.current.unbind("message:new", handleNewMessage);
-                channelRef.current.unbind("messages:read", handleReadMessages);
-            }
+            channel.unsubscribe();
+            channel.unbind("message:new", handleNewMessage);
+            channel.unbind("message:read", handleReadMessages);
         }
+
     }, [chatId, handleNewMessage, handleReadMessages]);
 
     return (

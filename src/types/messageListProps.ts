@@ -1,7 +1,7 @@
 import { MessageDto } from "@/types";
 
 export type MessageListProps = {
-    initialMessages: MessageDto[];
+    initialMessages: { messages: MessageDto[], readCount: number };
     currentUserId: string;
     chatId: string;
 }
