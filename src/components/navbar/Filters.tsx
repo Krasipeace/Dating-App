@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Select, SelectItem, Slider } from "@nextui-org/react";
+import { Button, Select, SelectItem, Selection, Slider } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaFemale, FaMale } from "react-icons/fa"
 
@@ -23,6 +23,14 @@ export default function Filters() {
         const params = new URLSearchParams(searchParams);
         params.set("ageRange", value.join(","));
         router.replace(`${pathname}?${params}`);
+    }
+
+    const handleOrderBySelection = (value: Selection) => {
+        if (value instanceof Set) {
+            const params = new URLSearchParams;
+            params.set("orderBy", value.values().next().value);
+            router.replace(`${pathname}?${params}`);
+        }
     }
 
     if (pathname !== "/members") return null;
@@ -52,12 +60,14 @@ export default function Filters() {
                 </div>
                 <div className="w-1/4">
                     <Select
-                        placeholder="Order by"
+                        label="Order by"
                         fullWidth
                         size="sm"
                         variant="bordered"
                         color="secondary"
                         aria-label="Order by selector"
+                        selectedKeys={new Set([searchParams.get("orderBy") || "updated"])}
+                        onSelectionChange={handleOrderBySelection}
                     >
                         {orderByList.map(item => (
                             <SelectItem key={item.value} value={item.value}>
