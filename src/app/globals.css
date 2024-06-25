@@ -6,13 +6,17 @@
     .homePageTitle {
         font-size: 2em;
     }
-}
 
-.footer {
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 30px;
+    .footer {
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        white-space: nowrap;
+        line-height: 30px;
+    }
+
+    .pagination-component {
+        @apply cursor-pointer border-2 hover:bg-pink-100 flex items-center justify-center rounded-lg shadow-sm min-w-[36px] w-9 h-9 text-sm
+    }
 }

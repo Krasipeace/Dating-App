@@ -13,6 +13,21 @@ export function calculateAge(date: Date) {
     return age;
 }
 
+export function addYears(date: Date, years: number): Date {
+    if (isNaN(date.getTime())) {
+        throw new Error('Invalid date provided');
+    }
+
+    const newDate = new Date(date);
+    newDate.setFullYear(newDate.getFullYear() + years);
+
+    if (newDate.getMonth() !== date.getMonth()) {
+        newDate.setDate(0); 
+    }
+
+    return newDate;
+}
+
 export function dateTimeFormatHandler(date: Date) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

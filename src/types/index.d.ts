@@ -38,3 +38,9 @@ type MessageWithSenderRecipient = Prisma.MessageGetPayload<{
         }
     }
 }>
+
+type UserFilters = {
+    ageRange: number[];
+    orderBy: string;
+    gender: string[];
+}
