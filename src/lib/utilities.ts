@@ -53,6 +53,19 @@ export function longNameHandler(member: Member) {
     return shortName;
 }
 
+export function longStringHandler(text: string) {
+    const nameLength = text.length;
+    let shortName;
+
+    if (nameLength > 20) {
+        shortName = text.slice(0, 20) + "...";
+    } else {
+        shortName = text;
+    }
+
+    return shortName;
+}
+
 export function longMessageHandler(text?: string | null, size = 50) {
     if (!text) return null;
 

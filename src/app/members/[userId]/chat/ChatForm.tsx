@@ -34,7 +34,7 @@ export default function ChatForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mt-5 mb-5 pt-10 pb-10">
                 <Input
                     fullWidth
                     placeholder="Type here..."
