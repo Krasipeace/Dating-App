@@ -17,13 +17,15 @@ export async function getMembers(searchParams: UserFilters) {
     const minDateOfBirth = addYears(currentDate, -ageRange[1] - 1);
     const maxDateOfBirth = addYears(currentDate, -ageRange[0]);
     const orderBySelection = searchParams?.orderBy || "updated";
+    const selectedGender = searchParams?.gender?.toString()?.split(",") || ["male", "female"];
 
     try {
         return prisma.member.findMany({
             where: {
                 AND: [
                     { birthDate: { gte: minDateOfBirth } },
-                    { birthDate: { lte: maxDateOfBirth } }
+                    { birthDate: { lte: maxDateOfBirth } },
+                    { gender: { in: selectedGender } }
                 ],
                 NOT: {
                     userId: session.user.id

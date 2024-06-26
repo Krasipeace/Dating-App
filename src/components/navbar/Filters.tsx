@@ -19,6 +19,8 @@ export default function Filters() {
         { value: "female", icon: FaFemale }
     ]
 
+    const selectedGender = searchParams.get("gender")?.split(",") || ["male", "female"];
+
     const handleAgeSelection = (value: number[]) => {
         const params = new URLSearchParams(searchParams);
         params.set("ageRange", value.join(","));
@@ -33,6 +35,18 @@ export default function Filters() {
         }
     }
 
+    const handleGenderSelection = (value: string) => {
+        const params = new URLSearchParams(searchParams);
+
+        if (selectedGender.includes(value)) {
+            params.set("gender", selectedGender.filter(g => g !== value).toString());
+        } else {
+            params.set("gender", [...selectedGender, value].toString());
+        }
+
+        router.replace(`${pathname}?${params}`);
+    }
+
     if (pathname !== "/members") return null;
 
     return (
@@ -42,7 +56,13 @@ export default function Filters() {
                 <div className="flex gap-2 items-center">
                     <div>Gender: </div>
                     {filterByGender.map(({ icon: Icon, value }) => (
-                        <Button key={value} size="sm" isIconOnly color="secondary">
+                        <Button
+                            key={value}
+                            size="sm"
+                            isIconOnly
+                            color={selectedGender.includes(value) ? "secondary" : "default"}
+                            onClick={() => handleGenderSelection(value)}
+                        >
                             <Icon size={24} />
                         </Button>
                     ))}
