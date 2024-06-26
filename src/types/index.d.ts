@@ -44,3 +44,26 @@ type UserFilters = {
     orderBy: string;
     gender: string[];
 }
+
+type PaginationParams = {
+    pageNumber: number;
+    pageSize: number;
+}
+
+type PaginationResult = {
+    totalPages: number;
+    totalCount: number;
+} & PaginationParams
+
+type PaginationRespone<T> = {
+    items: T[];
+    totalCount: number;
+}
+
+type MemberParams = {
+    ageRange?: string;
+    gender?: string;
+    pageNumber?: string;
+    pageSize?: string;
+    orderBy?: string;
+}
