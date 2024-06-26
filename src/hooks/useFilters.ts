@@ -2,7 +2,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Selection } from "@nextui-org/react";
 import { FaFemale, FaMale } from "react-icons/fa"
 import useFilterStore from "./useFilterStore";
-import { useEffect, useTransition } from "react";
+import { ChangeEvent, useEffect, useTransition } from "react";
 import usePaginationStore from "./usePaginationStore";
 
 export const useFilters = () => {
@@ -10,7 +10,7 @@ export const useFilters = () => {
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const { filters, setFilters } = useFilterStore();
-    const { gender, ageRange, orderBy } = filters;
+    const { gender, ageRange, orderBy, hasPhoto } = filters;
     const { pageNumber, pageSize, setPage, totalCount } = usePaginationStore(state => ({
         pageNumber: state.pagination.pageNumber,
         pageSize: state.pagination.pageSize,
@@ -19,8 +19,8 @@ export const useFilters = () => {
     }));
 
     useEffect(() => {
-        if (gender || ageRange || orderBy) setPage(1);
-    }, [gender, ageRange, orderBy, setPage]);
+        if (gender || ageRange || orderBy || hasPhoto) setPage(1);
+    }, [gender, ageRange, orderBy, hasPhoto, setPage]);
 
     useEffect(() => {
         startTransition(() => {
@@ -32,9 +32,11 @@ export const useFilters = () => {
             if (pageSize) searchParams.set("pageSize", pageSize.toString());
             if (pageNumber) searchParams.set("pageNumber", pageNumber.toString());
 
+            searchParams.set("hasPhoto", hasPhoto.toString());
+
             router.replace(`${pathname}?${searchParams}`);
         });
-    }, [gender, ageRange, orderBy, router, pathname, pageSize, pageNumber]);
+    }, [gender, ageRange, orderBy, router, pathname, pageSize, pageNumber, hasPhoto]);
 
     const orderByList = [
         { label: "Last active", value: "updated" },
@@ -62,12 +64,17 @@ export const useFilters = () => {
         }
     }
 
+    const handlePhotoToggleSelection = (p: ChangeEvent<HTMLInputElement>) => {
+        setFilters("hasPhoto", p.target.checked);
+    }
+
     return {
         orderByList,
         filterByGender,
         selectAge: handleAgeSelection,
         selectGender: handleGenderSelection,
         selectOrder: handleOrderBySelection,
+        selectUsersWithPhoto: handlePhotoToggleSelection,
         filters,
         isPending,
         totalCount

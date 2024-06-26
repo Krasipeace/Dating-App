@@ -1,10 +1,10 @@
 "use client";
 
 import { useFilters } from "@/hooks/useFilters";
-import { Button, Select, SelectItem, Slider, Spinner } from "@nextui-org/react";
+import { Button, Select, SelectItem, Slider, Spinner, Switch } from "@nextui-org/react";
 
 export default function Filters() {
-    const { orderByList, filterByGender, selectAge, selectGender, selectOrder, filters, isPending, totalCount } = useFilters();
+    const { orderByList, filterByGender, selectAge, selectGender, selectOrder, selectUsersWithPhoto, filters, isPending, totalCount } = useFilters();
 
     return (
         <div className="shadow-md py-2">
@@ -13,6 +13,15 @@ export default function Filters() {
                     <div className="text-secondary font-semibold text-xl">
                         Results: {isPending ? <Spinner size='sm' color='secondary' /> : totalCount}
                     </div>
+                </div>
+                <div className="flex flex-col items-center">
+                    <p className="text-sm">Has Photo</p>
+                    <Switch 
+                        defaultSelected
+                        color="secondary"
+                        size="sm"
+                        onChange={selectUsersWithPhoto}
+                    />
                 </div>
                 <div className="flex gap-2 items-center">
                     <div>Gender: </div>

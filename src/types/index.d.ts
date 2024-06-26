@@ -43,6 +43,7 @@ type UserFilters = {
     ageRange: number[];
     orderBy: string;
     gender: string[];
+    hasPhoto: boolean;
 }
 
 type PaginationParams = {
@@ -66,4 +67,5 @@ type MemberParams = {
     pageNumber?: string;
     pageSize?: string;
     orderBy?: string;
+    hasPhoto?: string;
 }

@@ -6,7 +6,7 @@ import { MemberParams, PaginationRespone } from "@/types";
 import { Member, Photo } from "@prisma/client";
 import { getAuthUserId } from "./authActions";
 
-export async function getMembers({ ageRange = "18,100", gender = "male,female", orderBy = "updated", pageNumber = "1", pageSize = "12" }
+export async function getMembers({ ageRange = "18,100", gender = "male,female", orderBy = "updated", pageNumber = "1", pageSize = "12", hasPhoto = "true" }
     : MemberParams): Promise<PaginationRespone<Member>> {
     const userId = await getAuthUserId();
     const [minAge, maxAge] = ageRange.split(",");
@@ -24,7 +24,8 @@ export async function getMembers({ ageRange = "18,100", gender = "male,female", 
                 AND: [
                     { birthDate: { gte: minDateOfBirth } },
                     { birthDate: { lte: maxDateOfBirth } },
-                    { gender: { in: selectedGender } }
+                    { gender: { in: selectedGender } },
+                    ...(hasPhoto === "true" ? [{ image: { not: null } }] : [])
                 ],
                 NOT: {
                     userId
@@ -37,7 +38,8 @@ export async function getMembers({ ageRange = "18,100", gender = "male,female", 
                 AND: [
                     { birthDate: { gte: minDateOfBirth } },
                     { birthDate: { lte: maxDateOfBirth } },
-                    { gender: { in: selectedGender } }
+                    { gender: { in: selectedGender } },
+                    ...(hasPhoto === "true" ? [{ image: { not: null } }] : [])
                 ],
                 NOT: {
                     userId
