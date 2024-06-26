@@ -11,10 +11,11 @@ export const useFilters = () => {
     const [isPending, startTransition] = useTransition();
     const { filters, setFilters } = useFilterStore();
     const { gender, ageRange, orderBy } = filters;
-    const { pageNumber, pageSize, setPage } = usePaginationStore(state => ({
+    const { pageNumber, pageSize, setPage, totalCount } = usePaginationStore(state => ({
         pageNumber: state.pagination.pageNumber,
         pageSize: state.pagination.pageSize,
-        setPage: state.setPage
+        setPage: state.setPage,
+        totalCount: state.pagination.totalCount
     }));
 
     useEffect(() => {
@@ -50,7 +51,7 @@ export const useFilters = () => {
     }
 
     const handleOrderBySelection = (value: Selection) => {
-        if (value instanceof Set) setFilters("orderBy", value.values().next().value);    
+        if (value instanceof Set) setFilters("orderBy", value.values().next().value);
     }
 
     const handleGenderSelection = (value: string) => {
@@ -68,6 +69,7 @@ export const useFilters = () => {
         selectGender: handleGenderSelection,
         selectOrder: handleOrderBySelection,
         filters,
-        isPending
+        isPending,
+        totalCount
     }
 }

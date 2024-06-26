@@ -4,14 +4,15 @@ import { useFilters } from "@/hooks/useFilters";
 import { Button, Select, SelectItem, Slider, Spinner } from "@nextui-org/react";
 
 export default function Filters() {
-    const { orderByList, filterByGender, selectAge, selectGender, selectOrder, filters, isPending } = useFilters();
+    const { orderByList, filterByGender, selectAge, selectGender, selectOrder, filters, isPending, totalCount } = useFilters();
 
     return (
         <div className="shadow-md py-2">
             <div className="flex flex-row justify-around items-center">
                 <div className="flex gap-2 items-center">
-                    <div className="text-secondary font-semibold text-xl">Results: </div>
-                    {isPending && <Spinner size="sm" color="warning" />}
+                    <div className="text-secondary font-semibold text-xl">
+                        Results: {isPending ? <Spinner size='sm' color='secondary' /> : totalCount}
+                    </div>
                 </div>
                 <div className="flex gap-2 items-center">
                     <div>Gender: </div>
