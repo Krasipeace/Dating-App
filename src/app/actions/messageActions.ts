@@ -29,6 +29,7 @@ export async function createMessage(receiverId: string, data: MessageSchema): Pr
         return { status: "success", data: messageDto }
     } catch (error) {
         console.log(error);
+
         return { status: "error", error: "Something went wrong" }
     }
 }
@@ -83,7 +84,7 @@ export async function getMessageThread(recipientId: string) {
     }
 }
 
-export async function getMessagesByContainer(container: string) {
+export async function getMessagesByContainer(container?: string | null, cursor?: string, limit = 10) {
     try {
         const userId = await getAuthUserId();
         const selectorConditions = {
@@ -92,14 +93,29 @@ export async function getMessagesByContainer(container: string) {
         }
 
         const messages = await prisma.message.findMany({
-            where: selectorConditions,
+            where: {
+                ...selectorConditions,
+                ...(cursor ? { created: { lte: new Date(cursor) } } : {})
+            },
             orderBy: {
                 created: "desc"
             },
-            select: messageSelection
+            select: messageSelection,
+            take: limit + 1
         });
 
-        return messages.map(message => mapMessageToMessageDto(message));
+        let nextCursor: string | undefined;
+
+        if (messages.length > limit) {
+            const nextItem = messages.pop();
+            nextCursor = nextItem?.created.toISOString();
+        } else {
+            nextCursor = undefined;
+        }
+
+        const messagesToReturn = messages.map(message => mapMessageToMessageDto(message));
+
+        return { messages: messagesToReturn, nextCursor }
     } catch (error) {
         console.log(error);
         throw error;

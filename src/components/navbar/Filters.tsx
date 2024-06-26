@@ -30,6 +30,7 @@ export default function Filters() {
                 <div className="flex flex-row items-center gap-2 w-1/4">
                     <Slider
                         label="Age range"
+                        aria-label="Slider selection for age between 18 and 100"
                         color="secondary"
                         size="sm"
                         minValue={18}

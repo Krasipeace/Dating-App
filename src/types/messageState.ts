@@ -7,4 +7,5 @@ export type MessageState = {
     set: (message: MessageDto[]) => void;
     unreadCount: number;
     updateUnreadCount: (amount: number) => void;
+    resetMessages: () => void;
 }
