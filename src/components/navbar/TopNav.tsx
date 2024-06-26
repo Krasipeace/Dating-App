@@ -5,7 +5,7 @@ import { GiHalfHeart } from "react-icons/gi";
 import { auth } from "@/auth";
 import UserMenu from "./UserMenu";
 import { getUserInfo } from "@/app/actions/userActions";
-import Filters from "./Filters";
+import FiltersWrapper from "./FiltersWrapper";
 
 export default async function TopNav() {
     const session = await auth();
@@ -48,7 +48,7 @@ export default async function TopNav() {
                     )}
                 </NavbarContent>
             </Navbar>
-            <Filters />
+            <FiltersWrapper />
         </>
     )
 }
