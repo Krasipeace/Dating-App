@@ -40,7 +40,7 @@ export const useFilters = () => {
 
     const orderByList = [
         { label: "Last active", value: "updated" },
-        { label: "Newest members", value: "created" }
+        { label: "Newest members", value: "created" },
     ]
 
     const filterByGender = [

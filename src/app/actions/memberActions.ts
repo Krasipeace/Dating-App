@@ -18,33 +18,25 @@ export async function getMembers({ ageRange = "18,100", gender = "male,female", 
     const limit = parseInt(pageSize);
     const skip = (page - 1) * limit;
 
+    const whereClause = {
+        AND: [
+            { birthDate: { gte: minDateOfBirth } },
+            { birthDate: { lte: maxDateOfBirth } },
+            { gender: { in: selectedGender } },
+            ...(hasPhoto === "true" ? [{ image: { not: null } }] : [])
+        ],
+        NOT: {
+            userId
+        }
+    };
+
     try {
         const count = await prisma.member.count({
-            where: {
-                AND: [
-                    { birthDate: { gte: minDateOfBirth } },
-                    { birthDate: { lte: maxDateOfBirth } },
-                    { gender: { in: selectedGender } },
-                    ...(hasPhoto === "true" ? [{ image: { not: null } }] : [])
-                ],
-                NOT: {
-                    userId
-                }
-            }
+            where: whereClause,
         })
 
         const members = await prisma.member.findMany({
-            where: {
-                AND: [
-                    { birthDate: { gte: minDateOfBirth } },
-                    { birthDate: { lte: maxDateOfBirth } },
-                    { gender: { in: selectedGender } },
-                    ...(hasPhoto === "true" ? [{ image: { not: null } }] : [])
-                ],
-                NOT: {
-                    userId
-                }
-            },
+            where: whereClause,
             orderBy: { [orderBy]: "desc" },
             skip,
             take: limit
