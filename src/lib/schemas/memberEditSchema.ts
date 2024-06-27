@@ -13,13 +13,13 @@ export const memberEditSchema = z.object({
     }),
     city: z.string().min(2, {
         message: "City is required!"
-    }).max(176, {
-        message: "City name can be at max 85 characters long"
+    }).max(28, {
+        message: "City name can be at max 28 characters long"
     }),
     country: z.string().min(2, {
         message: "Country is required!"
-    }).max(56, {
-        message: "Country name can be at max 56 characters long"
+    }).max(28, {
+        message: "Country name can be at max 28 characters long"
     })
 })
 
