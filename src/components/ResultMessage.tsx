@@ -6,8 +6,11 @@ export default function ResultMessage({ result }: ResultMessageProps) {
     if (!result) return null;
 
     return (
-        <div className={`p-3 rounded-xl w-full flex items-center justify-center gap-x-2 text-sm ${result.status === 'error' ? 'text-danger-800 bg-danger-50' : 'text-success-800 bg-success-50'
-            }`}>
+        <div className={`p-3 rounded-xl w-full flex items-center justify-center gap-x-2 text-sm ${result.status === 'error'
+            ? 'text-danger-800 bg-danger-50'
+            : 'text-success-800 bg-success-50'
+            }`}
+        >
             {result.status === "success" ? (
                 <FaCheckCircle size={20} />
             ) : (
