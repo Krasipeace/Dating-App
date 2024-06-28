@@ -30,15 +30,30 @@ model Account {
   @@map("accounts")
 }
 
+model Token {
+  id    String    @id @default(cuid())
+  email String
+  token String
+  type  TokenType
+
+  @@unique([email, token])
+}
+
+enum TokenType {
+  VERIFICATION
+  PASSWORD_RESET
+}
+
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
-  passwordHash  String
-  image         String?
-  accounts      Account[]
-  member        Member?
+  id              String    @id @default(cuid())
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime? @map("email_verified")
+  passwordHash    String
+  image           String?
+  profileComplete Boolean   @default(false)
+  accounts        Account[]
+  member          Member?
 
   @@map("users")
 }
