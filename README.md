@@ -18,6 +18,7 @@ Simple Dating App build with React and PostgreSQL.
 - [Cloudinary](https://cloudinary.com/)
 - [Pusher](https://pusher.com/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
+- [Resend](https://resend.com/)
 
 ### Getting Started
 

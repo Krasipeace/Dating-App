@@ -1,7 +1,7 @@
 import { UniversalWrapperProps } from "@/types/universalWrapperProps";
 import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
 
-export default function UniversalWrapper({ body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }: UniversalWrapperProps) {
+export default function UniversalWrapper({ footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }: UniversalWrapperProps) {
     return (
         <div className="flex items-start justify-center vertical-center">
             <Card className="w-2/5 mx-auto p-5">
@@ -23,6 +23,9 @@ export default function UniversalWrapper({ body, headerIcon: Icon, headerText, s
                         <Button onClick={action} fullWidth color="secondary" variant="bordered">
                             {actionLabel}
                         </Button>
+                    )}
+                    {footer && (
+                        <>{footer}</>
                     )}
                 </CardFooter>
             </Card>

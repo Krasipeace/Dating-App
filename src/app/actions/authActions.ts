@@ -1,11 +1,13 @@
 "use server";
 
 import { auth, signIn, signOut } from "@/auth";
+import { sendVerificationEmail } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { LoginSchema } from "@/lib/schemas/loginSchema";
 import { RegisterSchema, userRegisterSchema } from "@/lib/schemas/registerSchema";
+import { generateToken, getToken } from "@/lib/tokens";
 import { ActionResult } from "@/types";
-import { User } from "@prisma/client";
+import { TokenType, User } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 
@@ -42,7 +44,11 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
                     }
                 }
             }
-        })
+        });
+
+        const verificationToken = await generateToken(email, TokenType.VERIFICATION);
+
+        await sendVerificationEmail(verificationToken.email, verificationToken.token);
 
         return { status: "success", data: user }
     } catch (error) {
@@ -53,6 +59,19 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
 
 export async function signInUser(data: LoginSchema): Promise<ActionResult<string>> {
     try {
+        const existingUser = await getUserByEmail(data.email);
+        if (!existingUser || !existingUser.email) {
+            return { status: "error", error: "Invalid credentials" }
+        }
+
+        if (!existingUser.emailVerified) {
+            const token = await generateToken(existingUser.email, TokenType.VERIFICATION);
+
+            await sendVerificationEmail(token.email, token.token);
+
+            return { status: "error", error: "Please verify your email, before sign in" }
+        }
+
         const result = await signIn("credentials", {
             email: data.email,
             password: data.password,
@@ -95,4 +114,35 @@ export async function getAuthUserId() {
     if (!userId) throw new Error("Unauthorised");
 
     return userId;
+}
+
+export async function verifyEmail(token: string): Promise<ActionResult<string>> {
+    try {
+        const existingToken = await getToken(token);
+        if (!existingToken) {
+            return { status: "error", error: "Invalid token" }
+        }
+
+        const isExpired = new Date() > existingToken.expires;
+        if (isExpired) {
+            return { status: "error", error: "Token has expired. You can try register again with this email address" }
+        }
+
+        const existingUser = await getUserByEmail(existingToken.email);
+        if (!existingUser) {
+            return { status: "error", error: "User not found" }
+        }
+
+        await prisma.user.update({
+            where: { id: existingUser.id },
+            data: { emailVerified: new Date() }
+        });
+
+        await prisma.token.delete({ where: { id: existingToken.id } });
+
+        return { status: "success", data: "Success" }
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
 }

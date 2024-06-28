@@ -31,10 +31,11 @@ model Account {
 }
 
 model Token {
-  id    String    @id @default(cuid())
-  email String
-  token String
-  type  TokenType
+  id      String    @id @default(cuid())
+  email   String
+  token   String
+  expires DateTime
+  type    TokenType
 
   @@unique([email, token])
 }

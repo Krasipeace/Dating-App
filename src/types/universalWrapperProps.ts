@@ -8,4 +8,5 @@ export type UniversalWrapperProps = {
     subHeaderText?: string;
     action?: () => void;
     actionLabel?: string;
+    footer?: ReactNode;
 }

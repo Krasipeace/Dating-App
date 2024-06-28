@@ -39,19 +39,6 @@ export const membersData = [
         image: ""
     },
     {
-        email: "loise@test.com",
-        username: 'loise',
-        gender: "female",
-        dateOfBirth: "1998-06-22",
-        name: "Loise",
-        created: "2024-04-24",
-        lastActive: "2024-06-13",
-        description: "Cillum elit nostrud enim laboris pariatur labore ipsum ut. Quis elit irure sint velit laboris anim Lorem laboris. Labore reprehenderit magna officia aliquip pariatur ea id id commodo. Culpa duis non ex nisi. Deserunt pariatur aliqua consequat reprehenderit sunt ex exercitation.\r\n",
-        city: "Gelderland",
-        country: "Netherlands",
-        image: ""
-    },
-    {
         email: "ruthie@test.com",
         username: 'ruthie',
         gender: "female",
@@ -62,19 +49,6 @@ export const membersData = [
         description: "Qui ipsum voluptate exercitation officia nisi velit adipisicing exercitation sint nulla do. Qui fugiat non nisi excepteur et duis elit consectetur ullamco velit fugiat. Sit do esse cupidatat quis eiusmod cupidatat.\r\n",
         city: "Dublin",
         country: "Ireland",
-        image: ""
-    },
-    {
-        email: "todd@test.com",
-        username: 'todd',
-        gender: "male",
-        dateOfBirth: "1990-02-07",
-        name: "Todd",
-        created: "2022-04-29",
-        lastActive: "2024-05-16",
-        description: "Mollit elit cillum dolore ea laboris consequat excepteur eiusmod eiusmod qui magna mollit occaecat. Sint qui ut veniam non. Est non veniam magna in consectetur ullamco eiusmod in elit aute ea ipsum aliquip. Duis nisi do dolore ad. Consectetur incididunt quis exercitation aliquip officia. Ex anim pariatur veniam fugiat aute consequat quis nisi in quis.\r\n",
-        city: "London",
-        country: "England",
         image: ""
     },
     {
