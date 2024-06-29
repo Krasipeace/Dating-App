@@ -1,24 +1,24 @@
-# Dating App
+# HeartBound 
 
-Simple Dating App build with React and PostgreSQL. 
+Full-Stack Dating App build with React.
 
-## Tech Stack / Libraries / Packages
+## Features 
 
-- [Next.js](https://nextjs.org/)
-- [NextUI](https://nextui.org/)
-- [NextAuth.js](https://authjs.dev/getting-started/installation)
-- [React](https://react.dev/)
-- [React-Icons](https://react-icons.github.io/react-icons/)
-- [React Hook Form](https://www.react-hook-form.com/)
-- [React-Toastify](https://www.npmjs.com/package/react-toastify)
-- [TailwindCSS](https://tailwindcss.com/)
-- [Zod](https://zod.dev/)
-- [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
-- [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
-- [Cloudinary](https://cloudinary.com/)
-- [Pusher](https://pusher.com/)
-- [Zustand](https://zustand-demo.pmnd.rs/)
-- [Resend](https://resend.com/)
+In the app there are 2 roles: 
+- User - use the app as it should be used.
+- Adminitrator - Work with the app on the back scene.
+
+#### As user
+- Create/Read/Update/Delete your User Data and/or images as registered user.
+- Browse other users via different filters.
+- Like/unlike other users.
+- Send messages to other users.
+- Live chat with other users.
+
+#### As Administrator
+- Manage(CRUD) users.
+- Approve/Disapprove images users upload.
+- Manage reported messages from users.
 
 ### Getting Started
 
@@ -49,6 +49,24 @@ Simple Dating App build with React and PostgreSQL.
     ```bash
     npx prisma studio
     ```
+
+### Tech Stack / Libraries / Packages
+
+- [Next.js](https://nextjs.org/)
+- [NextUI](https://nextui.org/)
+- [NextAuth.js](https://authjs.dev/getting-started/installation)
+- [React](https://react.dev/)
+- [React-Icons](https://react-icons.github.io/react-icons/)
+- [React Hook Form](https://www.react-hook-form.com/)
+- [React-Toastify](https://www.npmjs.com/package/react-toastify)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Zod](https://zod.dev/)
+- [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
+- [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
+- [Cloudinary](https://cloudinary.com/)
+- [Pusher](https://pusher.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [Resend](https://resend.com/)
 
 ### Deploy on Vercel
 

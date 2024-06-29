@@ -7,6 +7,7 @@ import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, Dropdown
 import Link from "next/link";
 import { GiExitDoor } from "react-icons/gi";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { MdOutlinePhotoLibrary } from "react-icons/md";
 
 export default function UserMenu({ userInfo }: UserMenuProps) {
     return (
@@ -30,6 +31,9 @@ export default function UserMenu({ userInfo }: UserMenuProps) {
                 </DropdownSection>
                 <DropdownItem as={Link} href="/members/edit" endContent={<LiaUserEditSolid size={20} />}>
                     Edit profile
+                </DropdownItem>
+                <DropdownItem as={Link} href="/members/edit/photos" endContent={<MdOutlinePhotoLibrary size={20} />}>
+                    Edit photos
                 </DropdownItem>
                 <DropdownItem color="danger" onClick={async () => signOutUser()} endContent={<GiExitDoor size={20} />}>
                     Log out

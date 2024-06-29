@@ -10,7 +10,6 @@ export default function Error({
     error: Error & { digest?: string }
     reset: () => void
 }) {
-
     return (
         <div className="flex items-center justify-center">
             <Card className="w-2/5 mx-auto">
