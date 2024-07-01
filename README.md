@@ -9,14 +9,13 @@ In the app there are 2 roles:
 - Adminitrator - Work with the app on the back scene.
 
 #### As user
-- Create/Read/Update/Delete your User Data and/or images as registered user.
+- Manage your User Data and/or images as registered user.
 - Browse other users via different filters.
 - Like/unlike other users.
 - Send messages to other users.
 - Live chat with other users.
 
 #### As Administrator
-- Manage(CRUD) users.
 - Approve/Disapprove images users upload.
 - Manage reported messages from users.
 

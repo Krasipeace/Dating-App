@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { GiPadlock } from "react-icons/gi";
 import { toast } from "react-toastify";
+import SocialLogin from "./SocialLogin";
 
 export default function LoginForm() {
     const router = useRouter();
@@ -65,6 +66,8 @@ export default function LoginForm() {
                             type="submit">
                             Login
                         </Button>
+                        <p className="text-secondary-800 text-center font-semibold">Login with</p>
+                        <SocialLogin />
                         <div className="flex justify-center hover:underline text-sm">
                             <Link href="/forgot-password">Forgot password?</Link>
                         </div>

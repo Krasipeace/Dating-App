@@ -50,7 +50,7 @@ model User {
   name            String?
   email           String?   @unique
   emailVerified   DateTime? @map("email_verified")
-  passwordHash    String
+  passwordHash    String?
   image           String?
   profileComplete Boolean   @default(false)
   accounts        Account[]

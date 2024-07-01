@@ -47,3 +47,5 @@ export const profileSchema = z.object({
 export const userRegisterSchema = registerSchema.and(profileSchema);
 
 export type RegisterSchema = z.infer<typeof registerSchema & typeof profileSchema>
+
+export type ProfileSchema = z.infer<typeof profileSchema>

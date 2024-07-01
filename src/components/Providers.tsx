@@ -9,7 +9,7 @@ import { useNotificationChannel } from "@/hooks/useNotificationChannel";
 import useMessageStore from "@/hooks/useMessageStore";
 import { getUnreadMessageCount } from "@/app/actions/messageActions";
 
-export default function Providers({ children, userId }: { children: ReactNode, userId: string | null }) {
+export default function Providers({ children, userId, profileComplete }: { children: ReactNode, userId: string | null, profileComplete: boolean }) {
     const isUnreadCountSet = useRef(false);
 
     const { updateUnreadCount } = useMessageStore(state => ({
@@ -29,8 +29,8 @@ export default function Providers({ children, userId }: { children: ReactNode, u
         isUnreadCountSet.current = true;
     }, [setUnreadCount, userId]);
 
-    usePresenceChannel(userId);
-    useNotificationChannel(userId);
+    usePresenceChannel(userId, profileComplete);
+    useNotificationChannel(userId, profileComplete);
 
     return (
         <NextUIProvider>

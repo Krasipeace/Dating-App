@@ -4,7 +4,7 @@ import { auth, signIn, signOut } from "@/auth";
 import { sendForgottenPasswordEmail, sendVerificationEmail } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { LoginSchema } from "@/lib/schemas/loginSchema";
-import { RegisterSchema, userRegisterSchema } from "@/lib/schemas/registerSchema";
+import { ProfileSchema, RegisterSchema, userRegisterSchema } from "@/lib/schemas/registerSchema";
 import { generateToken, getToken } from "@/lib/tokens";
 import { ActionResult } from "@/types";
 import { TokenType, User } from "@prisma/client";
@@ -89,6 +89,43 @@ export async function signInUser(data: LoginSchema): Promise<ActionResult<string
         } else {
             return { status: "error", error: "Something else went wrong" }
         }
+    }
+}
+
+export async function completeSocialProfile(data: ProfileSchema): Promise<ActionResult<string>> {
+    const session = await auth();
+    if (!session?.user) return { status: "error", error: "User not found" }
+
+    try {
+        const user = await prisma.user.update({
+            where: { id: session.user.id },
+            data: {
+                profileComplete: true,
+                member: {
+                    create: {
+                        name: session.user.name as string,
+                        image: session.user.image,
+                        gender: data.gender,
+                        birthDate: new Date(data.birthDate),
+                        description: data.description,
+                        country: data.country,
+                        city: data.city,
+                    }
+                }
+            },
+            select: {
+                accounts: {
+                    select: {
+                        provider: true
+                    }
+                }
+            }
+        });
+
+        return { status: "success", data: user.accounts[0].provider }
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
 }
 
