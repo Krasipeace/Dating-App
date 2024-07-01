@@ -21,6 +21,12 @@ In the app there are 2 roles:
 
 ### Getting Started
 
+#### As Developer
+- Install Dependencies
+    ```bash
+    npm install
+    ```
+
 - Run development server:
     ```bash
     npm run dev
@@ -48,6 +54,14 @@ In the app there are 2 roles:
     ```bash
     npx prisma studio
     ```
+
+#### As User 
+
+to be filled...
+
+#### As Adminitrator
+
+to be filled...
 
 ### Tech Stack / Libraries / Packages
 
