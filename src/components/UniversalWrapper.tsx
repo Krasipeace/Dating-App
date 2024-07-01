@@ -11,7 +11,7 @@ export default function UniversalWrapper({ footer, body, headerIcon: Icon, heade
                             <Icon size={30} />
                             <h2 className="text-2xl font-bold">{headerText}</h2>
                         </div>
-                        {subHeaderText && <p className="text-neutral-500">Welcome to HeartBound</p>}
+                        {subHeaderText && <p className="text-neutral-500">{subHeaderText}</p>}
                     </div>
                 </CardHeader>
                 {body &&

@@ -9,7 +9,7 @@ export default function RegisterSuccessPage() {
     return (
         <UniversalWrapper
             headerText="You registered successfuly"
-            subHeaderText="You can login to the app"
+            subHeaderText="Check your email to verify your registration, so you can login"
             actionLabel="Login now"
             action={() => router.push("/login")}
             headerIcon={FaRegCircleCheck}

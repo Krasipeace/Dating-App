@@ -3,7 +3,7 @@
 import { signInUser } from "@/app/actions/authActions";
 import { LoginSchema, loginSchema } from "@/lib/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Input, Link } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { GiPadlock } from "react-icons/gi";
@@ -65,6 +65,9 @@ export default function LoginForm() {
                             type="submit">
                             Login
                         </Button>
+                        <div className="flex justify-center hover:underline text-sm">
+                            <Link href="/forgot-password">Forgot password?</Link>
+                        </div>
                     </div>
                 </form>
             </CardBody>
