@@ -86,11 +86,12 @@ model Member {
 }
 
 model Photo {
-  id       String  @id @default(cuid())
-  url      String
-  publicId String?
-  memberId String
-  member   Member  @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  id         String  @id @default(cuid())
+  url        String
+  isApproved Boolean @default(false)
+  publicId   String?
+  memberId   String
+  member     Member  @relation(fields: [memberId], references: [id], onDelete: Cascade)
 }
 
 model Like {
@@ -113,4 +114,5 @@ model Message {
   dateRead         DateTime?
   senderDeleted    Boolean   @default(false)
   recipientDeleted Boolean   @default(false)
+  isAbuse          Boolean   @default(false)
 }

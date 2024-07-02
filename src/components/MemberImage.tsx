@@ -15,16 +15,23 @@ export default function MemberImage({ photo }: MemberImageProps) {
                     height={300}
                     crop="fill"
                     gravity="faces"
-                    className="rounded-xl"
+                    className={`${!photo.isApproved}` ? "opacity-50 rounded-2xl" : "rounded-2xl"}
                     priority
                 />
             ) : (
                 <Image
-                    width={220}
-                    height={220}
+                    width={300}
+                    height={300}
                     src={photo?.url || "/images/user.png"}
                     alt="User Image"
                 />
+            )}
+            {!photo?.isApproved && (
+                <div className="absolute bottom-2 w-full bg-slate-200 p-1">
+                    <div className="flex justify-center text-danger-600 font-semibold">
+                        Awaiting approval...
+                    </div>
+                </div>
             )}
         </div>
     )

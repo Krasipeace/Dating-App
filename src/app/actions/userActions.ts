@@ -55,6 +55,8 @@ export async function addImage(url: string, publicId: string) {
 }
 
 export async function setMainImage(photo: Photo) {
+    if (!photo.isApproved) throw new Error("Only approved photo can be set as profile avatar");
+    
     try {
         const userId = await getAuthUserId();
 

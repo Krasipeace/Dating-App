@@ -32,7 +32,7 @@ In the app there are 2 roles:
     npm run dev
     ```
 
-- Postgres DB as Docker Container set-up
+- PostgreDB as Docker Container set-up
 
     ```bash
     docker compose up -d
@@ -59,9 +59,11 @@ In the app there are 2 roles:
 
 to be filled...
 
-#### As Adminitrator
+#### As Administrator
 
-to be filled...
+- Get Access to Server/Client sessions
+- Moderate `user photos`
+- Moderate `reported messages`
 
 ### Tech Stack / Libraries / Packages
 
