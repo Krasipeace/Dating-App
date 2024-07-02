@@ -1,40 +1,25 @@
-import { auth, signOut } from "@/auth";
+import { auth } from "@/auth";
+import ClientSession from "@/components/ClientSession";
 import GifHandler from "@/components/GifHandler";
-import { Button } from "@nextui-org/react";
-import { GiExitDoor } from "react-icons/gi";
 
 export default async function Home() {
 	const session = await auth();
 
 	return (
-		<div>
-			{session ? (
-				<div>
-					<h1 className="text-3xl">Hello app!</h1>
-					<h2 className="text-2xl font-semibold">User session data:</h2>
+		<div className="flex flex-row justify-around mt-20 gap-6">
+			<div className="bg-blue-50 p-10 rounded-3xl shadow-md w-1/2 overflow-auto">
+				<h2 className="text-2xl font-semibold">Server session data:</h2>
+				{session ? (
 					<div>
 						<pre>{JSON.stringify(session, null, 2)}</pre>
-						<form action={async () => {
-							"use server";
-
-							await signOut();
-						}}>
-							<Button
-								type="submit"
-								color="primary"
-								variant="bordered"
-								endContent={<GiExitDoor size={20} />}
-							>
-								Sign out
-							</Button>
-						</form>
 					</div>
-				</div>
-			) : (
-				<div>
-					<GifHandler gifUrl="https://i.imgur.com/Jw7WhXd.gif" altText="front-page-image" width="1152" height="648" />
-				</div>
-			)}
+				) : (
+					<div>
+						<GifHandler gifUrl="https://i.imgur.com/Jw7WhXd.gif" altText="front-page-image" width="1152" height="648" />
+					</div>
+				)}
+			</div>
+			<ClientSession />
 		</div>
 	);
 }

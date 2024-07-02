@@ -53,10 +53,16 @@ model User {
   passwordHash    String?
   image           String?
   profileComplete Boolean   @default(false)
+  role            Role      @default(MEMBER)
   accounts        Account[]
   member          Member?
 
   @@map("users")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
 }
 
 model Member {

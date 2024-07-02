@@ -1,6 +1,6 @@
 # HeartBound 
 
-Full-Stack Dating App build with React.
+My `Learning by Doing` **Full-Stack App**, build with React.
 
 ## Features 
 
@@ -76,6 +76,7 @@ to be filled...
 - [Zod](https://zod.dev/)
 - [PrismaORM](https://authjs.dev/getting-started/adapters/prisma)
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
+- [Docker](https://www.docker.com/)
 - [Cloudinary](https://cloudinary.com/)
 - [Pusher](https://pusher.com/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
