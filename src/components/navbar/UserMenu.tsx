@@ -30,10 +30,10 @@ export default function UserMenu({ userInfo }: UserMenuProps) {
                     </DropdownItem>
                 </DropdownSection>
                 <DropdownItem as={Link} href="/members/edit" endContent={<LiaUserEditSolid size={20} />}>
-                    Edit profile
+                    Profile
                 </DropdownItem>
                 <DropdownItem as={Link} href="/members/edit/photos" endContent={<MdOutlinePhotoLibrary size={20} />}>
-                    Edit photos
+                    Photos
                 </DropdownItem>
                 <DropdownItem color="danger" onClick={async () => signOutUser()} endContent={<GiExitDoor size={20} />}>
                     Log out

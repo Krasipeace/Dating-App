@@ -172,6 +172,7 @@ export async function verifyEmail(token: string): Promise<ActionResult<string>> 
         return { status: "success", data: "Success" }
     } catch (error) {
         console.log(error);
+
         return { status: "error", error: "Something went wrong" }
     }
 }
@@ -188,6 +189,7 @@ export async function resetPasswordEmail(email: string): Promise<ActionResult<st
         return { status: "success", data: `Password reset request sent to ${email}. If it is not in the main folder, check your SPAM folder.` }
     } catch (error) {
         console.log(error);
+
         return { status: "error", error: "Something went wrong" }
     }
 }
@@ -219,6 +221,15 @@ export async function resetPassword(password: string, token: string | null): Pro
         return { status: "success", data: "Your new password is ready to use. Go Log in" }
     } catch (error) {
         console.log(error);
+
         return { status: "error", error: "Something wend wrong" }
     }
+}
+
+export async function getUserRole() {
+    const session = await auth();
+    const role = session?.user.role;
+    if (!role) throw new Error("No role has been given");
+
+    return role;
 }

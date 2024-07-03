@@ -2,7 +2,7 @@
 
 import { MessageSchema, messageSchema } from "@/lib/schemas/messageSchema";
 import { ActionResult, MessageDto } from "@/types";
-import { getAuthUserId } from "./authActions";
+import { getAuthUserId, getUserRole } from "./authActions";
 import { prisma } from "@/lib/prisma";
 import { mapMessageToMessageDto } from "@/lib/mappings";
 import { pusherServer } from "@/lib/pusher";
@@ -127,37 +127,48 @@ export async function deleteMessage(messageId: string, isOutbox: boolean) {
 
     try {
         const userId = await getAuthUserId();
+        const role = await getUserRole();
 
-        await prisma.message.update({
-            where: { id: messageId },
-            data: {
-                [selector]: true
-            }
-        });
-
-        const messagesToDelete = await prisma.message.findMany({
-            where: {
-                OR: [
-                    {
-                        senderId: userId,
-                        senderDeleted: true,
-                        recipientDeleted: true
-                    },
-                    {
-                        recipientId: userId,
-                        senderDeleted: true,
-                        recipientDeleted: true
-                    }
-                ]
-            }
-        });
-
-        if (messagesToDelete.length > 0) {
-            await prisma.message.deleteMany({
+        if (role === "ADMIN") {
+            await prisma.message.delete({
                 where: {
-                    OR: messagesToDelete.map(m => ({ id: m.id }))
+                    id: messageId
                 }
             });
+        } else {
+            await prisma.message.update({
+                where: {
+                    id: messageId
+                },
+                data: {
+                    [selector]: true
+                }
+            });
+
+            const messagesToDelete = await prisma.message.findMany({
+                where: {
+                    OR: [
+                        {
+                            senderId: userId,
+                            senderDeleted: true,
+                            recipientDeleted: true
+                        },
+                        {
+                            recipientId: userId,
+                            senderDeleted: true,
+                            recipientDeleted: true
+                        }
+                    ]
+                }
+            });
+
+            if (messagesToDelete.length > 0) {
+                await prisma.message.deleteMany({
+                    where: {
+                        OR: messagesToDelete.map(m => ({ id: m.id }))
+                    }
+                });
+            }
         }
     } catch (error) {
         console.log(error);

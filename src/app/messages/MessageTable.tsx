@@ -29,9 +29,9 @@ export default function MessageTable({ initialMessages, nextCursor }: MessageTab
                                         <MessageTableCell
                                             item={item}
                                             columnKey={columnKey as string}
+                                            isOutbox={isOutbox}
                                             deleteMessage={deleteMessage}
                                             isDeleting={isDeleting.loading && isDeleting.id === item.id}
-                                            isOutbox={isOutbox}
                                         />
                                     </TableCell>
                                 )}
