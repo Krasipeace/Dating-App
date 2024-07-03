@@ -7,6 +7,7 @@ export function mapMessageToMessageDto(message: MessageWithSenderRecipient) {
         text: message.text,
         created: dateTimeFormatHandler(message.created),
         dateRead: message.dateRead ? dateTimeFormatHandler(message.dateRead) : null,
+        isAbuse: message.isAbuse,
         senderId: message.sender?.userId,
         senderName: message.sender?.name,
         senderImage: message.sender?.image,

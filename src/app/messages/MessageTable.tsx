@@ -6,7 +6,7 @@ import MessageTableCell from "./MessageTableCell";
 import { useMessages } from "@/hooks/useMessages";
 
 export default function MessageTable({ initialMessages, nextCursor }: MessageTableProps) {
-    const { columns, isOutbox, isDeleting, deleteMessage, selectRow, messages, loadMoreMessages, loadingMoreMessages, hasMoreMessages } = useMessages(initialMessages, nextCursor);
+    const { columns, isOutbox, isDeleting, deleteMessage, selectRow, messages, loadMoreMessages, loadingMoreMessages, hasMoreMessages, isReporting, reportMessage } = useMessages(initialMessages, nextCursor);
 
     return (
         <div className="flex flex-col h-[70vh]">
@@ -32,6 +32,8 @@ export default function MessageTable({ initialMessages, nextCursor }: MessageTab
                                             isOutbox={isOutbox}
                                             deleteMessage={deleteMessage}
                                             isDeleting={isDeleting.loading && isDeleting.id === item.id}
+                                            reportMessage={reportMessage}
+                                            isReporting={isReporting.loading && isReporting.id === item.id}
                                         />
                                     </TableCell>
                                 )}

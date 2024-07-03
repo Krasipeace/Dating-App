@@ -6,4 +6,6 @@ export type MessageTableCellProps = {
     isOutbox: boolean;
     deleteMessage: (message: MessageDto) => void;
     isDeleting: boolean;
+    isReporting: boolean;
+    reportMessage: (message: MessageDto) => void;
 }

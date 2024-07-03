@@ -1,4 +1,4 @@
-import { deleteMessage, getMessagesByContainer } from "@/app/actions/messageActions";
+import { deleteMessage, getMessagesByContainer, reportMessage } from "@/app/actions/messageActions";
 import { MessageDto } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Key, useCallback, useEffect, useRef, useState } from "react";
@@ -19,6 +19,9 @@ export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) 
     const [isDeleting, setDeleting] = useState({
         id: "", loading: false
     });
+    const [isReporting, setReporting] = useState({
+        id: "", loading: false
+    })
     const container = searchParams.get("container");
     const [loadingMoreMessages, setLoadingMoreMessages] = useState(false);
 
@@ -56,6 +59,12 @@ export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) 
         setDeleting({ id: '', loading: false });
     }, [isOutbox, remove, updateUnreadCount])
 
+    const handleReportMessage = useCallback(async (message: MessageDto) => {
+        setReporting({ id: message.id, loading: true });
+        await reportMessage(message.id);
+        setReporting({ id: message.id, loading: false });
+    }, []);
+
     const handleRowSelect = (key: Key) => {
         const message = messages.find(m => m.id === key);
         const url = isOutbox ? `/members/${message?.recipientId}` : `/members/${message?.senderId}`;
@@ -65,9 +74,11 @@ export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) 
     return {
         isOutbox,
         columns,
-        deleteMessage: handleDeleteMessage,
-        selectRow: handleRowSelect,
         isDeleting,
+        deleteMessage: handleDeleteMessage,
+        isReporting,
+        reportMessage: handleReportMessage,
+        selectRow: handleRowSelect,
         messages,
         loadMoreMessages,
         loadingMoreMessages,

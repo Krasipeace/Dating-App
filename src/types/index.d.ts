@@ -22,6 +22,7 @@ type MessageWithSenderRecipient = Prisma.MessageGetPayload<{
         text: true,
         created: true,
         dateRead: true,
+        isAbuse: true,
         sender: {
             select: {
                 userId,

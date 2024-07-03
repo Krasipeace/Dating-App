@@ -7,6 +7,7 @@ import { prisma } from "@/lib/prisma";
 import { mapMessageToMessageDto } from "@/lib/mappings";
 import { pusherServer } from "@/lib/pusher";
 import { getChatId } from "@/lib/utilities";
+import { set } from "zod";
 
 export async function createMessage(receiverId: string, data: MessageSchema): Promise<ActionResult<MessageDto>> {
     try {
@@ -193,11 +194,30 @@ export async function getUnreadMessageCount() {
     }
 }
 
+export async function reportMessage(messageId: string) {
+    try {
+        const userId = await getAuthUserId();
+
+        return prisma.message.update({
+            where: {
+                id: messageId
+            },
+            data: {
+                isAbuse: true
+            }
+        })
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 const messageSelection = {
     id: true,
     text: true,
     created: true,
     dateRead: true,
+    isAbuse: true,
     sender: {
         select: {
             userId: true,
