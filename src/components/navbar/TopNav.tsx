@@ -16,7 +16,8 @@ export default async function TopNav() {
         { href: "/messages", label: "Messages" }
     ];
     const adminLinks = [
-        { href: "/admin/moderation", label: "Moderation" }
+        { href: "/admin/messages", label: "Messages" },
+        { href: "/admin/photos", label: "Photos" }
     ];
     const links = session?.user.role === "ADMIN" ? adminLinks : userLinks;
 

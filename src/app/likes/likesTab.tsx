@@ -28,9 +28,9 @@ export default function LikesTab({ members, likeIds }: LikeTabProps) {
     }
 
     return (
-        <div className="flex w-full flex-col mt-10 gap-5">
+        <div className="flex w-full flex-col mt-1 gap-5 items-center">
             <Tabs
-                aria-label="Like tabs"
+                aria-label="Dynamic selector for likes"
                 items={tabs}
                 color="secondary"
                 onSelectionChange={(key) => handleTabChange(key)}

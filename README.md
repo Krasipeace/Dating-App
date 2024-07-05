@@ -1,6 +1,6 @@
-# HeartBound 
+# HeartBound - Dating app
 
-My `Learning by Doing` **Full-Stack App**, build with React.
+My `Learning by Doing` **Full-Stack App**, build with Next/React.
 
 ## Features 
 
@@ -9,15 +9,17 @@ In the app there are 2 roles:
 - Adminitrator - Work with the app on the back scene.
 
 #### As user
-- Manage your User Data and/or images as registered user.
 - Browse other users via different filters.
 - Like/unlike other users.
 - Send messages to other users.
 - Live chat with other users.
+- Upload images
+- Report messages
 
 #### As Administrator
-- Approve/Disapprove images users upload.
-- Manage reported messages from users.
+- Get Access to Server/Client sessions
+- Moderate `user photos`
+- Moderate `reported messages`
 
 ### Getting Started
 
@@ -61,9 +63,7 @@ to be filled...
 
 #### As Administrator
 
-- Get Access to Server/Client sessions
-- Moderate `user photos`
-- Moderate `reported messages`
+to be filled...
 
 ### Tech Stack / Libraries / Packages
 
