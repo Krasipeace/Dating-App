@@ -14,8 +14,8 @@ export default async function Layout({ children }: { children: ReactNode }) {
     const basePath = `/members/edit`;
 
     const navLinks = [
-        { name: "Edit Profile", href: `${basePath}` },
-        { name: "Edit Photos", href: `${basePath}/photos` },
+        { name: "My Profile", href: `${basePath}` },
+        { name: "My Photos", href: `${basePath}/photos` },
     ];
 
     return (

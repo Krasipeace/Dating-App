@@ -7,7 +7,14 @@ export default async function PhotosPage({ params }: { params: { userId: string 
 
     return (
         <>
-            <CardWrapper header="Photos" body={<div><MemberPhotos photos={photos} /></div>} />
+            <CardWrapper
+                header="Photos"
+                body={
+                    <div>
+                        <MemberPhotos photos={photos} />
+                    </div>
+                }
+            />
         </>
     )
 }

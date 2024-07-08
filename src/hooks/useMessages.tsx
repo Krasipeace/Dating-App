@@ -80,8 +80,8 @@ export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) 
         reportMessage: handleReportMessage,
         selectRow: handleRowSelect,
         messages,
-        loadMoreMessages,
         loadingMoreMessages,
+        loadMoreMessages,
         hasMoreMessages: !!cursorRef.current
     }
 }

@@ -13,8 +13,14 @@ export default async function ProfileEditPage() {
     return (
         <>
             <CardWrapper
-                header={<div className="text-2xl font-semibold text-secondary">{member?.name}&#39;s profile details</div>}
-                body={<EditForm member={member} />}
+                header={
+                    <div className="text-2xl font-semibold text-secondary">
+                        {member?.name}&#39;s profile details
+                    </div>
+                }
+                body={
+                    <EditForm member={member} />
+                }
             />
         </>
     )

@@ -14,11 +14,15 @@ export default async function PhotosPage() {
             <CardWrapper
                 header={
                     <div className="flex flex-row justify-between items-center w-full">
-                        <div className='text-2xl font-semibold text-secondary'>{member?.name}&#39;s Photos</div>
+                        <div className='text-2xl font-semibold text-secondary'>
+                            {member?.name}&#39;s Photos
+                        </div>
                         <MemberPhotoUpload />
                     </div>
                 }
-                body={<MemberPhotos photos={photos} editing={true} mainImageUrl={member?.image} />}
+                body={
+                    <MemberPhotos photos={photos} editing={true} mainImageUrl={member?.image} />
+                }
             />
         </>
     )

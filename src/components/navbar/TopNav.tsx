@@ -6,10 +6,12 @@ import { auth } from "@/auth";
 import UserMenu from "./UserMenu";
 import { getUserInfo } from "@/app/actions/userActions";
 import FiltersWrapper from "./FiltersWrapper";
+import AdminMenu from "./AdminMenu";
 
 export default async function TopNav() {
     const session = await auth();
     const userInfo = session?.user && await getUserInfo();
+    const role = session?.user.role;
     const userLinks = [
         { href: "/members", label: "People" },
         { href: "/likes", label: "Likes" },
@@ -19,7 +21,7 @@ export default async function TopNav() {
         { href: "/admin/messages", label: "Messages" },
         { href: "/admin/photos", label: "Photos" }
     ];
-    const links = session?.user.role === "ADMIN" ? adminLinks : userLinks;
+    const links = role === "ADMIN" ? adminLinks : userLinks;
 
     return (
         <>
@@ -49,11 +51,19 @@ export default async function TopNav() {
                 </NavbarContent>
                 <NavbarContent justify="end">
                     {userInfo ? (
-                        <UserMenu userInfo={userInfo} />
+                        role !== "ADMIN" ? (
+                            <UserMenu userInfo={userInfo} />
+                        ) : (
+                            <AdminMenu userInfo={userInfo} />
+                        )
                     ) : (
                         <>
-                            <Button as={Link} href="/login" variant="bordered" className="text-green-100">Login</Button>
-                            <Button as={Link} href="/register" variant="bordered" className="text-green-100">Register</Button>
+                            <Button as={Link} href="/login" variant="bordered" className="text-green-100">
+                                Login
+                            </Button>
+                            <Button as={Link} href="/register" variant="bordered" className="text-green-100">
+                                Register
+                            </Button>
                         </>
                     )}
                 </NavbarContent>

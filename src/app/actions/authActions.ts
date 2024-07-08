@@ -16,14 +16,12 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
         const validated = userRegisterSchema.safeParse(data);
         if (!validated.success) return { status: "error", error: validated.error.errors }
 
-
         const { name, email, password, gender, birthDate, country, city, description } = validated.data;
-
         const hashedPassword = await bcrypt.hash(password, 10);
-
         const existingUser = await prisma.user.findUnique({
             where: { email }
         });
+
         if (existingUser) return { status: "error", error: "User already exists" };
 
         const user = await prisma.user.create({
@@ -74,7 +72,7 @@ export async function signInUser(data: LoginSchema): Promise<ActionResult<string
             password: data.password,
             redirect: false
         });
-        console.log(result);
+        //console.log(result);
 
         return { status: "success", data: "Logged in successfully" }
     } catch (error) {

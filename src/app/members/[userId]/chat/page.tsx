@@ -13,7 +13,9 @@ export default async function ChatPage({ params }: { params: { userId: string } 
     return (
         <CardWrapper
             header={"Chat"}
-            body={<MessageList initialMessages={messages} currentUserId={userId} chatId={chatId} />}
+            body={
+                <MessageList initialMessages={messages} currentUserId={userId} chatId={chatId} />
+            }
             footer={<ChatForm />}
         />
     )

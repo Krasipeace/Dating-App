@@ -67,7 +67,7 @@ export default function MemberImage({ photo }: MemberImageProps) {
                     <Button
                         onClick={() => approve(photo.id)}
                         color="success"
-                        variant="bordered"
+                        variant="light"
                         fullWidth
                     >
                         <TbPhotoCheck size={20} />
@@ -75,7 +75,7 @@ export default function MemberImage({ photo }: MemberImageProps) {
                     <Button
                         onClick={() => reject(photo)}
                         color="danger"
-                        variant="bordered"
+                        variant="light"
                         fullWidth
                     >
                         <TbPhotoCancel size={20} />

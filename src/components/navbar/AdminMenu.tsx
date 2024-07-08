@@ -6,10 +6,9 @@ import { MenuProps } from "@/types/menuProps";
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@nextui-org/react";
 import Link from "next/link";
 import { GiExitDoor } from "react-icons/gi";
-import { LiaUserEditSolid } from "react-icons/lia";
-import { MdOutlinePhotoLibrary } from "react-icons/md";
+import { TbMessageSearch, TbPhotoSearch } from "react-icons/tb";
 
-export default function UserMenu({ userInfo }: MenuProps) {
+export default function AdminMenu({ userInfo }: MenuProps) {
     return (
         <Dropdown placement="bottom-end">
             <DropdownTrigger>
@@ -29,13 +28,13 @@ export default function UserMenu({ userInfo }: MenuProps) {
                         Logged in as <span className="font-semibold">{userInfo?.name}</span>
                     </DropdownItem>
                 </DropdownSection>
-                <DropdownItem as={Link} href="/members/edit" endContent={<LiaUserEditSolid size={20} className="text-purple-800" />}>
-                    Profile
+                <DropdownItem as={Link} href="/admin/messages" endContent={<TbMessageSearch size={20} className="text-blue-800" />}>
+                    Reported Messages
                 </DropdownItem>
-                <DropdownItem as={Link} href="/members/edit/photos" endContent={<MdOutlinePhotoLibrary size={20} className="text-purple-800" />}>
-                    Photos
+                <DropdownItem as={Link} href="/admin/photos" endContent={<TbPhotoSearch size={20} className="text-blue-800" />}>
+                    User&apos;s photos
                 </DropdownItem>
-                <DropdownItem color="danger" onClick={async () => signOutUser()} endContent={<GiExitDoor size={20} className="text-purple-800" />}>
+                <DropdownItem color="danger" onClick={async () => signOutUser()} endContent={<GiExitDoor size={20} className="text-blue-800" />}>
                     Log out
                 </DropdownItem>
             </DropdownMenu>

@@ -39,8 +39,12 @@ export default function MemberCard({ member, likeIds }: MemberCardProps) {
             </div>
             <CardFooter className="flex justify-start bg-black overflow-hidden absolute bottom-0 z-10 bg-dark-gradient">
                 <div className="flex flex-col text-white">
-                    <span className="font-semibold">{longNameHandler(member)}, {calculateAge(member.birthDate)}</span>
-                    <span className="text-sm">{member.city}</span>
+                    <span className="font-semibold">
+                        {longNameHandler(member)}, {calculateAge(member.birthDate)}
+                    </span>
+                    <span className="text-sm">
+                        {member.city}
+                    </span>
                 </div>
             </CardFooter>
         </Card>
