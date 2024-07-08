@@ -1,6 +1,6 @@
 "use client";
 
-import LikeButton from "@/components/LikeButton";
+import LikeButton from "@/components/buttons/LikeButton";
 import PresenceIndicator from "@/components/PresenceIndicator";
 import { calculateAge, longNameHandler, transformImageUrl } from "@/lib/utilities";
 import { MemberCardProps } from "@/types/memberCardProps";

@@ -1,7 +1,7 @@
 "use client";
 
 import { addImage } from "@/app/actions/userActions";
-import UploadImageButton from "@/components/UploadImageButton";
+import UploadImageButton from "@/components/buttons/UploadImageButton";
 import { CloudinaryUploadWidgetResults } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";

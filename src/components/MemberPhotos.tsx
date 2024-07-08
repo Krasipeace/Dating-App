@@ -1,9 +1,9 @@
 "use client";
 
 import { MemberPhotosProps } from "@/types/memberPhotosProps";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "./buttons/DeleteButton";
 import MemberImage from "./MemberImage";
-import StarButton from "./StarButton";
+import StarButton from "./buttons/StarButton";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Photo } from "@prisma/client";

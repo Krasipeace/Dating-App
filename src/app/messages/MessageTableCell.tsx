@@ -1,13 +1,33 @@
+import ModalWrapper from "@/components/ModalWrapper";
 import PresenceAvatar from "@/components/PresenceAvatar";
 import { longMessageHandler } from "@/lib/utilities";
 import { MessageDto } from "@/types";
 import { MessageTableCellProps } from "@/types/messageTableCellProps";
-import { Button } from "@nextui-org/react";
+import { Button, useDisclosure } from "@nextui-org/react";
 import { MdReportGmailerrorred } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 
 export default function MessageTableCell({ item, columnKey, isOutbox, deleteMessage, isDeleting, isReporting, reportMessage }: MessageTableCellProps) {
     const cellValue = item[columnKey as keyof MessageDto];
+
+    const { isOpen: isDeleteOpen, onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure();
+    const { isOpen: isReportOpen, onOpen: onReportOpen, onClose: onReportClose } = useDisclosure();
+
+    const onConfirmDeleteMessage = () => {
+        deleteMessage(item);
+    }
+    const deleteMsgFooter: any = [
+        { onClick: onConfirmDeleteMessage, children: "Yes", color: "success" },
+        { onClick: onDeleteClose, children: "No", color: "danger" },
+    ];
+
+    const onConfirmReportMessage = () => {
+        reportMessage(item);
+    }
+    const reportMsgFooter: any = [
+        { onClick: onConfirmReportMessage, children: "Yes", color: "success" },
+        { onClick: onReportClose, children: "No", color: "danger" }
+    ];
 
     switch (columnKey) {
         case "recipientName":
@@ -28,24 +48,44 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                 </div>
             )
         case "created":
-            return cellValue
+            return <div>{cellValue}</div>
         default:
             return (
                 <>
-                    <Button
-                        isIconOnly
-                        variant="light"
-                        onClick={() => deleteMessage(item)} isLoading={isDeleting}
-                    >
-                        <TiDeleteOutline size={20} className="text-danger" />
-                    </Button>
-                    <Button
-                        isIconOnly
-                        variant="light"
-                        onClick={() => reportMessage(item)} isLoading={isReporting}
-                    >
-                        <MdReportGmailerrorred size={20} className="text-warning" />
-                    </Button>
+                    <>
+                        <Button
+                            isIconOnly
+                            variant="light"
+                            onClick={() => onDeleteOpen()}
+                            isLoading={isDeleting}
+                        >
+                            <TiDeleteOutline size={20} className="text-danger" />
+                        </Button>
+                        <ModalWrapper
+                            isOpen={isDeleteOpen}
+                            onClose={onDeleteClose}
+                            header="Delete Message"
+                            body={<div>Are you sure?</div>}
+                            footer={deleteMsgFooter}
+                        />
+                    </>
+                    <>
+                        <Button
+                            isIconOnly
+                            variant="light"
+                            onClick={() => onReportOpen()}
+                            isLoading={isReporting}
+                        >
+                            <MdReportGmailerrorred size={20} className="text-warning" />
+                        </Button>
+                        <ModalWrapper
+                            isOpen={isReportOpen}
+                            onClose={onReportClose}
+                            header="Report Message"
+                            body={<div>Are you sure?</div>}
+                            footer={reportMsgFooter}
+                        />
+                    </>
                 </>
             )
     }
