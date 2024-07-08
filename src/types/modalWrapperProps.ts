@@ -6,6 +6,6 @@ export type ModalWrapperProps = {
     onClose: () => void;
     header?: string;
     body: ReactNode;
-    footer: ButtonProps[];
+    footer?: ButtonProps[];
     image?: boolean;
 }

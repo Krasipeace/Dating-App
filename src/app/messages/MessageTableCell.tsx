@@ -11,8 +11,6 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
     const cellValue = item[columnKey as keyof MessageDto];
 
     const { isOpen: isDeleteOpen, onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure();
-    const { isOpen: isReportOpen, onOpen: onReportOpen, onClose: onReportClose } = useDisclosure();
-
     const onConfirmDeleteMessage = () => {
         deleteMessage(item);
     }
@@ -21,6 +19,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
         { onClick: onDeleteClose, children: "No", color: "danger" },
     ];
 
+    const { isOpen: isReportOpen, onOpen: onReportOpen, onClose: onReportClose } = useDisclosure();
     const onConfirmReportMessage = () => {
         reportMessage(item);
     }
@@ -65,7 +64,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                             isOpen={isDeleteOpen}
                             onClose={onDeleteClose}
                             header="Delete Message"
-                            body={<div>Are you sure?</div>}
+                            body={<div>Are you sure you want to delete this message?</div>}
                             footer={deleteMsgFooter}
                         />
                     </>
@@ -82,7 +81,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                             isOpen={isReportOpen}
                             onClose={onReportClose}
                             header="Report Message"
-                            body={<div>Are you sure?</div>}
+                            body={<div>Are you sure you want to report this message?</div>}
                             footer={reportMsgFooter}
                         />
                     </>

@@ -1,12 +1,20 @@
 import { ModalWrapperProps } from "@/types/modalWrapperProps";
 import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 
-export default function ModalWrapper({ isOpen, onClose, header, body, footer }: ModalWrapperProps) {
+export default function ModalWrapper({ isOpen, onClose, header, body, footer, image }: ModalWrapperProps) {
+    const handleCloseModal = () => {
+        setTimeout(() => onClose(), 10);
+    }
+
     return (
         <Modal
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={handleCloseModal}
             placement="top-center"
+            classNames={{
+                base: `${image ? "border-2 border-white" : ""}`,
+                body: `${image ? "p-0" : ""}`
+            }}
             motionProps={{
                 variants: {
                     enter: {
@@ -19,13 +27,17 @@ export default function ModalWrapper({ isOpen, onClose, header, body, footer }: 
             }}
         >
             <ModalContent>
-                <ModalHeader className="flex flex-col gap-1">{header}</ModalHeader>
+                {!image &&
+                    <ModalHeader className="flex flex-col gap-1">{header}</ModalHeader>
+                }
                 <ModalBody>{body}</ModalBody>
-                <ModalFooter>
-                    {footer.map((props: ButtonProps, index) => (
-                        <Button {...props} key={index}>{props.children}</Button>
-                    ))}
-                </ModalFooter>
+                {!image &&
+                    <ModalFooter>
+                        {footer && footer.map((props: ButtonProps, index) => (
+                            <Button {...props} key={index}>{props.children}</Button>
+                        ))}
+                    </ModalFooter>
+                }
             </ModalContent>
         </Modal>
     )
