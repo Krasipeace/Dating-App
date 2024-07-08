@@ -4,7 +4,7 @@ import authConfig from "./auth.config"
 import { prisma } from "./lib/prisma"
 import { Role } from "@prisma/client"
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
+export const { auth, handlers: { GET, POST }, signIn, signOut } = NextAuth({
     callbacks: {
         async session({ token, session }) {
             if (token.sub && session.user) {

@@ -1,5 +1,7 @@
 import { getReportedMessages } from "@/app/actions/adminActions"
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminMessagesPage() {
     const messages = await getReportedMessages();
 

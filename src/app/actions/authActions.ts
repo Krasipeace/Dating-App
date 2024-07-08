@@ -18,10 +18,10 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
 
         const { name, email, password, gender, birthDate, country, city, description } = validated.data;
         const hashedPassword = await bcrypt.hash(password, 10);
+
         const existingUser = await prisma.user.findUnique({
             where: { email }
         });
-
         if (existingUser) return { status: "error", error: "User already exists" };
 
         const user = await prisma.user.create({
@@ -226,6 +226,7 @@ export async function resetPassword(password: string, token: string | null): Pro
 
 export async function getUserRole() {
     const session = await auth();
+    
     const role = session?.user.role;
     if (!role) throw new Error("No role has been given");
 

@@ -1,9 +1,10 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const baseUrl = process.env.BASE_URL;
 
 export async function sendVerificationEmail(email: string, token: string) {
-    const link = `http://localhost:3001/verify-email?token=${token}`;
+    const link = `${baseUrl}/verify-email?token=${token}`;
     const currentYear = new Date().getFullYear();
     const pLine = "color: #555; font-size: 16px; line-height: 1.5;";
 
@@ -39,7 +40,7 @@ export async function sendVerificationEmail(email: string, token: string) {
 }
 
 export async function sendForgottenPasswordEmail(email: string, token: string) {
-    const link = `http://localhost:3001/reset-password?token=${token}`;
+    const link = `${baseUrl}/reset-password?token=${token}`;
     const currentYear = new Date().getFullYear();
     const pLine = "color: #555; font-size: 16px; line-height: 1.5;"
 
