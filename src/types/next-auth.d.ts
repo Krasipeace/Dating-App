@@ -4,7 +4,7 @@ import { DefaultSession } from "next-auth";
 declare module "next-auth" {
     interface User {
         profileComplete: boolean;
-        role: HTMLTableRowElement;
+        role: Role;
     }
 
     interface Session {

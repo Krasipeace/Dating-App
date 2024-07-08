@@ -72,7 +72,7 @@ export async function signInUser(data: LoginSchema): Promise<ActionResult<string
             password: data.password,
             redirect: false
         });
-        //console.log(result);
+        console.log(result);
 
         return { status: "success", data: "Logged in successfully" }
     } catch (error) {
@@ -226,7 +226,7 @@ export async function resetPassword(password: string, token: string | null): Pro
 
 export async function getUserRole() {
     const session = await auth();
-    
+
     const role = session?.user.role;
     if (!role) throw new Error("No role has been given");
 
