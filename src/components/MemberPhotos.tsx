@@ -27,8 +27,8 @@ export default function MemberPhotos({ photos, editing, mainImageUrl }: MemberPh
             id: photo.id,
             type: "main"
         });
-
         try {
+            router.refresh();
             await setMainImage(photo);
             router.refresh();
         } catch (error: any) {

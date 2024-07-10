@@ -21,8 +21,8 @@ async function seedMembers() {
                     created: new Date(member.created),
                     updated: new Date(member.lastActive),
                     description: member.description,
-                    city: member.city,
                     country: member.country,
+                    city: member.city,
                     image: member.image,
                     photos: {
                         create: {
@@ -49,8 +49,10 @@ async function seedAdmin() {
 }
 
 async function main() {
-    await seedMembers();
-    await seedAdmin();
+    if (process.env.RUN_SEED === "true" || process.env.NODE_ENV === "development") {
+        await seedMembers();
+        await seedAdmin();
+    }
 }
 
 main().catch(e => {

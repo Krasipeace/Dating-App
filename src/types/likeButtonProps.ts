@@ -1,4 +1,5 @@
 export type LikeButtonProps = {
-    targetId: string;
+    loading: boolean;
     hasLiked: boolean;
+    toggleLike: () => void;
 }

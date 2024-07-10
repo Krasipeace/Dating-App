@@ -6,9 +6,26 @@ import { calculateAge, longNameHandler, transformImageUrl } from "@/lib/utilitie
 import { MemberCardProps } from "@/types/memberCardProps";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
+import { useState } from "react";
+import { toggleLikeMember } from "../actions/likeActions";
 
 export default function MemberCard({ member, likeIds }: MemberCardProps) {
-    const hasLiked = likeIds.includes(member.userId);
+    const [hasLiked, setHasLiked] = useState(likeIds.includes(member.userId));
+    const [loading, setLoading] = useState(false);
+
+    async function toggleLike() {
+        setLoading(true);
+
+        try {
+            await toggleLikeMember(member.userId, hasLiked);
+            setHasLiked(!hasLiked);
+        } catch (error) {
+            console.log(error);
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    }
 
     const preventLinkAction = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -31,7 +48,7 @@ export default function MemberCard({ member, likeIds }: MemberCardProps) {
             />
             <div onClick={preventLinkAction}>
                 <div className="absolute top-3 right-3 z-50">
-                    <LikeButton targetId={member.userId} hasLiked={hasLiked} />
+                    <LikeButton loading={loading} toggleLike={toggleLike} hasLiked={hasLiked} />
                 </div>
                 <div className="absolute top-2 left-3 z-50">
                     <PresenceIndicator member={member} />
