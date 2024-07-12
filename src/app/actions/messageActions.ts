@@ -7,7 +7,6 @@ import { prisma } from "@/lib/prisma";
 import { mapMessageToMessageDto } from "@/lib/mappings";
 import { pusherServer } from "@/lib/pusher";
 import { getChatId } from "@/lib/utilities";
-import { set } from "zod";
 
 export async function createMessage(receiverId: string, data: MessageSchema): Promise<ActionResult<MessageDto>> {
     try {
@@ -18,7 +17,11 @@ export async function createMessage(receiverId: string, data: MessageSchema): Pr
 
         const { text } = validated.data;
         const message = await prisma.message.create({
-            data: { text, recipientId: receiverId, senderId: userId },
+            data: {
+                text,
+                recipientId: receiverId,
+                senderId: userId
+            },
             select: messageSelection
         });
 

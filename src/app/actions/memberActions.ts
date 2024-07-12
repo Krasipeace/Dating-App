@@ -54,7 +54,9 @@ export async function getMembers({ ageRange = "18,100", gender = "male,female", 
 
 export async function getMemberByUserId(userId: string) {
     try {
-        return prisma.member.findUnique({ where: { userId } });
+        return prisma.member.findUnique({
+            where: { userId }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -81,8 +83,12 @@ export async function updateLastActiveUser() {
 
     try {
         return prisma.member.update({
-            where: { userId },
-            data: { updated: new Date() }
+            where: {
+                userId
+            },
+            data: {
+                updated: new Date()
+            }
         })
     } catch (error) {
         console.log(error);

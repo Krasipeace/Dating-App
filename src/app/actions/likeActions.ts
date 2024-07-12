@@ -88,16 +88,23 @@ export async function fetchLikedMembers(type = "source") {
 
 async function fetchSourceLikes(userId: string) {
     const sourceList = await prisma.like.findMany({
-        where: { sourceUserId: userId },
-        select: { targetMember: true }
+        where: {
+            sourceUserId: userId
+        },
+        select:
+            { targetMember: true }
     });
 
     return sourceList.map(s => s.targetMember);
 }
 async function fetchTargetLikes(userId: string) {
     const targetList = await prisma.like.findMany({
-        where: { targetUserId: userId },
-        select: { sourceMember: true }
+        where: {
+            targetUserId: userId
+        },
+        select: {
+            sourceMember: true
+        }
     });
 
     return targetList.map(t => t.sourceMember);
@@ -105,19 +112,29 @@ async function fetchTargetLikes(userId: string) {
 
 async function fetchMutualLikes(userId: string) {
     const likedUsers = await prisma.like.findMany({
-        where: { sourceUserId: userId },
-        select: { targetUserId: true }
+        where: {
+            sourceUserId: userId
+        },
+        select: {
+            targetUserId: true
+        }
     });
     const likedIds = likedUsers.map(l => l.targetUserId);
 
     const mutualList = await prisma.like.findMany({
         where: {
             AND: [
-                { targetUserId: userId },
-                { sourceUserId: { in: likedIds } }
+                {
+                    targetUserId: userId
+                },
+                {
+                    sourceUserId: { in: likedIds }
+                }
             ]
         },
-        select: { sourceMember: true }
+        select: {
+            sourceMember: true
+        }
     });
 
     return mutualList.map(m => m.sourceMember);

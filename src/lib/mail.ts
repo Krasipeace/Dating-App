@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const baseUrl = process.env.BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function sendVerificationEmail(email: string, token: string) {
     const link = `${baseUrl}/verify-email?token=${token}`;

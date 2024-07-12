@@ -15,8 +15,8 @@ export default function Filters() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center">
-                    <p className="text-sm">Has Photo</p>
-                    <Switch 
+                    <p className="text-sm">Photo</p>
+                    <Switch
                         defaultSelected
                         color="secondary"
                         size="sm"
@@ -49,7 +49,7 @@ export default function Filters() {
                         onChangeEnd={(value) => selectAge(value as number[])}
                     />
                 </div>
-                <div className="w-1/4">
+                <div className="w-1/6">
                     <Select
                         label="Order by"
                         fullWidth

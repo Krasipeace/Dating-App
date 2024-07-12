@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { getUserRole } from "./authActions";
-import { Photo } from "@prisma/client";
+import { Message, Photo } from "@prisma/client";
 import { cloudinary } from "@/lib/cloudinary";
 
 export async function getNonApprovedPhotos() {
@@ -112,6 +112,27 @@ export async function getReportedMessages() {
                 isAbuse: true
             }
         })
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function declineReportedMessage(message: Message) {
+    try {
+        const role = await getUserRole();
+        if (role !== "ADMIN") throw new Error("Forbidden");
+
+        await prisma.message.update({
+            where: {
+                id: message.id
+            },
+            data: {
+                isAbuse: false
+            }
+        });
+
+        return { status: "success", data: message.text }
     } catch (error) {
         console.log(error);
         throw error;

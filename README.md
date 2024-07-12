@@ -5,8 +5,8 @@ My `Learning by Doing` **Full-Stack App**, build with Next/React.
 ## Features 
 
 In the app there are 2 roles: 
-- User - use the app as it should be used.
-- Adminitrator - Work with the app on the back scene.
+- `ADMIN`(for administrators) - Work with the app on the back scene.
+- `MEMBER`(for users) - use the app as it should be used.
 
 #### As user
 - Browse other users via different filters.
@@ -88,6 +88,7 @@ Login with test users info:
 #### As Administrator
 
 - Login as admin is not available at `heartbound.vercel.app`
+- Locally, you can check `.env.example` for the needed secrets in your `.env` config to seed(**implemented**) and run your own administrator.
 
 ### Tech Stack / Libraries / Packages
 
@@ -113,3 +114,5 @@ Login with test users info:
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+[to top](#heartbound---dating-app)

@@ -20,7 +20,9 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const existingUser = await prisma.user.findUnique({
-            where: { email }
+            where: {
+                email
+            }
         });
         if (existingUser) return { status: "error", error: "User already exists" };
 
@@ -133,11 +135,15 @@ export async function signOutUser() {
 }
 
 export async function getUserByEmail(email: string) {
-    return prisma.user.findUnique({ where: { email } });
+    return prisma.user.findUnique({
+        where: { email }
+    });
 }
 
 export async function getUserById(id: string) {
-    return prisma.user.findUnique({ where: { id } });
+    return prisma.user.findUnique({
+        where: { id }
+    });
 }
 
 export async function getAuthUserId() {
@@ -162,8 +168,12 @@ export async function verifyEmail(token: string): Promise<ActionResult<string>> 
 
 
         await prisma.user.update({
-            where: { id: existingUser.id },
-            data: { emailVerified: new Date() }
+            where: {
+                id: existingUser.id
+            },
+            data: {
+                emailVerified: new Date()
+            }
         });
 
         await prisma.token.delete({ where: { id: existingToken.id } });
@@ -209,12 +219,18 @@ export async function resetPassword(password: string, token: string | null): Pro
         const hashedPassword = await bcrypt.hash(password, 10);
 
         await prisma.user.update({
-            where: { id: existingUser.id },
-            data: { passwordHash: hashedPassword }
+            where: {
+                id: existingUser.id
+            },
+            data: {
+                passwordHash: hashedPassword
+            }
         });
 
         await prisma.token.delete({
-            where: { id: existingToken.id }
+            where: {
+                id: existingToken.id
+            }
         });
 
         return { status: "success", data: "Your new password is ready to use. Go Log in" }

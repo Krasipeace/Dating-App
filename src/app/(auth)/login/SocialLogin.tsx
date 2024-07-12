@@ -15,17 +15,17 @@ export default function SocialLogin() {
                 size="lg"
                 fullWidth
                 variant="faded"
-                onClick={() => onClick("google")}
+                onClick={() => onClick("github")}
             >
-                <FcGoogle size={30} />
+                <FaGithub size={30} />
             </Button>
             <Button
                 size="lg"
                 fullWidth
                 variant="faded"
-                onClick={() => onClick("github")}
+                onClick={() => onClick("google")}
             >
-                <FaGithub size={30} />
+                <FcGoogle size={30} />
             </Button>
         </div>
     )
