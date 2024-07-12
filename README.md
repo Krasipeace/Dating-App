@@ -51,19 +51,43 @@ In the app there are 2 roles:
     ```bash
     npx prisma db seed
     ```
+- Apply migrations + seed database
+  
+    ```bash
+    npx prisma reset
+    ```
 
 - Run Prisma studio
+  
     ```bash
     npx prisma studio
     ```
 
+Open .env.example to understand what secrets do you need in your .env config file.
+
 #### As User 
 
-to be filled...
+Login and use the app.
+  - Login via Github
+  - Login via Google
+
+Login with test users info:
+- TestUser1 - Anna:
+  - Email: `anna@test.com`
+  - Password: `testPassword`
+- TestUser2 - Cassia:
+  - Email: `cassia@test.com`
+  - Password: `testPassword`
+- TestUser3 - Andrei:
+  - Email: `andrei@test.com`
+  - Password: `testPassword`
+- TestUser4 - Elin:
+  - Email: `elin@test.com`
+  - Password: `testPassword`
 
 #### As Administrator
 
-to be filled...
+- Login as admin is not available at `heartbound.vercel.app`
 
 ### Tech Stack / Libraries / Packages
 

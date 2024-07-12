@@ -99,6 +99,7 @@ export async function completeSocialProfile(data: ProfileSchema): Promise<Action
             where: { id: session.user.id },
             data: {
                 profileComplete: true,
+                emailVerified: new Date(),
                 member: {
                     create: {
                         name: session.user.name as string,

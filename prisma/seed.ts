@@ -10,7 +10,7 @@ async function seedMembers() {
             email: member.email,
             emailVerified: new Date(),
             name: member.name,
-            passwordHash: await hash("password", 10),
+            passwordHash: await hash("testPassword", 10),
             image: member.image,
             profileComplete: true,
             member: {
@@ -52,7 +52,7 @@ async function main() {
     if (process.env.RUN_SEED === "true" || process.env.NODE_ENV === "development") {
         await seedMembers();
         await seedAdmin();
-    }
+    } // comment if statement in dev mode, if seeding doesnt occur
 }
 
 main().catch(e => {
