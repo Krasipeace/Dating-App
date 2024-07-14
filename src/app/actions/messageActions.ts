@@ -126,7 +126,7 @@ export async function getMessagesByContainer(container?: string | null, cursor?:
     }
 }
 
-export async function deleteMessage(messageId: string, isOutbox: boolean) {
+export async function deleteMessage(messageId: string, isOutbox?: boolean) {
     const selector = isOutbox ? "senderDeleted" : "recipientDeleted";
 
     try {

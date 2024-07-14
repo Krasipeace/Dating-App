@@ -1,13 +1,10 @@
 "use client";
 
 import { LikeButtonProps } from "@/types/likeButtonProps";
-import { useRouter } from "next/navigation";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { PiSpinnerGapBold } from "react-icons/pi";
 
 export default function LikeButton({ loading, hasLiked, toggleLike }: LikeButtonProps) {
-    const router = useRouter();
-
     return (
         <>
             {!loading ? (

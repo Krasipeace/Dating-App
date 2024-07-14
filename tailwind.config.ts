@@ -13,7 +13,7 @@ const config: Config = {
       backgroundImage: {
         "dark-gradient": "linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent)"
       }
-    },
+    }
   },
   darkMode: "class",
   plugins: [nextui()],

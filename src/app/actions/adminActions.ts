@@ -118,21 +118,21 @@ export async function getReportedMessages() {
     }
 }
 
-export async function declineReportedMessage(message: Message) {
+export async function declineReportedMessage(messageId: string) {
     try {
         const role = await getUserRole();
         if (role !== "ADMIN") throw new Error("Forbidden");
 
         await prisma.message.update({
             where: {
-                id: message.id
+                id: messageId
             },
             data: {
                 isAbuse: false
             }
         });
 
-        return { status: "success", data: message.text }
+        return { status: "success", data: "Message not abuse" }
     } catch (error) {
         console.log(error);
         throw error;

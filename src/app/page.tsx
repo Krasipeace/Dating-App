@@ -25,7 +25,7 @@ export default async function Home() {
 						</div>
 
 					) : (
-						<div className="justify-center items-center pt-2">
+						<div className="flex flex-col justify-center items-center pt-2">
 							<h2 className="text-xl">Most Liked Users</h2>
 							<div className="justify-center items-center pt-5">
 								<table className="table-auto divide-y divide-gray-200 items-center justify-center">

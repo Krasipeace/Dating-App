@@ -87,8 +87,9 @@ export default function EditForm({ member }: EditFormProps) {
                 type="submit"
                 className="flex self-end"
                 variant="solid"
-                isDisabled={!isValid || !isDirty}
                 color="secondary"
+                isDisabled={!isValid || !isDirty}
+                isLoading={isSubmitting}
             >
                 Update Info
             </Button>
