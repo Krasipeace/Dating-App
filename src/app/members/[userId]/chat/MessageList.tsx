@@ -7,9 +7,11 @@ import { MessageDto } from "@/types";
 import { dateTimeFormatHandler } from "@/lib/utilities";
 import useMessageStore from "@/hooks/useMessageStore";
 import { MessageListProps } from "@/types/messageProps";
+import { Channel } from "pusher-js";
 
 export default function MessageList({ initialMessages, currentUserId, chatId }: MessageListProps) {
     const setReadCount = useRef(false);
+    const channel = useRef<Channel | null>(null);
     const [messages, setMessages] = useState(initialMessages.messages);
     const { updateUnreadCount } = useMessageStore(state => ({
         updateUnreadCount: state.updateUnreadCount
@@ -36,15 +38,19 @@ export default function MessageList({ initialMessages, currentUserId, chatId }: 
     }, []);
 
     useEffect(() => {
-        const channel = pusherClient.subscribe(chatId);
+        if (!channel.current) {
+            channel.current = pusherClient.subscribe(chatId);
+            channel.current.bind("message:new", handleNewMessage);
+            channel.current.bind("message:read", handleReadMessages);
 
-        channel.bind("message:new", handleNewMessage);
-        channel.bind("message:read", handleReadMessages);
+        }
 
         return () => {
-            channel.unsubscribe();
-            channel.unbind("message:new", handleNewMessage);
-            channel.unbind("message:read", handleReadMessages);
+            if (channel.current && channel.current.subscribed) {
+                channel.current.unsubscribe();
+                channel.current.unbind("message:new", handleNewMessage);
+                channel.current.unbind("message:read", handleReadMessages);
+            }
         }
 
     }, [chatId, handleNewMessage, handleReadMessages]);
