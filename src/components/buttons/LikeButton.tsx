@@ -1,6 +1,6 @@
 "use client";
 
-import { LikeButtonProps } from "@/types/likeButtonProps";
+import { LikeButtonProps } from "@/types/buttonProps";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { PiSpinnerGapBold } from "react-icons/pi";
 

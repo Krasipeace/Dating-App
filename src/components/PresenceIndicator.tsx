@@ -1,5 +1,5 @@
 import usePresenceStore from "@/hooks/usePresenceStore";
-import { PresenceIndicatorProps } from "@/types/presenceIndicatorProps";
+import { PresenceIndicatorProps } from "@/types/uiProps";
 import { GoDot, GoDotFill } from "react-icons/go";
 
 export default function PresenceIndicator({ member }: PresenceIndicatorProps) {

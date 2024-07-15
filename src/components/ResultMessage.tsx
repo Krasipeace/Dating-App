@@ -1,4 +1,4 @@
-import { ResultMessageProps } from "@/types/resultMessageProps";
+import { ResultMessageProps } from "@/types/uiProps";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaCircleExclamation } from "react-icons/fa6";
 

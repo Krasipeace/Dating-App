@@ -18,7 +18,7 @@ export default async function AdminMessagesPage() {
                             <div key={message.id} className="flex justify-between items-center py-2">
                                 <p>{message.text}</p>
                                 <div>
-                                    <ThumpsUpButton message={message.id} />
+                                    <ThumpsUpButton messageId={message.id} />
                                     <ThumbsDownButton messageId={message.id} />
                                 </div>
                             </div>

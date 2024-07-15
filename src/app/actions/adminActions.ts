@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { getUserRole } from "./authActions";
-import { Message, Photo } from "@prisma/client";
+import { Photo } from "@prisma/client";
 import { cloudinary } from "@/lib/cloudinary";
 
 export async function getNonApprovedPhotos() {

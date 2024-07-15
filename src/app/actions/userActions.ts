@@ -2,7 +2,7 @@
 
 import { MemberEditSchema, memberEditSchema } from "@/lib/schemas/memberEditSchema";
 import { ActionResult } from "@/types";
-import { Member, Photo, User } from "@prisma/client";
+import { Member, Photo } from "@prisma/client";
 import { getAuthUserId } from "./authActions";
 import { prisma } from "@/lib/prisma";
 import { cloudinary } from "@/lib/cloudinary";

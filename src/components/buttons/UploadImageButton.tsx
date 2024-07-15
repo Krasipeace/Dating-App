@@ -1,6 +1,6 @@
 "use client";
 
-import { UploadImageButtonProps } from "@/types/uploadImageButtonProps";
+import { UploadImageButtonProps } from "@/types/buttonProps";
 import { CldUploadButton } from "next-cloudinary";
 import { MdAddPhotoAlternate } from "react-icons/md";
 

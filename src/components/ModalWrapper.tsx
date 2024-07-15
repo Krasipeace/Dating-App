@@ -1,4 +1,4 @@
-import { ModalWrapperProps } from "@/types/modalWrapperProps";
+import { ModalWrapperProps } from "@/types/wrapperProps";
 import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 
 export default function ModalWrapper({ isOpen, onClose, header, body, footer, image }: ModalWrapperProps) {

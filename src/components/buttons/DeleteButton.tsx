@@ -1,6 +1,6 @@
-import { DeleteButtonProps } from "@/types/deleteButtonProps";
 import { TiDeleteOutline, TiDelete } from "react-icons/ti";
 import { ImSpinner2 } from "react-icons/im";
+import { DeleteButtonProps } from "@/types/buttonProps";
 
 export default function DeleteButton({ loading }: DeleteButtonProps) {
     return (

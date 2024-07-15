@@ -1,4 +1,4 @@
-import { UniversalWrapperProps } from "@/types/universalWrapperProps";
+import { UniversalWrapperProps } from "@/types/wrapperProps";
 import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
 
 export default function UniversalWrapper({ footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }: UniversalWrapperProps) {

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { registerUser } from "@/app/actions/authActions";
 import { RegisterSchema, profileSchema, registerSchema } from "@/lib/schemas/registerSchema";

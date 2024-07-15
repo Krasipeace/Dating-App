@@ -1,4 +1,4 @@
-import { StarButtonProps } from "@/types/starButtonProps";
+import { StarButtonProps } from "@/types/buttonProps";
 import { GoStar, GoStarFill } from "react-icons/go";
 import { ImSpinner2 } from "react-icons/im";
 

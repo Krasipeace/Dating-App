@@ -1,4 +1,4 @@
-import { MessageState } from "@/types/messageState";
+import { MessageState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 

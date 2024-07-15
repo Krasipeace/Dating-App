@@ -2,8 +2,7 @@
 
 import PresenceAvatar from "@/components/PresenceAvatar";
 import { transformImageUrl } from "@/lib/utilities";
-import { MessageBoxProps } from "@/types/messageBoxProps";
-import { Avatar } from "@nextui-org/react";
+import { MessageBoxProps } from "@/types/messageProps";
 import { useEffect, useRef } from "react";
 
 export default function MessageBox({ message, currentUserId }: MessageBoxProps) {

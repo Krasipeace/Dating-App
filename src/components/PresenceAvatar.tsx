@@ -1,5 +1,5 @@
-import usePresenceStore from "@/hooks/usePresenceStore"
-import { PresenceAvatarProps } from "@/types/presenceAvatarProps";
+import usePresenceStore from "@/hooks/usePresenceStore";
+import { PresenceAvatarProps } from "@/types/uiProps";
 import { Avatar, Badge } from "@nextui-org/react";
 
 export default function PresenceAvatar({ userId, source }: PresenceAvatarProps) {

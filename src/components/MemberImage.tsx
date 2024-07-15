@@ -1,6 +1,5 @@
 "use client";
 
-import { MemberImageProps } from "@/types/memberImageProps";
 import { CldImage } from "next-cloudinary";
 import { Button, Image, useDisclosure } from "@nextui-org/react";
 import { useRole } from "@/hooks/useRole";
@@ -10,6 +9,7 @@ import { toast } from "react-toastify";
 import { approvePhoto, rejectPhoto } from "@/app/actions/adminActions";
 import { Photo } from "@prisma/client";
 import ModalWrapper from "./ModalWrapper";
+import { MemberImageProps } from "@/types/memberProps";
 
 export default function MemberImage({ photo }: MemberImageProps) {
     const role = useRole();

@@ -10,7 +10,7 @@ import { FieldValues, useForm } from "react-hook-form"
 import { GiHouseKeys } from "react-icons/gi";
 
 export default function ForgotPasswordForm() {
-    const { register, reset, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm();
+    const { register, reset, handleSubmit, formState: { isValid, isSubmitting } } = useForm();
     const [result, setResult] = useState<ActionResult<string> | null>(null);
 
     const onSubmit = async (data: FieldValues) => {

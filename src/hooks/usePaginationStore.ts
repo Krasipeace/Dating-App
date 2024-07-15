@@ -1,4 +1,4 @@
-import { PaginationState } from "@/types/paginationState";
+import { PaginationState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 

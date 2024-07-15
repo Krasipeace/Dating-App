@@ -1,11 +1,11 @@
 "use client";
 
-import { LikeTabProps } from "@/types/likesTabProps";
 import { Tab, Tabs } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Key, useTransition } from "react";
 import MemberCard from "../members/memberCard";
 import LoadingComponent from "@/components/LoadingComponent";
+import { LikeTabProps } from "@/types/likeProps";
 
 export default function LikesTab({ members, likeIds }: LikeTabProps) {
     const searchParams = useSearchParams();

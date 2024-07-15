@@ -1,4 +1,4 @@
-import { CardWrapperProps } from "@/types/cardWrapperProps";
+import { CardWrapperProps } from "@/types/wrapperProps";
 import { CardHeader, Divider, CardBody, CardFooter } from "@nextui-org/react";
 
 export default function CardWrapper({ header, body, footer }: CardWrapperProps) {

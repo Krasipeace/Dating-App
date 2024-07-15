@@ -1,6 +1,5 @@
 "use client";
 
-import { MemberPhotosProps } from "@/types/memberPhotosProps";
 import DeleteButton from "./buttons/DeleteButton";
 import MemberImage from "./MemberImage";
 import StarButton from "./buttons/StarButton";
@@ -9,6 +8,7 @@ import { useState } from "react";
 import { Photo } from "@prisma/client";
 import { removeImage, setMainImage } from "@/app/actions/userActions";
 import { toast } from "react-toastify";
+import { MemberPhotosProps } from "@/types/memberProps";
 
 export default function MemberPhotos({ photos, editing, mainImageUrl }: MemberPhotosProps) {
     const router = useRouter();

@@ -3,7 +3,7 @@
 import { updateProfile } from "@/app/actions/userActions";
 import { MemberEditSchema, memberEditSchema } from "@/lib/schemas/memberEditSchema";
 import { handleFormServerErrors } from "@/lib/utilities";
-import { EditFormProps } from "@/types/editFormProps";
+import { EditFormProps } from "@/types/uiProps";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import { useRouter } from "next/navigation";

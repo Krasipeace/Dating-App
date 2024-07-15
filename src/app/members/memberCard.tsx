@@ -3,11 +3,11 @@
 import LikeButton from "@/components/buttons/LikeButton";
 import PresenceIndicator from "@/components/PresenceIndicator";
 import { calculateAge, longNameHandler, transformImageUrl } from "@/lib/utilities";
-import { MemberCardProps } from "@/types/memberCardProps";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
 import { useState } from "react";
 import { toggleLikeMember } from "../actions/likeActions";
+import { MemberCardProps } from "@/types/memberProps";
 
 export default function MemberCard({ member, likeIds }: MemberCardProps) {
     const [hasLiked, setHasLiked] = useState(likeIds.includes(member.userId));

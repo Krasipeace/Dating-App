@@ -1,4 +1,4 @@
-import { FilterState } from "@/types/filterState";
+import { FilterState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 

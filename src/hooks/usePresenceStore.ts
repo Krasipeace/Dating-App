@@ -1,4 +1,4 @@
-import { PresenceState } from "@/types/presenceState";
+import { PresenceState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 

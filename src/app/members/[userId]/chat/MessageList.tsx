@@ -1,12 +1,12 @@
 "use client";
 
-import { MessageListProps } from "@/types/messageListProps"
 import MessageBox from "./MessageBox"
 import { useCallback, useEffect, useRef, useState } from "react";
 import { pusherClient } from "@/lib/pusher";
 import { MessageDto } from "@/types";
 import { dateTimeFormatHandler } from "@/lib/utilities";
 import useMessageStore from "@/hooks/useMessageStore";
+import { MessageListProps } from "@/types/messageProps";
 
 export default function MessageList({ initialMessages, currentUserId, chatId }: MessageListProps) {
     const setReadCount = useRef(false);

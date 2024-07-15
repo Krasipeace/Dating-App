@@ -1,6 +1,6 @@
 import { longStringHandler, transformImageUrl } from "@/lib/utilities"
 import { MessageDto } from "@/types"
-import { NotificationToastProps } from "@/types/notificationToastProps"
+import { NotificationToastProps } from "@/types/uiProps"
 import { Image } from "@nextui-org/react"
 import Link from "next/link"
 import { toast } from "react-toastify"

@@ -1,9 +1,9 @@
 "use client";
 
-import { MessageTableProps } from "@/types/messageTableProps";
 import { Button, Card, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import MessageTableCell from "./MessageTableCell";
 import { useMessages } from "@/hooks/useMessages";
+import { MessageTableProps } from "@/types/messageProps";
 
 export default function MessageTable({ initialMessages, nextCursor }: MessageTableProps) {
     const { columns, isOutbox, isDeleting, deleteMessage, selectRow, messages, loadMoreMessages, loadingMoreMessages, hasMoreMessages, isReporting, reportMessage } = useMessages(initialMessages, nextCursor);
