@@ -21,8 +21,8 @@ jobs:
       - name: Start database services (using Docker Compose)
         run: docker-compose up -d db
 
-      - name: Wait 5 minutes
-        timeout-minutes: 5
+      - name: Timeout 5 minutes
+        run: sleep 300
 
       - name: Run database migrations (using Docker Compose)
         run: docker-compose exec db prisma migrate deploy
