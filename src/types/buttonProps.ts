@@ -22,3 +22,8 @@ export type StarButtonProps = {
     selected: boolean;
     loading: boolean;
 }
+
+export type EyeToggleButtonProps = {
+    isVisible: boolean;
+    onClick: () => void;
+}

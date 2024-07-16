@@ -8,6 +8,7 @@ import { Button, Input } from "@nextui-org/react";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form"
 import { GiHouseKeys } from "react-icons/gi";
+import { MdEmail } from "react-icons/md";
 
 export default function ForgotPasswordForm() {
     const { register, reset, handleSubmit, formState: { isValid, isSubmitting } } = useForm();
@@ -26,6 +27,9 @@ export default function ForgotPasswordForm() {
             body={
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
                     <Input
+                        startContent={
+                            <MdEmail className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+                        }
                         type="email"
                         label="Email address"
                         placeholder="your.email@example.com"

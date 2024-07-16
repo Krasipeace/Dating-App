@@ -2,6 +2,9 @@
 
 import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { useFormContext } from "react-hook-form";
+import { FaTreeCity } from "react-icons/fa6";
+import { MdOutlinePlace } from "react-icons/md";
+import { TbFileDescription } from "react-icons/tb";
 
 export default function ProfileForm() {
     const { register, getValues, setValue, formState: { errors } } = useFormContext();
@@ -13,6 +16,7 @@ export default function ProfileForm() {
     return (
         <div className="space-y-4">
             <Select
+                isRequired
                 aria-label="Choose your gender"
                 label="Gender"
                 variant="bordered"
@@ -29,6 +33,7 @@ export default function ProfileForm() {
                 ))}
             </Select>
             <Input
+                isRequired
                 label="Date of Birth"
                 variant="bordered"
                 type="date"
@@ -38,6 +43,10 @@ export default function ProfileForm() {
                 errorMessage={errors.birthDate?.message as string}
             />
             <Input
+                startContent={
+                    <MdOutlinePlace className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+                }
+                isRequired
                 label="Country"
                 variant="bordered"
                 {...register("country")}
@@ -46,6 +55,10 @@ export default function ProfileForm() {
                 errorMessage={errors.country?.message as string}
             />
             <Input
+                startContent={
+                    <FaTreeCity className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+                }
+                isRequired
                 label="City"
                 variant="bordered"
                 {...register("city")}
@@ -54,6 +67,10 @@ export default function ProfileForm() {
                 errorMessage={errors.city?.message as string}
             />
             <Textarea
+                startContent={
+                    <TbFileDescription className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+                }
+                isRequired
                 label="Description"
                 variant="bordered"
                 {...register("description")}

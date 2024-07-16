@@ -34,7 +34,6 @@ export default function ResetPasswordForm() {
             body={
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
                     <Input
-                        type="password"
                         label="New password"
                         placeholder="Fill in your new password"
                         variant="bordered"
@@ -42,15 +41,16 @@ export default function ResetPasswordForm() {
                         {...register("password")}
                         isInvalid={!!errors.password}
                         errorMessage={errors.password?.message as string}
+                        type="password"
                     />
                     <Input
-                        type="password"
                         label="Confirm new password"
                         variant="bordered"
                         defaultValue=""
                         {...register("confirmedPassword")}
                         isInvalid={!!errors.confirmedPassword}
                         errorMessage={errors.confirmedPassword?.message as string}
+                        type="password"
                     />
                     <Button type="submit" color="secondary" isLoading={isSubmitting} isDisabled={!isValid}>
                         Reset password

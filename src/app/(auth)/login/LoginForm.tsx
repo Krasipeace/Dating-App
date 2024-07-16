@@ -9,6 +9,10 @@ import { useForm } from "react-hook-form";
 import { GiPadlock } from "react-icons/gi";
 import { toast } from "react-toastify";
 import SocialLogin from "./SocialLogin";
+import { useState } from "react";
+import { MdEmail } from "react-icons/md";
+import { PiPasswordBold } from "react-icons/pi";
+import EyeToggleButton from "@/components/buttons/EyeToggleButton";
 
 export default function LoginForm() {
     const router = useRouter();
@@ -16,6 +20,8 @@ export default function LoginForm() {
         resolver: zodResolver(loginSchema),
         mode: "onTouched"
     });
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => setIsVisible(!isVisible);
 
     const onSubmit = async (data: LoginSchema) => {
         const result = await signInUser(data);
@@ -31,7 +37,7 @@ export default function LoginForm() {
     return (
         <Card className="w-2/5 mx-auto">
             <CardHeader className="flex flex-col items-center justify-center">
-                <div className="flex flex-col gap-2 items-center text-secondary">
+                <div className="flex flex-col gap-2 items-center text-secondary-600">
                     <div className="flex flex-row items-center gap-2">
                         <GiPadlock size={20} />
                         <h2 className="text-2xl font-bold">Login</h2>
@@ -43,6 +49,9 @@ export default function LoginForm() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-4">
                         <Input
+                            startContent={
+                                <MdEmail className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+                            }
                             label="Email"
                             variant="bordered"
                             {...register("email")}
@@ -51,13 +60,19 @@ export default function LoginForm() {
                             errorMessage={errors.email?.message}
                         />
                         <Input
+                            startContent={
+                                <PiPasswordBold className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+                            }
                             label="Password"
                             variant="bordered"
                             {...register("password")}
-                            type="password"
                             defaultValue=""
                             isInvalid={!!errors.password}
                             errorMessage={errors.password?.message}
+                            type={isVisible ? "text" : "password"}
+                            endContent={
+                                <EyeToggleButton isVisible={isVisible} onClick={toggleVisibility} />
+                            }
                         />
                         <Button
                             isLoading={isSubmitting}
