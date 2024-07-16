@@ -2,24 +2,65 @@
 
 My `Learning by Doing` **Full-Stack App**, build with Next/React.
 
+<details><summary>Home page</summary>
+    <img src="assets/homepage.PNG" width="550" title="home page">
+</details>
+
 ## Features 
 
 In the app there are 2 roles: 
-- `ADMIN`(for administrators) - Work with the app on the back scene.
-- `MEMBER`(for users) - use the app as it should be used.
+<details><summary>- <b>ADMIN</b>(for administrators) - Work with the app on the back scene.</summary>
+    <img src="assets/adminview.PNG" width="350" title="Admin nav/menu">
+</details>
+<details><summary>- <b>MEMBER</b>(for users) - use the app as it should be used.</summary>
+    <img src="assets/userMenu.PNG" width="350" title="User nav/menu">
+</details>
+
+<br />
 
 #### As user
-- Browse other users via different filters.
-- Like/unlike other users.
-- Send messages to other users.
-- Live chat with other users.
-- Upload images
-- Report messages
+
+<details><summary>- Browse other users via different filters.</summary>
+    <img src="assets/members.PNG" width="550" title="browse users">
+</details>
+
+<details><summary>- Like/unlike other users.</summary>
+    <img src="assets/likes.PNG" width="550" title="check what you liked, what liked you">
+</details>
+
+<details><summary>- Send messages to other users.</summary>
+    <img src="assets/messages.PNG" width="550" title="send messages, receive messages">
+</details>
+
+<details><summary>- Live chat with other users.</summary>
+    <img src="assets/chat.PNG" width="550" title="live chat">
+</details>
+
+<details><summary>- Upload images</summary>
+    <img src="assets/uploadImage.PNG" width="550" title="upload image">
+</details>
+
+<details><summary>- Delete/Report messages</summary>
+    <img src="assets/reportMessageByUser.PNG" width="550" title="report message as user">
+</details>
 
 #### As Administrator
-- Get Access to Server/Client sessions
-- Moderate `user photos`
-- Moderate `reported messages`
+
+<details><summary>- Get Access to Server/Client sessions</summary>
+    <img src="assets/adminhomepage.PNG" width="350" title="session">
+</details>
+
+<details><summary>- Moderate `user photos`</summary>
+    <img src="assets/adminImages.PNG" width="550" title="admin photos view">
+</details>
+
+<details><summary>- Moderate `reported messages`</summary>
+    <img src="assets/reportedmessages.PNG" width="550" title="admin reported messages view">
+</details>
+
+<details><summary>Admin View</summary>
+    <img src="assets/adminview.PNG" width="550" title="admin main view">
+</details>
 
 ### Getting Started
 
@@ -70,9 +111,24 @@ Open .env.example to understand what secrets do you need in your .env config fil
 `N.B.:`
 `You can register with your email and password, and your confirmation email will not be send, due to this, I highly recommend to use Github or Google as login at [https://heartbound.vercel.app](https://heartbound.vercel.app). Because of the nature of resend, which is my email-provider and its set-up only for testing as free version. You will also never receive email for reset-password functionality, due to same reason.`
 
+<hr>
+<details><summary>Registration (part 1)</summary>
+    <img src="assets/registerpart1.PNG" width="350" title="registration with creds part 1">
+</details>
+
+<details><summary>Registration (part 2)</summary>
+    <img src="assets/registerpart2.PNG" width="350" title="registration with creds part 2">
+</details>
+
+<details><summary>Registration (verification token in DB)</summary>
+    <img src="assets/regpart2emailtoken.PNG.PNG" width="350" title="verification token on complete profile">
+</details>
+
 Login and use the app.
   - Login via Github
   - Login via Google
+
+<br />
 
 Login with test users info:
 - TestUser1 - Anna:
@@ -91,7 +147,7 @@ Login with test users info:
 #### As Administrator
 
 - Login as admin is not available at `heartbound.vercel.app`
-- Locally, you can check `.env.example` for the needed secrets in your `.env` config to seed(**implemented**) and run your own administrator.
+- Locally, you can check [`.env.example`](.env.example) for the needed secrets in your `.env` config to seed and run your own administrator.
 
 ### Tech Stack / Libraries / Packages
 
