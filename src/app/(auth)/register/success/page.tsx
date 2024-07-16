@@ -6,6 +6,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 
 export default function RegisterSuccessPage() {
     const router = useRouter();
+    
     return (
         <UniversalWrapper
             headerText="You registered successfuly"

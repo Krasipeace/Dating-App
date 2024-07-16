@@ -1,10 +1,10 @@
 import { pusherClient } from "@/lib/pusher";
 import { MessageDto } from "@/types";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Channel } from "pusher-js"
-import { useCallback, useEffect, useRef } from "react"
+import { Channel } from "pusher-js";
+import { useCallback, useEffect, useRef } from "react";
 import useMessageStore from "./useMessageStore";
-import { likeNotification, messageNotification } from "@/components/NotificationToast";
+import { likeNotification, messageNotification } from "@/components/Notifications";
 
 export const useNotificationChannel = (userId: string | null, profileComplete: boolean) => {
     const channelRef = useRef<Channel | null>(null);

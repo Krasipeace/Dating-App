@@ -1,13 +1,13 @@
 "use client";
 
 import { createMessage } from "@/app/actions/messageActions";
-import { MessageSchema, messageSchema } from "@/lib/schemas/messageSchema"
+import { MessageSchema, messageSchema } from "@/lib/schemas/messageSchema";
 import { handleFormServerErrors } from "@/lib/utilities";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, Input } from "@nextui-org/react";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { HiPaperAirplane } from "react-icons/hi2";
 
 export default function ChatForm() {

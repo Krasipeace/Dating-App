@@ -67,6 +67,9 @@ Open .env.example to understand what secrets do you need in your .env config fil
 
 #### As User 
 
+`N.B.:`
+`You can register with your email and password, and your confirmation email will not be send, due to this, I highly recommend to use Github or Google as login at [https://heartbound.vercel.app](https://heartbound.vercel.app). Because of the nature of resend, which is my email-provider and its set-up only for testing as free version. You will also never receive email for reset-password functionality, due to same reason.`
+
 Login and use the app.
   - Login via Github
   - Login via Google
@@ -108,6 +111,8 @@ Login with test users info:
 - [Pusher](https://pusher.com/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
 - [Resend](https://resend.com/)
+
+Test Users pictures from [freepik](https://www.freepik.com)
 
 ### Deploy on Vercel
 

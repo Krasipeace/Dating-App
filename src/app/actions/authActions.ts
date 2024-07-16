@@ -237,7 +237,7 @@ export async function resetPassword(password: string, token: string | null): Pro
     } catch (error) {
         console.log(error);
 
-        return { status: "error", error: "Something wend wrong" }
+        return { status: "error", error: "Something went wrong" }
     }
 }
 

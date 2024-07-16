@@ -1,6 +1,6 @@
 "use client";
 
-import MessageBox from "./MessageBox"
+import MessageBox from "./MessageBox";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { pusherClient } from "@/lib/pusher";
 import { MessageDto } from "@/types";

@@ -1,6 +1,6 @@
-import CardWrapper from "@/components/CardWrapper"
-import ChatForm from "./ChatForm"
-import { getMessageThread } from "@/app/actions/messageActions"
+import CardWrapper from "@/components/CardWrapper";
+import ChatForm from "./ChatForm";
+import { getMessageThread } from "@/app/actions/messageActions";
 import { getAuthUserId } from "@/app/actions/authActions";
 import MessageList from "./MessageList";
 import { getChatId } from "@/lib/utilities";

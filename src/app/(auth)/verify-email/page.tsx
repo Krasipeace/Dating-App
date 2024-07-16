@@ -1,4 +1,4 @@
-import { verifyEmail } from "@/app/actions/authActions"
+import { verifyEmail } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
 import UniversalWrapper from "@/components/UniversalWrapper";
 import { Spinner } from "@nextui-org/react";

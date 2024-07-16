@@ -1,4 +1,4 @@
-import { getReportedMessages } from "@/app/actions/adminActions"
+import { getReportedMessages } from "@/app/actions/adminActions";
 import ThumbsDownButton from "@/components/buttons/ThumbsDownButton";
 import ThumpsUpButton from "@/components/buttons/ThumpsUpButton";
 import { Card, CardBody } from "@nextui-org/react";
@@ -15,9 +15,9 @@ export default async function AdminMessagesPage() {
                 <Card>
                     <CardBody>
                         {messages.map((message) => (
-                            <div key={message.id} className="flex justify-between items-center py-2">
-                                <p>{message.text}</p>
-                                <div>
+                            <div key={message.id} className="flex justify-between items-center p-2 shadow-md rounded-md">
+                                <p className="font-serif">{message.text}</p>
+                                <div className="flex gap-2">
                                     <ThumpsUpButton messageId={message.id} />
                                     <ThumbsDownButton messageId={message.id} />
                                 </div>

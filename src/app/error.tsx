@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react"
+import { Button, Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
 import { TbFaceIdError } from "react-icons/tb";
 
 export default function Error({

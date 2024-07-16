@@ -1,6 +1,6 @@
 "use client";
 
-import { resetPassword, resetPasswordEmail } from "@/app/actions/authActions";
+import { resetPassword } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
 import UniversalWrapper from "@/components/UniversalWrapper";
 import { ForgotPasswordSchema, forgotPasswordSchema } from "@/lib/schemas/forgotPasswordSchema";

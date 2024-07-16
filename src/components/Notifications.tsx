@@ -1,11 +1,11 @@
-import { longStringHandler, transformImageUrl } from "@/lib/utilities"
-import { MessageDto } from "@/types"
-import { NotificationToastProps } from "@/types/uiProps"
-import { Image } from "@nextui-org/react"
-import Link from "next/link"
-import { toast } from "react-toastify"
+import { longStringHandler, transformImageUrl } from "@/lib/utilities";
+import { MessageDto } from "@/types";
+import { NotificationProps as NotificationProps } from "@/types/uiProps";
+import { Image } from "@nextui-org/react";
+import Link from "next/link";
+import { toast } from "react-toastify";
 
-export default function NotificationToast({ image, href, title, sysMessage: sysMessage }: NotificationToastProps) {
+export default function NotificationToast({ image, href, title, sysMessage: sysMessage }: NotificationProps) {
     return (
         <Link href={href} className="flex items-center">
             <div className="mr-2">
@@ -40,7 +40,7 @@ export const likeNotification = (name: string, image: string | null, userId: str
             image={image}
             href={`/members/${userId}`}
             title={`${longStringHandler(name)} just liked you`}
-            sysMessage="Check their profile"
+            sysMessage="Check profile"
         />
     )
 }

@@ -1,4 +1,4 @@
-import { getMemberByUserId } from "@/app/actions/memberActions"
+import { getMemberByUserId } from "@/app/actions/memberActions";
 import CardWrapper from "@/components/CardWrapper";
 import { notFound } from "next/navigation";
 

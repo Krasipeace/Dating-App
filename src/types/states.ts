@@ -1,4 +1,4 @@
-import { UserFilters } from "@/types"
+import { UserFilters } from "@/types";
 import { PaginationResult } from "@/types";
 import { MessageDto } from "@/types";
 

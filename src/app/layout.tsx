@@ -21,7 +21,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang="en">
-			<body>
+			<body className="relative min-h-screen">
 				<Providers userId={userId} profileComplete={profileComplete}>
 					<TopNav />
 					<main className="container mx-auto p-10">

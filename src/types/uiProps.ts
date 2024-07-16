@@ -25,7 +25,7 @@ export type NavLinkProps = {
     label: string;
 }
 
-export type NotificationToastProps = {
+export type NotificationProps = {
     image?: string | null;
     href: string;
     title: string;
