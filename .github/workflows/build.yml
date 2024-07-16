@@ -30,17 +30,5 @@ jobs:
       - name: Timeout 30 seconds
         run: sleep 30
 
-      - name: Push DB
-        run: npx prisma db push
-
-      - name: Timeout 30 seconds
-        run: sleep 30
-
-      - name: Seed DB
-        run: npx prisma db seed
-      
-      - name: Timeout 30 seconds
-        run: sleep 30
-
       - name: Build React app
         run: npm run build
