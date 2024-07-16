@@ -18,14 +18,29 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start database services (using Docker Compose)
-        run: docker-compose up -d db
+      - name: Start database services
+        run: docker compose up -d
 
-      - name: Timeout 5 minutes
-        run: sleep 300
+      - name: Timeout 30 seconds
+        run: sleep 30
 
-      - name: Run database migrations (using Docker Compose)
-        run: docker-compose exec db prisma migrate deploy
+      - name: Generate prisma
+        run: npx prisma generate
+
+      - name: Timeout 30 seconds
+        run: sleep 30
+
+      - name: Push DB
+        run: npx prisma db push
+
+      - name: Timeout 30 seconds
+        run: sleep 30
+
+      - name: Seed DB
+        run: npx prisma db seed
+      
+      - name: Timeout 30 seconds
+        run: sleep 30
 
       - name: Build React app
         run: npm run build
