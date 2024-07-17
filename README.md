@@ -12,6 +12,7 @@ In the app there are 2 roles:
 <details><summary>- <b>ADMIN</b>(for administrators) - Work with the app on the back scene.</summary>
     <img src="assets/adminview.PNG" width="350" title="Admin nav/menu">
 </details>
+
 <details><summary>- <b>MEMBER</b>(for users) - use the app as it should be used.</summary>
     <img src="assets/userMenu.PNG" width="350" title="User nav/menu">
 </details>
@@ -121,12 +122,23 @@ Open .env.example to understand what secrets do you need in your .env config fil
 </details>
 
 <details><summary>Registration (verification token in DB)</summary>
-    <img src="assets/regpart2emailtoken.PNG.PNG" width="350" title="verification token on complete profile">
+    <img src="assets/regpart2emailtoken.PNG" width="350" title="verification token on complete profile">
 </details>
 
 Login and use the app.
-  - Login via Github
-  - Login via Google
+
+<details><summary>  - Login via Github</summary>
+    <img src="assets/githublogin.PNG" width="350" title="Github login">
+</details>
+
+<details><summary>  - Login via Google</summary>
+    <img src="assets/googlelogin.PNG" width="350" title="Logging with Google">
+    <img src="assets/googlelogin2.PNG" width="350" title="Logging with Google confirmation privacy">
+</details>
+
+<details><summary>Finish Login with Social Acc</summary>
+    <img src="assets/finishLoginWithSocialAcc.PNG" width="350" title="Complete your profile">
+</details>
 
 <br />
 
