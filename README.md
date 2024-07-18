@@ -125,6 +125,11 @@ Open .env.example to understand what secrets do you need in your .env config fil
     <img src="assets/regpart2emailtoken.PNG" width="350" title="verification token on complete profile">
 </details>
 
+<details><summary>Verification Email</summary>
+    <img src="assets/verificationmail.PNG" width="350" title="sent verification email">
+    <img src="assets/afterVerification.PNG" width="350" title="in-app result after verification success">
+</details>
+
 Login and use the app.
 
 <details><summary>  - Login via Github</summary>

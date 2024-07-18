@@ -42,7 +42,7 @@ export default function LoginForm() {
                         <GiPadlock size={20} />
                         <h2 className="text-2xl font-bold">Login</h2>
                     </div>
-                    <p className="text-neutral-500">Fill in your e-mail and password to login</p>
+                    <p className="text-neutral-500">Enter e-mail and password to login</p>
                 </div>
             </CardHeader>
             <CardBody>

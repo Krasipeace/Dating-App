@@ -28,11 +28,11 @@ export async function sendVerificationEmail(email: string, token: string) {
                 </p>
                 <p style=${pLine}>
                     Cheers,<br>
-                    The HeartBound Team
+                    <a href="${link}">The HeartBound Team</a>
                 </p>
                 <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">
                 <p style="color: #999; font-size: 12px; text-align: center;">
-                    &copy; ${currentYear} HeartBound. All rights reserved.
+                    &copy; ${currentYear} <a href="${link}">HeartBound</a>. All rights reserved.
                 </p>
             </div>
         `
