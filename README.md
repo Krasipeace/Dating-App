@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/krasipeace/dating-app/badge)](https://www.codefactor.io/repository/github/krasipeace/dating-app)
+
 # HeartBound - Dating app
 
 My `Learning by Doing` **Full-Stack App**, build with Next/React.
@@ -136,7 +138,7 @@ Login and use the app.
     <img src="assets/githublogin.PNG" width="350" title="Github login">
 </details>
 
-<details><summary>  - Login via Google</summary>
+<details><summary>  - Login via Google(might still not work, because Google is verifying it)</summary>
     <img src="assets/googlelogin.PNG" width="350" title="Logging with Google">
     <img src="assets/googlelogin2.PNG" width="350" title="Logging with Google confirmation privacy">
 </details>
