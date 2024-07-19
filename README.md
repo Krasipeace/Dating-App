@@ -138,6 +138,10 @@ Login and use the app.
     <img src="assets/githublogin.PNG" width="350" title="Github login">
 </details>
 
+<details><summary>  - Login via Gitlab</summary>
+    <img src="assets/gitlablogin.PNG" width="350" title="Gitlab login">
+</details>
+
 <details><summary>  - Login via Google(might still not work, because Google is verifying it)</summary>
     <img src="assets/googlelogin.PNG" width="350" title="Logging with Google">
     <img src="assets/googlelogin2.PNG" width="350" title="Logging with Google confirmation privacy">
