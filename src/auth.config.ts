@@ -1,6 +1,7 @@
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
+import Gitlab from "next-auth/providers/gitlab"
 import type { NextAuthConfig } from "next-auth";
 import { loginSchema } from "./lib/schemas/loginSchema";
 import { getUserByEmail } from "./app/actions/authActions";
@@ -35,6 +36,10 @@ export default {
         Google({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
+        Gitlab({
+            clientId: process.env.GITLAB_CLIENT_ID,
+            clientSecret: process.env.GITLAB_CLIENT_SECRET
         }),
     ]
 } satisfies NextAuthConfig
