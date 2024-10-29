@@ -3,6 +3,7 @@ import { MessageDto } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Key, useCallback, useEffect, useRef, useState } from "react";
 import useMessageStore from "./useMessageStore";
+import { COL_ACTIONS, COL_TEXT, CONTAINER_OUTBOX, LABEL_ACTIONS, LABEL_DATE_RECEIVED, LABEL_DATE_SENT, LABEL_MESSAGE, RECIPIENT_NAME, RECIPIENT_OUTBOX, SEARCH_PARAMS_CONTAINER, SENDER_INBOX, SENDER_NAME } from "@/constants/hookConstants";
 
 export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) => {
     const cursorRef = useRef(nextCursor);
@@ -15,14 +16,14 @@ export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) 
     }));
     const searchParams = useSearchParams();
     const router = useRouter();
-    const isOutbox = searchParams.get("container") === "outbox";
+    const isOutbox = searchParams.get(SEARCH_PARAMS_CONTAINER) === CONTAINER_OUTBOX;
     const [isDeleting, setDeleting] = useState({
         id: "", loading: false
     });
     const [isReporting, setReporting] = useState({
         id: "", loading: false
     })
-    const container = searchParams.get("container");
+    const container = searchParams.get(SEARCH_PARAMS_CONTAINER);
     const [loadingMoreMessages, setLoadingMoreMessages] = useState(false);
 
     useEffect(() => {
@@ -47,10 +48,10 @@ export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) 
     }, [container, set]);
 
     const columns = [
-        { key: isOutbox ? "recipientName" : "senderName", label: isOutbox ? "Recipient" : "Sender" },
-        { key: "text", label: "Message" },
-        { key: "created", label: isOutbox ? "Date sent" : "Date received" },
-        { key: "actions", label: "Actions" },
+        { key: isOutbox ? RECIPIENT_NAME : SENDER_NAME, label: isOutbox ? RECIPIENT_OUTBOX : SENDER_INBOX },
+        { key: COL_TEXT, label: LABEL_MESSAGE },
+        { key: "created", label: isOutbox ? LABEL_DATE_SENT : LABEL_DATE_RECEIVED },
+        { key: COL_ACTIONS, label: LABEL_ACTIONS },
     ]
 
     const handleDeleteMessage = useCallback(async (message: MessageDto) => {

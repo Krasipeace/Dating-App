@@ -5,6 +5,8 @@ import { Channel } from "pusher-js";
 import { useCallback, useEffect, useRef } from "react";
 import useMessageStore from "./useMessageStore";
 import { likeNotification, messageNotification } from "@/components/Notifications";
+import { ROUTE_LIKE_NEW, ROUTE_NEW_MESSAGE, ROUTE_PRIVATE_PREFIX } from "@/constants/actionConstants";
+import { CONTAINER_OUTBOX, SEARCH_PARAMS_CONTAINER } from "@/constants/hookConstants";
 
 export const useNotificationChannel = (userId: string | null, profileComplete: boolean) => {
     const channelRef = useRef<Channel | null>(null);
@@ -16,7 +18,7 @@ export const useNotificationChannel = (userId: string | null, profileComplete: b
     }));
 
     const handleNewMessage = useCallback((message: MessageDto) => {
-        if (pathname === "/messages" && searchParams.get("container") !== "outbox") {
+        if (pathname === "/messages" && searchParams.get(SEARCH_PARAMS_CONTAINER) !== CONTAINER_OUTBOX) {
             add(message);
             updateUnreadCount(1);
         } else if (pathname !== `/members/${message.senderId}/chat`) {
@@ -33,16 +35,16 @@ export const useNotificationChannel = (userId: string | null, profileComplete: b
         if (!userId || !profileComplete) return;
 
         if (!channelRef.current) {
-            channelRef.current = pusherClient.subscribe(`private-${userId}`);
-            channelRef.current.bind("message:new", handleNewMessage);
-            channelRef.current.bind("like:new", handleNewLike);
+            channelRef.current = pusherClient.subscribe(`${ROUTE_PRIVATE_PREFIX}${userId}`);
+            channelRef.current.bind(ROUTE_NEW_MESSAGE, handleNewMessage);
+            channelRef.current.bind(ROUTE_LIKE_NEW, handleNewLike);
         }
 
         return () => {
             if (channelRef.current && channelRef.current.subscribed) {
                 channelRef.current.unsubscribe();
-                channelRef.current.unbind("message:new", handleNewMessage);
-                channelRef.current.unbind("like:new", handleNewLike);
+                channelRef.current.unbind(ROUTE_NEW_MESSAGE, handleNewMessage);
+                channelRef.current.unbind(ROUTE_LIKE_NEW, handleNewLike);
                 channelRef.current = null;
             }
         }

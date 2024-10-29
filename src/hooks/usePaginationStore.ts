@@ -1,3 +1,4 @@
+import { PAGINATION_STORE } from "@/constants/hookConstants";
 import { PaginationState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
@@ -35,6 +36,6 @@ const usePaginationStore = create<PaginationState>()(devtools((set) => ({
             }
         }))
     },
-}), { name: "paginationStore" }));
+}), { name: PAGINATION_STORE }));
 
 export default usePaginationStore;

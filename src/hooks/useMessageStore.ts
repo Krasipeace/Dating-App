@@ -1,3 +1,4 @@
+import { MESSAGE_STORE } from "@/constants/hookConstants";
 import { MessageState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
@@ -14,6 +15,6 @@ const useMessageStore = create<MessageState>()(devtools((set) => ({
     unreadCount: 0,
     updateUnreadCount: (amount: number) => set(state => ({ unreadCount: state.unreadCount + amount })),
     resetMessages: () => set({ messages: [] })
-}), { name: "messageStore" }));
+}), { name: MESSAGE_STORE }));
 
 export default useMessageStore;

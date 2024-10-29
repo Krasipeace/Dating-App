@@ -6,13 +6,14 @@ import { Member, Photo } from "@prisma/client";
 import { getAuthUserId } from "./authActions";
 import { prisma } from "@/lib/prisma";
 import { cloudinary } from "@/lib/cloudinary";
+import { ORDER_BY_DESC, SET_MAIN_IMAGE_ERROR, SOMETHING_WENT_WRONG, STATUS_ERROR, STATUS_SUCCESS } from "@/constants/actionConstants";
 
 export async function updateProfile(data: MemberEditSchema, nameUpdated: boolean): Promise<ActionResult<Member>> {
     try {
         const userId = await getAuthUserId();
 
         const validated = memberEditSchema.safeParse(data);
-        if (!validated.success) return { status: "error", error: validated.error.errors }
+        if (!validated.success) return { status: STATUS_ERROR, error: validated.error.errors }
 
         const { name, description, city, country } = validated.data;
 
@@ -36,11 +37,11 @@ export async function updateProfile(data: MemberEditSchema, nameUpdated: boolean
             }
         });
 
-        return { status: "success", data: member }
+        return { status: STATUS_SUCCESS, data: member }
     } catch (error) {
         console.log(error);
 
-        return { status: "error", error: "Something went wrong" }
+        return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
     }
 }
 
@@ -65,7 +66,7 @@ export async function addImage(url: string, publicId: string) {
 }
 
 export async function setMainImage(photo: Photo) {
-    if (!photo.isApproved) throw new Error("Only approved by administrator photo can be set as profile avatar");
+    if (!photo.isApproved) throw new Error(SET_MAIN_IMAGE_ERROR);
 
     try {
         const userId = await getAuthUserId();
@@ -150,7 +151,7 @@ export async function getTopLikedUsers() {
             },
             orderBy: {
                 targetLikes: {
-                    _count: "desc"
+                    _count: ORDER_BY_DESC
                 }
             },
             take: 10

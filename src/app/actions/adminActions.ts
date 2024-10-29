@@ -4,11 +4,12 @@ import { prisma } from "@/lib/prisma";
 import { getUserRole } from "./authActions";
 import { Photo } from "@prisma/client";
 import { cloudinary } from "@/lib/cloudinary";
+import { CANNOT_APPROVE_PHOTO, FORBIDDEN_MESSAGE, MESSAGE_NOT_ABUSE, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
 
 export async function getNonApprovedPhotos() {
     try {
         const role = await getUserRole();
-        if (role !== "ADMIN") throw new Error("Forbidden");
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
 
         return prisma.photo.findMany({
             where: {
@@ -24,7 +25,7 @@ export async function getNonApprovedPhotos() {
 export async function approvePhoto(photoId: string) {
     try {
         const role = await getUserRole();
-        if (role !== "ADMIN") throw new Error("Forbidden");
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
 
         const photo = await prisma.photo.findUnique({
             where: {
@@ -40,7 +41,7 @@ export async function approvePhoto(photoId: string) {
         });
 
         if (!photo || !photo.member || !photo.member.user) {
-            throw new Error("Cannot approve this photo");
+            throw new Error(CANNOT_APPROVE_PHOTO);
         }
 
         const { member } = photo;
@@ -85,7 +86,7 @@ export async function approvePhoto(photoId: string) {
 export async function rejectPhoto(photo: Photo) {
     try {
         const role = await getUserRole();
-        if (role !== "ADMIN") throw new Error("Forbidden");
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
 
         if (photo.publicId) {
             await cloudinary.v2.uploader.destroy(photo.publicId);
@@ -105,7 +106,7 @@ export async function rejectPhoto(photo: Photo) {
 export async function getReportedMessages() {
     try {
         const role = await getUserRole();
-        if (role !== "ADMIN") throw new Error("Forbidden");
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
 
         return prisma.message.findMany({
             where: {
@@ -121,7 +122,7 @@ export async function getReportedMessages() {
 export async function declineReportedMessage(messageId: string) {
     try {
         const role = await getUserRole();
-        if (role !== "ADMIN") throw new Error("Forbidden");
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
 
         await prisma.message.update({
             where: {
@@ -132,7 +133,7 @@ export async function declineReportedMessage(messageId: string) {
             }
         });
 
-        return { status: "success", data: "Message not abuse" }
+        return { status: STATUS_SUCCESS, data: MESSAGE_NOT_ABUSE }
     } catch (error) {
         console.log(error);
         throw error;

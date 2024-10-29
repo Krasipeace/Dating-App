@@ -1,12 +1,13 @@
-"use server"
+"use server";
 
 import { prisma } from "@/lib/prisma";
 import { addYears } from "@/lib/utilities";
 import { MemberParams, PaginationRespone } from "@/types";
 import { Member, Photo } from "@prisma/client";
 import { getAuthUserId } from "./authActions";
+import { AGE_RANGE, BOOLEAN_TRUE, GENDERS, ORDER_BY_DESC, ORDER_BY_UPDATED, PAGE_SIZE, START_PAGE_NUMBER } from "@/constants/actionConstants";
 
-export async function getMembers({ ageRange = "18,100", gender = "male,female", orderBy = "updated", pageNumber = "1", pageSize = "12", hasPhoto = "true" }
+export async function getMembers({ ageRange = AGE_RANGE, gender = GENDERS, orderBy = ORDER_BY_UPDATED, pageNumber = START_PAGE_NUMBER, pageSize = PAGE_SIZE, hasPhoto = BOOLEAN_TRUE }
     : MemberParams): Promise<PaginationRespone<Member>> {
     const userId = await getAuthUserId();
     const [minAge, maxAge] = ageRange.split(",");
@@ -23,7 +24,7 @@ export async function getMembers({ ageRange = "18,100", gender = "male,female", 
             { birthDate: { gte: minDateOfBirth } },
             { birthDate: { lte: maxDateOfBirth } },
             { gender: { in: selectedGender } },
-            ...(hasPhoto === "true" ? [{ image: { not: null } }] : [])
+            ...(hasPhoto === BOOLEAN_TRUE ? [{ image: { not: null } }] : [])
         ],
         NOT: {
             userId
@@ -37,7 +38,7 @@ export async function getMembers({ ageRange = "18,100", gender = "male,female", 
 
         const members = await prisma.member.findMany({
             where: whereClause,
-            orderBy: { [orderBy]: "desc" },
+            orderBy: { [orderBy]: ORDER_BY_DESC },
             skip,
             take: limit
         });

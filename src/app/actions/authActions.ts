@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, signIn, signOut } from "@/auth";
+import { EXPIRED_TOKEN, GO_SIGN_IN, INVALID_CREDENTIALS, INVALID_TOKEN, LOGGED_IN_SUCCESSFULLY, MISSING_TOKEN, NO_ROLE_GIVEN, NO_SERVER_RESPONSE, NO_SUCH_EMAIL, SOMETHING_WENT_WRONG, STATUS_ERROR, STATUS_SUCCESS, SUCCESS_MESSAGE, TRY_REGISTER_AGAIN, UNATHORIZED_MESSAGE, USER_ALREADY_EXISTS, USER_NOT_FOUND, VERIFY_EMAIL_BEFORE_SIGNING_IN } from "@/constants/actionConstants";
 import { sendForgottenPasswordEmail, sendVerificationEmail } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { LoginSchema } from "@/lib/schemas/loginSchema";
@@ -14,7 +15,7 @@ import { AuthError } from "next-auth";
 export async function registerUser(data: RegisterSchema): Promise<ActionResult<User>> {
     try {
         const validated = userRegisterSchema.safeParse(data);
-        if (!validated.success) return { status: "error", error: validated.error.errors }
+        if (!validated.success) return { status: STATUS_ERROR, error: validated.error.errors }
 
         const { name, email, password, gender, birthDate, country, city, description } = validated.data;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,7 +25,7 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
                 email
             }
         });
-        if (existingUser) return { status: "error", error: "User already exists" };
+        if (existingUser) return { status: STATUS_ERROR, error: USER_ALREADY_EXISTS };
 
         const user = await prisma.user.create({
             data: {
@@ -49,24 +50,24 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
 
         await sendVerificationEmail(verificationToken.email, verificationToken.token);
 
-        return { status: "success", data: user }
+        return { status: STATUS_SUCCESS, data: user }
     } catch (error) {
         console.log(error);
-        return { status: "error", error: "Something went wrong!" }
+        return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
     }
 }
 
 export async function signInUser(data: LoginSchema): Promise<ActionResult<string>> {
     try {
         const existingUser = await getUserByEmail(data.email);
-        if (!existingUser || !existingUser.email) return { status: "error", error: "Invalid credentials" }
+        if (!existingUser || !existingUser.email) return { status: STATUS_ERROR, error: INVALID_CREDENTIALS }
 
         if (!existingUser.emailVerified) {
             const token = await generateToken(existingUser.email, TokenType.VERIFICATION);
 
             await sendVerificationEmail(token.email, token.token);
 
-            return { status: "error", error: "Please verify your email, before sign in" }
+            return { status: STATUS_ERROR, error: VERIFY_EMAIL_BEFORE_SIGNING_IN }
         }
 
         const result = await signIn("credentials", {
@@ -76,25 +77,25 @@ export async function signInUser(data: LoginSchema): Promise<ActionResult<string
         });
         console.log(result);
 
-        return { status: "success", data: "Logged in successfully" }
+        return { status: STATUS_SUCCESS, data: LOGGED_IN_SUCCESSFULLY }
     } catch (error) {
         console.log(error);
         if (error instanceof AuthError) {
             switch (error.type) {
                 case "CredentialsSignin":
-                    return { status: "error", error: "Invalid credentials" }
+                    return { status: STATUS_ERROR, error: INVALID_CREDENTIALS }
                 default:
-                    return { status: "error", error: "Something went wrong" }
+                    return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
             }
         } else {
-            return { status: "error", error: "No server response" }
+            return { status: STATUS_ERROR, error: NO_SERVER_RESPONSE }
         }
     }
 }
 
 export async function completeSocialProfile(data: ProfileSchema): Promise<ActionResult<string>> {
     const session = await auth();
-    if (!session?.user) return { status: "error", error: "User not found" }
+    if (!session?.user) return { status: STATUS_ERROR, error: USER_NOT_FOUND }
 
     try {
         const user = await prisma.user.update({
@@ -123,7 +124,7 @@ export async function completeSocialProfile(data: ProfileSchema): Promise<Action
             }
         });
 
-        return { status: "success", data: user.accounts[0].provider }
+        return { status: STATUS_SUCCESS, data: user.accounts[0].provider }
     } catch (error) {
         console.log(error);
         throw error;
@@ -150,7 +151,7 @@ export async function getAuthUserId() {
     const session = await auth();
     const userId = session?.user?.id;
 
-    if (!userId) throw new Error("Unauthorised");
+    if (!userId) throw new Error(UNATHORIZED_MESSAGE);
 
     return userId;
 }
@@ -158,13 +159,13 @@ export async function getAuthUserId() {
 export async function verifyEmail(token: string): Promise<ActionResult<string>> {
     try {
         const existingToken = await getToken(token);
-        if (!existingToken) return { status: "error", error: "Invalid token" }
+        if (!existingToken) return { status: STATUS_ERROR, error: INVALID_TOKEN }
 
         const isExpired = new Date() > existingToken.expires;
-        if (isExpired) return { status: "error", error: "Token has expired. You can try register again with this email address" }
+        if (isExpired) return { status: STATUS_ERROR, error: `${EXPIRED_TOKEN} ${TRY_REGISTER_AGAIN}` }
 
         const existingUser = await getUserByEmail(existingToken.email);
-        if (!existingUser) return { status: "error", error: "User not found" }
+        if (!existingUser) return { status: STATUS_ERROR, error: USER_NOT_FOUND }
 
 
         await prisma.user.update({
@@ -178,43 +179,43 @@ export async function verifyEmail(token: string): Promise<ActionResult<string>> 
 
         await prisma.token.delete({ where: { id: existingToken.id } });
 
-        return { status: "success", data: "Success" }
+        return { status: STATUS_SUCCESS, data: SUCCESS_MESSAGE }
     } catch (error) {
         console.log(error);
 
-        return { status: "error", error: "Something went wrong" }
+        return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
     }
 }
 
 export async function resetPasswordEmail(email: string): Promise<ActionResult<string>> {
     try {
         const userByEmail = await getUserByEmail(email);
-        if (!userByEmail) return { status: "error", error: "There is no user with such email" }
+        if (!userByEmail) return { status: STATUS_ERROR, error: NO_SUCH_EMAIL }
 
         const token = await generateToken(email, TokenType.PASSWORD_RESET);
 
         await sendForgottenPasswordEmail(token.email, token.token);
 
-        return { status: "success", data: `Password reset request sent to ${email}. If it is not in the main folder, check your SPAM folder.` }
+        return { status: STATUS_SUCCESS, data: `Password reset request sent to ${email}. If it is not in the main folder, check your SPAM folder.` }
     } catch (error) {
         console.log(error);
 
-        return { status: "error", error: "Something went wrong" }
+        return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
     }
 }
 
 export async function resetPassword(password: string, token: string | null): Promise<ActionResult<string>> {
     try {
-        if (!token) return { status: "error", error: "Missing token" }
+        if (!token) return { status: STATUS_ERROR, error: MISSING_TOKEN }
 
         const existingToken = await getToken(token);
-        if (!existingToken) return { status: "error", error: "Invalid token" }
+        if (!existingToken) return { status: STATUS_ERROR, error: INVALID_TOKEN }
 
         const isExpired = new Date() > existingToken.expires;
-        if (isExpired) return { status: "error", error: "Token has expired" }
+        if (isExpired) return { status: STATUS_ERROR, error: EXPIRED_TOKEN }
 
         const existingUser = await getUserByEmail(existingToken.email);
-        if (!existingUser) return { status: "error", error: "User not found" }
+        if (!existingUser) return { status: STATUS_ERROR, error: USER_NOT_FOUND }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -233,11 +234,11 @@ export async function resetPassword(password: string, token: string | null): Pro
             }
         });
 
-        return { status: "success", data: "Your new password is ready to use. Go Log in" }
+        return { status: STATUS_SUCCESS, data: GO_SIGN_IN }
     } catch (error) {
         console.log(error);
 
-        return { status: "error", error: "Something went wrong" }
+        return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
     }
 }
 
@@ -245,7 +246,7 @@ export async function getUserRole() {
     const session = await auth();
 
     const role = session?.user.role;
-    if (!role) throw new Error("No role has been given");
+    if (!role) throw new Error(NO_ROLE_GIVEN);
 
     return role;
 }

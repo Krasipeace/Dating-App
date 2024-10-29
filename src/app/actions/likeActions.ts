@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { getAuthUserId } from "./authActions";
 import { pusherServer } from "@/lib/pusher";
+import { CASE_TYPE_MUTUAL, CASE_TYPE_SOURCE, CASE_TYPE_TARGET, ROUTE_LIKE_NEW, ROUTE_PRIVATE_PREFIX } from "@/constants/actionConstants";
 
 export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
     try {
@@ -34,7 +35,7 @@ export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
                 }
             });
 
-            await pusherServer.trigger(`private-${targetUserId}`, "like:new", {
+            await pusherServer.trigger(`${ROUTE_PRIVATE_PREFIX}${targetUserId}`, ROUTE_LIKE_NEW, {
                 name: likeUser.sourceMember.name,
                 image: likeUser.sourceMember.image,
                 userId: likeUser.sourceMember.userId
@@ -66,16 +67,16 @@ export async function fetchCurrentUserLikesIds() {
     }
 }
 
-export async function fetchLikedMembers(type = "source") {
+export async function fetchLikedMembers(type = CASE_TYPE_SOURCE) {
     try {
         const userId = await getAuthUserId();
 
         switch (type) {
-            case "source":
+            case CASE_TYPE_SOURCE:
                 return await fetchSourceLikes(userId);
-            case "target":
+            case CASE_TYPE_TARGET:
                 return await fetchTargetLikes(userId);
-            case "mutual":
+            case CASE_TYPE_MUTUAL:
                 return await fetchMutualLikes(userId);
             default:
                 return [];

@@ -4,6 +4,7 @@ import { FaFemale, FaMale } from "react-icons/fa"
 import useFilterStore from "./useFilterStore";
 import { ChangeEvent, useEffect, useTransition } from "react";
 import usePaginationStore from "./usePaginationStore";
+import { GENDER_FEMALE, GENDER_MALE, LABEL_LAST_ACTIVE, LABEL_NEW_MEMBERS, ORDER_BY_CREATED, ORDER_BY_UPDATED, SEARCH_PARAMS_AGE_RANGE, SEARCH_PARAMS_GENDER, SEARCH_PARAMS_HAS_PHOTO, SEARCH_PARAMS_ORDER_BY, SEARCH_PARAMS_PAGE_NUMBER, SEARCH_PARAMS_PAGE_SIZE } from "@/constants/hookConstants";
 
 export const useFilters = () => {
     const pathname = usePathname();
@@ -26,46 +27,46 @@ export const useFilters = () => {
         startTransition(() => {
             const searchParams = new URLSearchParams();
 
-            if (gender) searchParams.set("gender", gender.join(","));
-            if (ageRange) searchParams.set("ageRange", ageRange.toString());
-            if (orderBy) searchParams.set("orderBy", orderBy);
-            if (pageSize) searchParams.set("pageSize", pageSize.toString());
-            if (pageNumber) searchParams.set("pageNumber", pageNumber.toString());
+            if (gender) searchParams.set(SEARCH_PARAMS_GENDER, gender.join(","));
+            if (ageRange) searchParams.set(SEARCH_PARAMS_AGE_RANGE, ageRange.toString());
+            if (orderBy) searchParams.set(SEARCH_PARAMS_ORDER_BY, orderBy);
+            if (pageSize) searchParams.set(SEARCH_PARAMS_PAGE_SIZE, pageSize.toString());
+            if (pageNumber) searchParams.set(SEARCH_PARAMS_PAGE_NUMBER, pageNumber.toString());
 
-            searchParams.set("hasPhoto", hasPhoto.toString());
+            searchParams.set(SEARCH_PARAMS_HAS_PHOTO, hasPhoto.toString());
 
             router.replace(`${pathname}?${searchParams}`);
         });
     }, [gender, ageRange, orderBy, router, pathname, pageSize, pageNumber, hasPhoto]);
 
     const orderByList = [
-        { label: "Last active", value: "updated" },
-        { label: "Newest members", value: "created" },
+        { label: LABEL_LAST_ACTIVE, value: ORDER_BY_UPDATED },
+        { label: LABEL_NEW_MEMBERS, value: ORDER_BY_CREATED },
     ]
 
     const filterByGender = [
-        { value: "male", icon: FaMale },
-        { value: "female", icon: FaFemale }
+        { value: GENDER_MALE, icon: FaMale },
+        { value: GENDER_FEMALE, icon: FaFemale }
     ]
 
     const handleAgeSelection = (value: number[]) => {
-        setFilters("ageRange", value);
+        setFilters(SEARCH_PARAMS_AGE_RANGE, value);
     }
 
     const handleOrderBySelection = (value: Selection) => {
-        if (value instanceof Set) setFilters("orderBy", value.values().next().value);
+        if (value instanceof Set) setFilters(SEARCH_PARAMS_ORDER_BY, value.values().next().value);
     }
 
     const handleGenderSelection = (value: string) => {
         if (gender.includes(value)) {
-            setFilters("gender", gender.filter(g => g !== value));
+            setFilters(SEARCH_PARAMS_GENDER, gender.filter(g => g !== value));
         } else {
-            setFilters("gender", [...gender, value]);
+            setFilters(SEARCH_PARAMS_GENDER, [...gender, value]);
         }
     }
 
     const handlePhotoToggleSelection = (p: ChangeEvent<HTMLInputElement>) => {
-        setFilters("hasPhoto", p.target.checked);
+        setFilters(SEARCH_PARAMS_HAS_PHOTO, p.target.checked);
     }
 
     return {

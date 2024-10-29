@@ -7,13 +7,14 @@ import { prisma } from "@/lib/prisma";
 import { mapMessageToMessageDto } from "@/lib/mappings";
 import { pusherServer } from "@/lib/pusher";
 import { getChatId } from "@/lib/utilities";
+import { ORDER_BY_ASC, ORDER_BY_DESC, OUTBOX_CONTAINER, RECIPIENT_DELETED, RECIPIENT_ID, ROUTE_NEW_MESSAGE, ROUTE_PRIVATE_PREFIX, ROUTE_READ_MESSAGES, SENDER_DELETED, SENDER_ID, SOMETHING_WENT_WRONG, STATUS_ERROR, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
 
 export async function createMessage(receiverId: string, data: MessageSchema): Promise<ActionResult<MessageDto>> {
     try {
         const userId = await getAuthUserId();
 
         const validated = messageSchema.safeParse(data);
-        if (!validated.success) return { status: "error", error: validated.error.errors }
+        if (!validated.success) return { status: STATUS_ERROR, error: validated.error.errors }
 
         const { text } = validated.data;
         const message = await prisma.message.create({
@@ -27,14 +28,14 @@ export async function createMessage(receiverId: string, data: MessageSchema): Pr
 
         const messageDto = mapMessageToMessageDto(message);
 
-        await pusherServer.trigger(getChatId(userId, receiverId), "message:new", messageDto);
-        await pusherServer.trigger(`private-${receiverId}`, "message:new", messageDto);
+        await pusherServer.trigger(getChatId(userId, receiverId), ROUTE_NEW_MESSAGE, messageDto);
+        await pusherServer.trigger(`${ROUTE_PRIVATE_PREFIX}${receiverId}`, ROUTE_NEW_MESSAGE, messageDto);
 
-        return { status: "success", data: messageDto }
+        return { status: STATUS_SUCCESS, data: messageDto }
     } catch (error) {
         console.log(error);
 
-        return { status: "error", error: "Something went wrong" }
+        return { status: STATUS_ERROR, error: SOMETHING_WENT_WRONG }
     }
 }
 
@@ -58,7 +59,7 @@ export async function getMessageThread(recipientId: string) {
                 ]
             },
             orderBy: {
-                created: "asc"
+                created: ORDER_BY_ASC
             },
             select: messageSelection
         });
@@ -76,7 +77,7 @@ export async function getMessageThread(recipientId: string) {
 
             readCount = readMessageIds.length;
 
-            await pusherServer.trigger(getChatId(recipientId, userId), "messages:read", readMessageIds);
+            await pusherServer.trigger(getChatId(recipientId, userId), ROUTE_READ_MESSAGES, readMessageIds);
         }
 
         const messagesToReturn = messages.map(message => mapMessageToMessageDto(message));
@@ -92,8 +93,8 @@ export async function getMessagesByContainer(container?: string | null, cursor?:
     try {
         const userId = await getAuthUserId();
         const selectorConditions = {
-            [container === "outbox" ? "senderId" : "recipientId"]: userId,
-            ...(container === "outbox" ? { senderDeleted: false } : { recipientDeleted: false })
+            [container === OUTBOX_CONTAINER ? SENDER_ID : RECIPIENT_ID]: userId,
+            ...(container === OUTBOX_CONTAINER ? { senderDeleted: false } : { recipientDeleted: false })
         }
 
         const messages = await prisma.message.findMany({
@@ -102,7 +103,7 @@ export async function getMessagesByContainer(container?: string | null, cursor?:
                 ...(cursor ? { created: { lte: new Date(cursor) } } : {})
             },
             orderBy: {
-                created: "desc"
+                created: ORDER_BY_DESC
             },
             select: messageSelection,
             take: limit + 1
@@ -127,13 +128,13 @@ export async function getMessagesByContainer(container?: string | null, cursor?:
 }
 
 export async function deleteMessage(messageId: string, isOutbox?: boolean) {
-    const selector = isOutbox ? "senderDeleted" : "recipientDeleted";
+    const selector = isOutbox ? SENDER_DELETED : RECIPIENT_DELETED;
 
     try {
         const userId = await getAuthUserId();
         const role = await getUserRole();
 
-        if (role === "ADMIN") {
+        if (role === USER_ROLE_ADMIN) {
             await prisma.message.delete({
                 where: {
                     id: messageId
