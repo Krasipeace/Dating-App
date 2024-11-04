@@ -8,11 +8,11 @@ export default function StarButton({ selected, loading }: StarButtonProps) {
             {!loading ? (
                 <>
                     <GoStar size={32} className="fill-white absolute -top-[2px] -right-[2px]" />
-                    <GoStarFill size={28} className={selected ? "fill-orange-300" : "fill-neutral-500/70"} />
+                    <GoStarFill size={28} className={selected ? "fill-orange-300" : "fill-neutral-500/70"} data-testid="GoStarFill" />
                 </>
             ) : (
                 <>
-                    <ImSpinner2 size={32} className="fill-yellow-500 animate-spin" />
+                    <ImSpinner2 size={32} className="fill-yellow-500 animate-spin" data-testid="ImSpinner2" />
                 </>
             )}
         </div>

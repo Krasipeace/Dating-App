@@ -7,12 +7,14 @@ export default function DeleteButton({ loading }: DeleteButtonProps) {
         <div className="relative hover:opacity-80 transition cursor-pointer">
             {!loading ? (
                 <>
-                    <TiDeleteOutline size={32} className="fill-white absolute -top-[2px] -right-[2px]" />
-                    <TiDelete size={28} className="fill-red-600" />
+                    <TiDeleteOutline size={32}
+                        data-testid="TiDeleteOutline" className="fill-white absolute -top-[2px] -right-[2px]" />
+                    <TiDelete size={28} data-testid="TiDelete" className="fill-red-600" />
                 </>
             ) : (
                 <>
-                    <ImSpinner2 size={32} className="fill-yellow-500 animate-spin" />
+                    <ImSpinner2 size={32}
+                        data-testid="ImSpinner2" className="fill-yellow-500 animate-spin" />
                 </>
             )}
         </div>

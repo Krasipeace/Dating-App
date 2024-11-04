@@ -5,7 +5,7 @@ export default function eyeToggleButton({ isVisible, onClick }: EyeToggleButtonP
     return (
         <button className="focus:outline-none" type="button" onClick={onClick}>
             {isVisible ? (
-                <FaEyeSlash className="text-2xl text-neutral-600 pointer-events-none" />
+                <FaEyeSlash className="text-2xl  text-neutral-600 pointer-events-none" data-testid="FaEyeSlash" />
             ) : (
                 <FaEye className="text-2xl text-neutral-300 pointer-events-none" />
             )}
