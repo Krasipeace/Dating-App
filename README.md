@@ -61,7 +61,7 @@ In the app there are 2 roles:
     <img src="assets/reportedmessages.PNG" width="550" title="admin reported messages view">
 </details>
 
-<details><summary>Admin View</summary>
+<details><summary>- Admin View</summary>
     <img src="assets/adminview.PNG" width="550" title="admin main view">
 </details>
 

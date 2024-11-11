@@ -19,7 +19,7 @@ describe('GifHandler Component tests', () => {
         expect(text).toBeInTheDocument();
     });
 
-    it('renders alt text, when image url is fake', () => {
+    it('renders alt text, when image url is not loaded', () => {
         render(<GifHandler gifUrl="example.com/text.gif" altText='front-page-image' />);
 
         const text = screen.getByAltText('front-page-image');

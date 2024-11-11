@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ReactNode, useCallback, useEffect, useRef } from "react";
 import { NextUIProvider } from "@nextui-org/react";

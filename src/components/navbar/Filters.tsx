@@ -1,7 +1,11 @@
 "use client";
 
 import { useFilters } from "@/hooks/useFilters";
-import { Button, Select, SelectItem, Slider, Spinner, Switch } from "@nextui-org/react";
+import { Spinner } from "@nextui-org/react";
+import AgeSliderButton from "../buttons/AgeSliderButton";
+import GenderSelectionButton from "../buttons/GenderSelectionButton";
+import PhotoSwitchButton from "../buttons/PhotoSwitchButton";
+import OrderByFilterButton from "../buttons/OrderByFilterButton";
 
 export default function Filters() {
     const { orderByList, filterByGender, selectAge, selectGender, selectOrder, selectUsersWithPhoto, filters, isPending, totalCount } = useFilters();
@@ -16,56 +20,32 @@ export default function Filters() {
                 </div>
                 <div className="flex flex-col items-center">
                     <p className="text-sm">Photo</p>
-                    <Switch
-                        defaultSelected
-                        color="secondary"
-                        size="sm"
-                        onChange={selectUsersWithPhoto}
-                    />
+                    <PhotoSwitchButton onChange={selectUsersWithPhoto} />
                 </div>
                 <div className="flex gap-2 items-center">
                     <div>Gender: </div>
-                    {filterByGender.map(({ icon: Icon, value }) => (
-                        <Button
+                    {filterByGender.map(({ icon, value }) => (
+                        <GenderSelectionButton
                             key={value}
-                            size="sm"
-                            isIconOnly
-                            color={filters.gender.includes(value) ? "secondary" : "default"}
+                            icon={icon}
+                            value={value}
+                            isSelected={filters.gender.includes(value)}
                             onClick={() => selectGender(value)}
-                        >
-                            <Icon size={24} />
-                        </Button>
+                        />
                     ))}
                 </div>
                 <div className="flex flex-row items-center gap-2 w-1/4">
-                    <Slider
-                        label="Age range"
-                        aria-label="Slider selection for age between 18 and 100"
-                        color="secondary"
-                        size="sm"
-                        minValue={18}
-                        maxValue={100}
+                    <AgeSliderButton 
                         defaultValue={filters.ageRange}
-                        onChangeEnd={(value) => selectAge(value as number[])}
+                        onChangeEnd={selectAge}
                     />
                 </div>
                 <div className="w-1/6">
-                    <Select
-                        label="Order by"
-                        fullWidth
-                        size="sm"
-                        variant="bordered"
-                        color="secondary"
-                        aria-label="Order by selector"
-                        selectedKeys={new Set([filters.orderBy])}
+                    <OrderByFilterButton
+                        orderByList={orderByList}
+                        selectedKey={filters.orderBy}
                         onSelectionChange={selectOrder}
-                    >
-                        {orderByList.map(item => (
-                            <SelectItem key={item.value} value={item.value}>
-                                {item.label}
-                            </SelectItem>
-                        ))}
-                    </Select>
+                    />
                 </div>
             </div>
         </div>

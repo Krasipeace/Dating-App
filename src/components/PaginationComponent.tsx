@@ -13,6 +13,9 @@ export default function PaginationComponent({ totalCount }: { totalCount: number
     }));
 
     const { pageNumber, pageSize, totalPages } = pagination;
+    const pageThreeSelector = 3;
+    const pageSixSelector = 6;
+    const pageTwelveSelector = 12;
 
     useEffect(() => {
         setPagination(totalCount);
@@ -35,7 +38,7 @@ export default function PaginationComponent({ totalCount }: { totalCount: number
                 />
                 <div className="flex flex-row gap-1 items-center">
                     Show per page:
-                    {[3, 6, 12].map(size => (
+                    {[pageThreeSelector, pageSixSelector, pageTwelveSelector].map(size => (
                         <div
                             key={size}
                             className={`${pageSize === size ? "pagination-component bg-secondary text-white hover:bg-secondary hover:text-white" : "pagination-component"}`}
