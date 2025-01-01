@@ -1,26 +1,19 @@
+import { NAME_REQUIRED, NAME_MAX_LENGTH, DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, CITY_REQUIRED, CITY_MAX_LENGTH, COUNTRY_REQUIRED, COUNTRY_MAX_LENGTH, DESCRIPTION_REQ_MAX_LENGTH, DESCRIPTION_REQ_MIN_LENGTH, LOCATION_REQ_MAX_LENGTH, LOCATION_REQ_MIN_LENGTH, NAME_REQ_MAX_LENGTH, NAME_REQ_MIN_LENGTH } from "@/constants/schemaConstants";
 import { z } from "zod";
 
 export const memberEditSchema = z.object({
-    name: z.string().min(1, {
-        message: "Name is required!"
-    }).max(50, {
-        message: "Name can be at max 50 characters long."
-    }),
-    description: z.string().min(10, {
-        message: "Write something about yourself"
-    }).max(1000, {
-        message: "Description can be at max 1000 characters long."
-    }),
-    city: z.string().min(2, {
-        message: "City is required!"
-    }).max(28, {
-        message: "City name can be at max 28 characters long"
-    }),
-    country: z.string().min(2, {
-        message: "Country is required!"
-    }).max(28, {
-        message: "Country name can be at max 28 characters long"
-    })
-})
+    name: z.string()
+        .min(NAME_REQ_MIN_LENGTH, { message: NAME_REQUIRED })
+        .max(NAME_REQ_MAX_LENGTH, { message: NAME_MAX_LENGTH }),
+    description: z.string()
+        .min(DESCRIPTION_REQ_MIN_LENGTH, { message: DESCRIPTION_MIN_LENGTH })
+        .max(DESCRIPTION_REQ_MAX_LENGTH, { message: DESCRIPTION_MAX_LENGTH }),
+    city: z.string()
+        .min(LOCATION_REQ_MIN_LENGTH, { message: CITY_REQUIRED })
+        .max(LOCATION_REQ_MAX_LENGTH, { message: CITY_MAX_LENGTH }),
+    country: z.string()
+        .min(LOCATION_REQ_MIN_LENGTH, { message: COUNTRY_REQUIRED })
+        .max(LOCATION_REQ_MAX_LENGTH, { message: COUNTRY_MAX_LENGTH }),
+});
 
-export type MemberEditSchema = z.infer<typeof memberEditSchema>
+export type MemberEditSchema = z.infer<typeof memberEditSchema>;

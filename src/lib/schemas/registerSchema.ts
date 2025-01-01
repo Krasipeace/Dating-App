@@ -1,45 +1,36 @@
 import { z } from "zod";
 import { calculateAge } from "../utilities";
+import { NAME_REQUIRED, NAME_MAX_LENGTH, EMAIL_INVALID, PASSWORD_MIN_LENGTH, DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, CITY_REQUIRED, CITY_MAX_LENGTH, COUNTRY_REQUIRED, COUNTRY_MAX_LENGTH, DATE_OF_BIRTH_REQUIRED, AGE_REQUIREMENT, AGE_REQUIREMENT_MIN_VALUE, BIRTH_DATE_REQ_MIN_VALUE, DESCRIPTION_REQ_MAX_LENGTH, DESCRIPTION_REQ_MIN_LENGTH, LOCATION_REQ_MAX_LENGTH, LOCATION_REQ_MIN_LENGTH, NAME_REQ_MAX_LENGTH, NAME_REQ_MIN_LENGTH, PASSWORD_REQ_LENGTH, GENDER_REQUIREMENT_VALUE } from "@/constants/schemaConstants";
 
 export const registerSchema = z.object({
-    name: z.string().min(1, {
-        message: "Name is required"
-    }).max(50, {
-        message: "Name can be at max 50 characters long"
-    }),
+    name: z.string()
+        .min(NAME_REQ_MIN_LENGTH, { message: NAME_REQUIRED })
+        .max(NAME_REQ_MAX_LENGTH, { message: NAME_MAX_LENGTH }),
     email: z.string().email({
-        message: "Write a valid email (example@domain.com)"
+        message: EMAIL_INVALID,
     }),
-    password: z.string().min(8, {
-        message: "Password must be at least 8 characters"
+    password: z.string().min(PASSWORD_REQ_LENGTH, {
+        message: PASSWORD_MIN_LENGTH,
     }),
 });
 
 export const profileSchema = z.object({
-    gender: z.string().min(1),
-    description: z.string().min(10, {
-        message: "Write something about yourself"
-    }).max(1000, {
-        message: "Description can be at max 1000 characters long."
-    }),
-    city: z.string().min(2, {
-        message: "City is required!"
-    }).max(28, {
-        message: "City name can be at max 28 characters long"
-    }),
-    country: z.string().min(2, {
-        message: "Country is required!"
-    }).max(28, {
-        message: "Country name can be at max 28 characters long"
-    }),
-    birthDate: z.string().min(1, {
-        message: "Date of birth is required"
-    }).refine(InputAge => {
-        const age = calculateAge(new Date(InputAge));
-        return age >= 18;
-    }, {
-        message: "You must be at least 18 years old to register"
-    }),
+    gender: z.string().min(GENDER_REQUIREMENT_VALUE),
+    description: z.string()
+        .min(DESCRIPTION_REQ_MIN_LENGTH, { message: DESCRIPTION_MIN_LENGTH })
+        .max(DESCRIPTION_REQ_MAX_LENGTH, { message: DESCRIPTION_MAX_LENGTH }),
+    city: z.string()
+        .min(LOCATION_REQ_MIN_LENGTH, { message: CITY_REQUIRED })
+        .max(LOCATION_REQ_MAX_LENGTH, { message: CITY_MAX_LENGTH }),
+    country: z.string()
+        .min(LOCATION_REQ_MIN_LENGTH, { message: COUNTRY_REQUIRED })
+        .max(LOCATION_REQ_MAX_LENGTH, { message: COUNTRY_MAX_LENGTH }),
+    birthDate: z.string()
+        .min(BIRTH_DATE_REQ_MIN_VALUE, { message: DATE_OF_BIRTH_REQUIRED })
+        .refine(inputAge => {
+            const age = calculateAge(new Date(inputAge));
+            return age >= AGE_REQUIREMENT_MIN_VALUE;
+        }, { message: AGE_REQUIREMENT }),
 });
 
 export const userRegisterSchema = registerSchema.and(profileSchema);

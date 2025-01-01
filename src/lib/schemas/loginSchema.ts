@@ -1,12 +1,13 @@
+import { EMAIL_INVALID, PASSWORD_MIN_LENGTH, PASSWORD_REQ_LENGTH } from "@/constants/schemaConstants";
 import { z } from "zod";
 
 export const loginSchema = z.object({
     email: z.string().email({
-        message: "Write a valid email(example@domain.com)"
+        message: EMAIL_INVALID,
     }),
-    password: z.string().min(8, {
-        message: "Password must be at least 8 characters"
+    password: z.string().min(PASSWORD_REQ_LENGTH, {
+        message: PASSWORD_MIN_LENGTH,
     }),
-})
+});
 
-export type LoginSchema = z.infer<typeof loginSchema>
+export type LoginSchema = z.infer<typeof loginSchema>;
