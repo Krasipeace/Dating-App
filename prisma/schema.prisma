@@ -46,16 +46,17 @@ enum TokenType {
 }
 
 model User {
-  id              String    @id @default(cuid())
+  id              String     @id @default(cuid())
   name            String?
-  email           String?   @unique
-  emailVerified   DateTime? @map("email_verified")
+  email           String?    @unique
+  emailVerified   DateTime?  @map("email_verified")
   passwordHash    String?
   image           String?
-  profileComplete Boolean   @default(false)
-  role            Role      @default(MEMBER)
+  profileComplete Boolean    @default(false)
+  role            Role       @default(MEMBER)
   accounts        Account[]
   member          Member?
+  AuditLog        AuditLog[]
 
   @@map("users")
 }
@@ -66,23 +67,25 @@ enum Role {
 }
 
 model Member {
-  id                String    @id @default(cuid())
-  userId            String    @unique
+  id                String      @id @default(cuid())
+  userId            String      @unique
   name              String
   gender            String
   birthDate         DateTime
-  created           DateTime  @default(now())
-  updated           DateTime  @default(now())
+  created           DateTime    @default(now())
+  updated           DateTime    @default(now())
   description       String
   city              String
   country           String
   image             String?
-  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   photos            Photo[]
-  sourceLikes       Like[]    @relation("source")
-  targetLikes       Like[]    @relation("target")
-  senderMessages    Message[] @relation("sender")
-  recipientMessages Message[] @relation("recipient")
+  sourceLikes       Like[]      @relation("source")
+  targetLikes       Like[]      @relation("target")
+  senderMessages    Message[]   @relation("sender")
+  recipientMessages Message[]   @relation("recipient")
+  blocksInitiated   BlockUser[] @relation("blocker")
+  blocksReceived    BlockUser[] @relation("blocked")
 }
 
 model Photo {
@@ -115,4 +118,26 @@ model Message {
   senderDeleted    Boolean   @default(false)
   recipientDeleted Boolean   @default(false)
   isAbuse          Boolean   @default(false)
+}
+
+model BlockUser {
+  id        String   @id @default(cuid())
+  blockerId String // The user initiating the block
+  blocker   Member   @relation("blocker", fields: [blockerId], references: [userId], onDelete: Cascade)
+  blockedId String // The user being blocked
+  blocked   Member   @relation("blocked", fields: [blockedId], references: [userId], onDelete: Cascade)
+  created   DateTime @default(now())
+  reason    String?
+
+  @@unique([blockerId, blockedId]) // User cannot block the same person multiple times
+  @@map("block_users")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  targetId  String
+  adminId   String
+  admin     User     @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  initiated DateTime @default(now())
 }
