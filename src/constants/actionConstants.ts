@@ -42,6 +42,21 @@ export const SUCCESS_MESSAGE = "Success";
 export const UNATHORIZED_MESSAGE = "Unauthorized";
 export const FORBIDDEN_MESSAGE = "Forbidden";
 
+export const MEMBER_NOT_FOUND = "Member not found";
+
+export const ERROR_LOGGING_AUDIT_ACTION = "Error logging audit action: ";
+
+export const NO_USER_ID_FOUND = "Such user id cannot be found";
+
+export const ACTION_LOG_SUCCESS = "Admin action logged successfully";
+export const ACTION_LOG_FAILED = "Failed to perform admin action: ";
+export const ADMIN_APPROVE_PHOTO = "Admin approved photo with publicId: ";
+export const ADMIN_REJECT_PHOTO = "Admin rejected photo with publicId: ";
+export const ADMIN_DECLINE_MESSAGE = "Admin marked the reported message as not abusive";
+export const ADMIN_APPROVE_MESSAGE = "Admin deleted the reported message";
+export const ADMIN_DELETED_MEMBER = "Admin deleted the member with id: ";
+export const ADMIN_UPDATED_MEMBER = "Admin updated the member with id: ";
+
 // Pusher
 export const ROUTE_NEW_MESSAGE = "message:new";
 export const ROUTE_READ_MESSAGES = "message:read";

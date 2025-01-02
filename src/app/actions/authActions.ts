@@ -250,3 +250,30 @@ export async function getUserRole() {
 
     return role;
 }
+
+// let counter = 0;
+// export default async function simpleCiud(): Promise<string> {
+//     const generateId = () => {
+//         const timestamp = Date.now().toString(36);
+//         const randomPart = Math.random().toString(36).substring(2, 10);
+//         const counterPart = (counter++).toString(36);
+
+//         if (counter > 1_000_000) counter = 0;
+
+//         return `c${timestamp}${randomPart}${counterPart}`;
+//     };
+
+//     let newId = generateId();
+//     let idExists = await prisma.member.findUnique({
+//         where: { userId: newId },
+//     });
+
+//     while (idExists) {
+//         newId = generateId();
+//         idExists = await prisma.member.findUnique({
+//             where: { userId: newId },
+//         });
+//     }
+
+//     return newId;
+// }

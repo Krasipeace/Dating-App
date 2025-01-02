@@ -7,7 +7,8 @@ import { prisma } from "@/lib/prisma";
 import { mapMessageToMessageDto } from "@/lib/mappings";
 import { pusherServer } from "@/lib/pusher";
 import { getChatId } from "@/lib/utilities";
-import { ORDER_BY_ASC, ORDER_BY_DESC, OUTBOX_CONTAINER, RECIPIENT_DELETED, RECIPIENT_ID, ROUTE_NEW_MESSAGE, ROUTE_PRIVATE_PREFIX, ROUTE_READ_MESSAGES, SENDER_DELETED, SENDER_ID, SOMETHING_WENT_WRONG, STATUS_ERROR, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
+import { ADMIN_APPROVE_MESSAGE, ORDER_BY_ASC, ORDER_BY_DESC, OUTBOX_CONTAINER, RECIPIENT_DELETED, RECIPIENT_ID, ROUTE_NEW_MESSAGE, ROUTE_PRIVATE_PREFIX, ROUTE_READ_MESSAGES, SENDER_DELETED, SENDER_ID, SOMETHING_WENT_WRONG, STATUS_ERROR, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
+import { performAdminAction } from "./adminActions";
 
 export async function createMessage(receiverId: string, data: MessageSchema): Promise<ActionResult<MessageDto>> {
     try {
@@ -135,6 +136,13 @@ export async function deleteMessage(messageId: string, isOutbox?: boolean) {
         const role = await getUserRole();
 
         if (role === USER_ROLE_ADMIN) {
+            await performAdminAction(
+                "deleted_reported_message",
+                messageId,
+                "message",
+                ADMIN_APPROVE_MESSAGE
+            );
+
             await prisma.message.delete({
                 where: {
                     id: messageId
