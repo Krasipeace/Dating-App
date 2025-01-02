@@ -134,10 +134,13 @@ model BlockUser {
 }
 
 model AuditLog {
-  id        String   @id @default(cuid())
-  action    String
-  targetId  String
-  adminId   String
-  admin     User     @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  initiated DateTime @default(now())
+  id         String   @id @default(cuid())
+  adminId    String
+  action     String
+  entityId   String?
+  entityType String
+  timestamp  DateTime @default(now())
+  details    String?
+  User       User?    @relation(fields: [userId], references: [id])
+  userId     String?
 }
