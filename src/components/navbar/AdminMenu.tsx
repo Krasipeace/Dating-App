@@ -5,8 +5,9 @@ import { transformImageUrl } from "@/lib/utilities";
 import { MenuProps } from "@/types/uiProps";
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@nextui-org/react";
 import Link from "next/link";
+import { FaUsersCog } from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";
-import { TbMessageSearch, TbPhotoSearch } from "react-icons/tb";
+import { TbLogs, TbMessageSearch, TbPhotoSearch } from "react-icons/tb";
 
 export default function AdminMenu({ userInfo }: MenuProps) {
     return (
@@ -28,6 +29,12 @@ export default function AdminMenu({ userInfo }: MenuProps) {
                         Logged in as <span className="font-semibold">{userInfo?.name}</span>
                     </DropdownItem>
                 </DropdownSection>
+                <DropdownItem as={Link} href="/admin/logs" endContent={<TbLogs size={20} className="text-blue-800" />}>
+                    Check Logs
+                </DropdownItem>
+                <DropdownItem as={Link} href="/admin/edit-users" endContent={<FaUsersCog size={20} className="text-blue-800" />}>
+                    Edit Users
+                </DropdownItem>
                 <DropdownItem as={Link} href="/admin/messages" endContent={<TbMessageSearch size={20} className="text-blue-800" />}>
                     Reported Messages
                 </DropdownItem>

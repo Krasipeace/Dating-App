@@ -57,6 +57,13 @@ export const ADMIN_APPROVE_MESSAGE = "Admin deleted the reported message";
 export const ADMIN_DELETED_MEMBER = "Admin deleted the member with id: ";
 export const ADMIN_UPDATED_MEMBER = "Admin updated the member with id: ";
 
+export const CONFIRM_DELETE_MEMBER = "Are you sure you want to delete this member?";
+export const SUCCESS_TO_DELETE_MEMBER = "Member deleted successfully";
+export const FAILED_TO_DELETE_MEMBER = "Failed to delete member";
+
+export const SUCCESS_TO_UPDATE_MEMBER = "Member updated successfully";
+export const FAILED_TO_UPDATE_MEMBER = "Failed to update member";
+
 // Pusher
 export const ROUTE_NEW_MESSAGE = "message:new";
 export const ROUTE_READ_MESSAGES = "message:read";

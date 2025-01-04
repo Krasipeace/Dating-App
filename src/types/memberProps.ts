@@ -20,3 +20,18 @@ export type MemberSidebarProps = {
     member: Member;
     navLinks: { name: string, href: string }[];
 }
+
+export type MemberInfo = {
+    id: string;
+    userId: string;
+    name: string;
+    gender: string;
+    birthDate: Date;
+    description: string;
+    city: string;
+    country: string;
+};
+
+export type MemberEditModalProps = {
+    members: MemberInfo[];
+};

@@ -12,7 +12,7 @@ export default async function LogsPage() {
                     <CardBody>
                         {logs.map((log) => (
                             <div key={log.id} className="flex justify-between items-center p-2 shadow-md rounded-md">
-                                <span className="font-serif">{log.action} {log.details} {log.entityType} - {log.adminId}</span>
+                                <span className="font-serif">{log.action} {log.details} {log.entityType} by {log.adminId}</span>
                                 <div className="flex gap-2">
                                     <span>{log.timestamp.toLocaleString()}</span>
                                 </div>

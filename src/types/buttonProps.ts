@@ -12,6 +12,7 @@ export type ThumbsButtonProps = {
 
 export type DeleteButtonProps = {
     loading: boolean;
+    onClick?: () => void;
 }
 
 export type LikeButtonProps = {
@@ -59,4 +60,9 @@ export type OrderByFilterButtonProps = {
     orderByList: { label: string; value: string }[];
     selectedKey: string;
     onSelectionChange: (value: any) => void;
+}
+
+export type EditUserButtonProps = {
+    userId: string;
+    onClick: () => void;
 }
