@@ -61,8 +61,8 @@ In the app there are 2 roles:
     <img src="assets/reportedmessages.PNG" width="550" title="admin reported messages view">
 </details>
 
-<details><summary>- Admin View</summary>
-    <img src="assets/adminview.PNG" width="550" title="admin main view">
+<details><summary>- Admin Menu</summary>
+    <img src="assets/adminMenu.PNG" width="550" title="admin main view">
 </details>
 
 ### Getting Started
