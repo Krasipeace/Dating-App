@@ -1,6 +1,6 @@
 import { getAllMembers } from "@/app/actions/adminActions";
-import EditUsersInfo from "./editUserInfo";
 import { Card } from "@nextui-org/react";
+import EditUsersInfo from "./EditUsers";
 
 export default async function EditUsersPage() {
     const members = await getAllMembers();

@@ -48,6 +48,9 @@ export const ERROR_LOGGING_AUDIT_ACTION = "Error logging audit action: ";
 
 export const NO_USER_ID_FOUND = "Such user id cannot be found";
 
+export const FAILED_TO_FETCH_MEMBER = "Failed to fetch member ";
+
+// Messages - @ADMIN
 export const ACTION_LOG_SUCCESS = "Admin action logged successfully";
 export const ACTION_LOG_FAILED = "Failed to perform admin action: ";
 export const ADMIN_APPROVE_PHOTO = "Admin approved photo with publicId: ";
@@ -60,9 +63,9 @@ export const ADMIN_UPDATED_MEMBER = "Admin updated the member with id: ";
 export const CONFIRM_DELETE_MEMBER = "Are you sure you want to delete this member?";
 export const SUCCESS_TO_DELETE_MEMBER = "Member deleted successfully";
 export const FAILED_TO_DELETE_MEMBER = "Failed to delete member";
-
-export const SUCCESS_TO_UPDATE_MEMBER = "Member updated successfully";
-export const FAILED_TO_UPDATE_MEMBER = "Failed to update member";
+export const FAILED_TO_UPDATE_MESSAGE_POSSIBILITY = "Failed to update messaging privileges.";
+export const ADMIN_UPDATED_CHAT_POSSIBILITY = "Admin updated chat possibility for the user with id: ";
+export const ADMIN_COULT_NOT_UPDATE_CHAT_POSSIBILITY = "You could not update message privilege.";
 
 // Pusher
 export const ROUTE_NEW_MESSAGE = "message:new";

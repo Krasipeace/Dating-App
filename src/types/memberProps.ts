@@ -30,6 +30,7 @@ export type MemberInfo = {
     description: string;
     city: string;
     country: string;
+    canSendMessages: boolean;
 };
 
 export type MemberEditModalProps = {

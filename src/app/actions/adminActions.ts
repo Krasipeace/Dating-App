@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { getUserRole } from "./authActions";
 import { Member, Photo } from "@prisma/client";
 import { cloudinary } from "@/lib/cloudinary";
-import { ACTION_LOG_FAILED, ACTION_LOG_SUCCESS, ADMIN_APPROVE_PHOTO, ADMIN_DECLINE_MESSAGE, ADMIN_DELETED_MEMBER, ADMIN_REJECT_PHOTO, ADMIN_UPDATED_MEMBER, CANNOT_APPROVE_PHOTO, ERROR_LOGGING_AUDIT_ACTION, FORBIDDEN_MESSAGE, MEMBER_NOT_FOUND, MESSAGE_NOT_ABUSE, NO_USER_ID_FOUND, ORDER_BY_DESC, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
+import { ACTION_LOG_FAILED, ACTION_LOG_SUCCESS, ADMIN_APPROVE_PHOTO, ADMIN_COULT_NOT_UPDATE_CHAT_POSSIBILITY, ADMIN_DECLINE_MESSAGE, ADMIN_DELETED_MEMBER, ADMIN_REJECT_PHOTO, ADMIN_UPDATED_CHAT_POSSIBILITY, ADMIN_UPDATED_MEMBER, CANNOT_APPROVE_PHOTO, ERROR_LOGGING_AUDIT_ACTION, FAILED_TO_UPDATE_MESSAGE_POSSIBILITY, FORBIDDEN_MESSAGE, MEMBER_NOT_FOUND, MESSAGE_NOT_ABUSE, NO_USER_ID_FOUND, ORDER_BY_DESC, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
 import { updateMemberSchema } from "@/lib/schemas/adminFunctionsSchema";
 import { auth } from "@/auth";
 
@@ -278,4 +278,31 @@ export async function getAdminId() {
     if (!userId) throw new Error(NO_USER_ID_FOUND);
 
     return userId;
+}
+
+export async function updateChatPossibility(userId: string, canSendMessages: boolean) {
+    try {
+        const role = await getUserRole();
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
+
+        const member = await prisma.member.findUnique({
+            where: { id: userId },
+        });
+        if (!member) throw new Error(MEMBER_NOT_FOUND);
+
+        await performAdminAction(
+            "update_chat_possibility",
+            userId,
+            "member",
+            ADMIN_UPDATED_CHAT_POSSIBILITY + userId
+        );
+
+        return await prisma.member.update({
+            where: { userId },
+            data: { canSendMessages },
+        });
+    } catch (error) {
+        console.error(FAILED_TO_UPDATE_MESSAGE_POSSIBILITY, error);
+        throw new Error(ADMIN_COULT_NOT_UPDATE_CHAT_POSSIBILITY);
+    }
 }
