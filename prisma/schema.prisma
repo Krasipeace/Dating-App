@@ -78,6 +78,7 @@ model Member {
   city              String
   country           String
   image             String?
+  canSendMessages   Boolean     @default(true)
   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   photos            Photo[]
   sourceLikes       Like[]      @relation("source")

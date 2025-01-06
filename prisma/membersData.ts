@@ -10,7 +10,8 @@ export const membersData = [
         description: "Adventurous traveler with a passion for photography. Enjoys hiking, beach sunsets, and trying new cuisines. Looking for someone who shares a love for the outdoors and spontaneous weekend getaways.",
         city: "Madrid",
         country: "Spain",
-        image: "https://img.freepik.com/free-photo/low-angle-young-woman-nature_23-2148523896.jpg"
+        image: "https://img.freepik.com/free-photo/low-angle-young-woman-nature_23-2148523896.jpg",
+        canSendMessages: true
     },
     {
         email: "anna@test.com",
@@ -23,7 +24,8 @@ export const membersData = [
         description: "Dog lover and coffee enthusiast. Enjoys cozy nights with a good book or movie. Works in marketing and values meaningful conversations. Seeking a kind-hearted partner who appreciates the little things in life.",
         city: "Kishinev",
         country: "Moldova",
-        image: "https://img.freepik.com/free-photo/young-woman-model-leather-jacket-outside-street_1303-20492.jpg"
+        image: "https://img.freepik.com/free-photo/young-woman-model-leather-jacket-outside-street_1303-20492.jpg",
+        canSendMessages: true
     },
     {
         email: "cassia@test.com",
@@ -36,7 +38,8 @@ export const membersData = [
         description: "Fitness instructor who loves staying active. Enjoys yoga, running, and exploring new fitness trends. Also a foodie at heart, always on the hunt for the best local eateries. Looking for an active, health-conscious partner.",
         city: "Drama",
         country: "Greece",
-        image: "https://img.freepik.com/free-photo/woman-home_144627-40918.jpg"
+        image: "https://img.freepik.com/free-photo/woman-home_144627-40918.jpg",
+        canSendMessages: true
     },
     {
         email: "ruthie@test.com",
@@ -49,7 +52,8 @@ export const membersData = [
         description: "Creative spirit with a love for art and music. Enjoys painting, attending live concerts, and exploring museums. Looking for someone who shares an appreciation for creativity and artistic endeavors.",
         city: "Dublin",
         country: "Ireland",
-        image: "https://img.freepik.com/free-photo/elegant-woman-waiting-restaurant_1140-520.jpg"
+        image: "https://img.freepik.com/free-photo/elegant-woman-waiting-restaurant_1140-520.jpg",
+        canSendMessages: true
     },
     {
         email: "andrei@test.com",
@@ -62,7 +66,8 @@ export const membersData = [
         description: "Software engineer with a passion for technology and innovation. Enjoys gaming, coding, and sci-fi movies. Looking for a like-minded partner who appreciates geek culture and tech talk.",
         city: "Cluj-Napoca",
         country: "Romania",
-        image: "https://img.freepik.com/free-photo/portrait-handsome-confident-stylish-hipster-lambersexual-model-with-curly-hairstyle-sexy-man-dressed-jeans-jacket-fashion-male-isolated-blue-wall-studio-touching-his-chin_158538-26550.jpg"
+        image: "https://img.freepik.com/free-photo/portrait-handsome-confident-stylish-hipster-lambersexual-model-with-curly-hairstyle-sexy-man-dressed-jeans-jacket-fashion-male-isolated-blue-wall-studio-touching-his-chin_158538-26550.jpg",
+        canSendMessages: true
     },
     {
         email: "elin@test.com",
@@ -75,7 +80,8 @@ export const membersData = [
         description: "Fitness enthusiast and personal trainer. Enjoys weightlifting, sports, and meal prepping. Values a healthy lifestyle and is looking for someone who shares a commitment to fitness and well-being.",
         city: "Plovdiv",
         country: "Bulgaria",
-        image: "https://img.freepik.com/free-photo/young-male-traveler-posing-smiling_23-2149118742.jpg"
+        image: "https://img.freepik.com/free-photo/young-male-traveler-posing-smiling_23-2149118742.jpg",
+        canSendMessages: true
     },
     {
         email: "Yanko@test.com",
@@ -88,7 +94,8 @@ export const membersData = [
         description: "Outdoorsman who loves fishing, camping, and hiking. Enjoys quiet evenings by the campfire and star gazing. Seeks a partner who enjoys nature and isn't afraid of a little adventure.",
         city: "Varna",
         country: "Bulgaria",
-        image: "https://img.freepik.com/free-photo/young-handsome-redhead-model-man-flannel-shirt-gray-background_613910-19116.jpg"
+        image: "https://img.freepik.com/free-photo/young-handsome-redhead-model-man-flannel-shirt-gray-background_613910-19116.jpg",
+        canSendMessages: true
     },
     {
         email: "petar@test.com",
@@ -101,6 +108,7 @@ export const membersData = [
         description: "Chef and food lover. Enjoys experimenting in the kitchen and hosting dinner parties. Passionate about trying new recipes and ingredients. Looking for someone who loves good food and great conversation.",
         city: "Yambol",
         country: "Bulgaria",
-        image: "https://img.freepik.com/free-photo/young-handsome-man-posing_144627-28076.jpg"
+        image: "https://img.freepik.com/free-photo/young-handsome-man-posing_144627-28076.jpg",
+        canSendMessages: false
     }
 ]
