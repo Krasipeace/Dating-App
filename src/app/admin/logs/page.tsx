@@ -1,6 +1,8 @@
 import { getAuditLogs } from "@/app/actions/adminActions"
 import { Card, CardBody } from "@nextui-org/react";
 
+export const dynamic = "force-dynamic";
+
 export default async function LogsPage() {
     const logs = await getAuditLogs();
 
