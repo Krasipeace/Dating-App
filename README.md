@@ -12,7 +12,7 @@ My `Learning by Doing` **Full-Stack App**, build with Next/React.
 
 In the app there are 2 roles: 
 <details><summary>- <b>ADMIN</b>(for administrators) - Work with the app on the back scene.</summary>
-    <img src="assets/adminview.PNG" width="350" title="Admin nav/menu">
+    <img src="assets/adminMenu.PNG" width="150" title="admin main view">
 </details>
 
 <details><summary>- <b>MEMBER</b>(for users) - use the app as it should be used.</summary>
@@ -59,10 +59,6 @@ In the app there are 2 roles:
 
 <details><summary>- Moderate `reported messages`</summary>
     <img src="assets/reportedmessages.PNG" width="550" title="admin reported messages view">
-</details>
-
-<details><summary>- Admin Menu</summary>
-    <img src="assets/adminMenu.PNG" width="550" title="admin main view">
 </details>
 
 ### Getting Started
