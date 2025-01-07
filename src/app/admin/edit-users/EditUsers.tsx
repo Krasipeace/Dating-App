@@ -1,3 +1,5 @@
+"use client";
+
 import { deleteMember, updateChatPossibility } from "@/app/actions/adminActions";
 import DeleteButton from "@/components/buttons/DeleteButton";
 import { CONFIRM_DELETE_MEMBER, FAILED_TO_DELETE_MEMBER, FAILED_TO_UPDATE_MESSAGE_POSSIBILITY, SUCCESS_TO_DELETE_MEMBER } from "@/constants/actionConstants";

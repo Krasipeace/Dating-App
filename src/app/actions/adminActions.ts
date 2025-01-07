@@ -209,36 +209,6 @@ export async function getAuditLogs() {
     }
 }
 
-export async function getAllMembers(): Promise<Member[]> {
-    return await prisma.member.findMany();
-}
-
-export async function updateMember(memberId: string, data: any) {
-    try {
-        const role = await getUserRole();
-        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
-
-        const validatedData = updateMemberSchema.parse(data);
-
-        const updatedMember = await prisma.member.update({
-            where: { id: memberId },
-            data: validatedData,
-        });
-
-        await performAdminAction(
-            "update_member",
-            memberId,
-            "member",
-            ADMIN_UPDATED_MEMBER + memberId
-        );
-
-        return { status: STATUS_SUCCESS, data: updatedMember };
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
-
 export async function deleteMember(memberId: string) {
     try {
         const role = await getUserRole();
@@ -304,5 +274,35 @@ export async function updateChatPossibility(userId: string, canSendMessages: boo
     } catch (error) {
         console.error(FAILED_TO_UPDATE_MESSAGE_POSSIBILITY, error);
         throw new Error(ADMIN_COULT_NOT_UPDATE_CHAT_POSSIBILITY);
+    }
+}
+
+export async function getAllMembers(): Promise<Member[]> {
+    return await prisma.member.findMany();
+}
+
+export async function updateMember(memberId: string, data: any) {
+    try {
+        const role = await getUserRole();
+        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
+
+        const validatedData = updateMemberSchema.parse(data);
+
+        const updatedMember = await prisma.member.update({
+            where: { id: memberId },
+            data: validatedData,
+        });
+
+        await performAdminAction(
+            "update_member",
+            memberId,
+            "member",
+            ADMIN_UPDATED_MEMBER + memberId
+        );
+
+        return { status: STATUS_SUCCESS, data: updatedMember };
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
