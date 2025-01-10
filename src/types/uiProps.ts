@@ -44,3 +44,16 @@ export type PresenceAvatarProps = {
 export type ResultMessageProps = {
     result: ActionResult<string> | null;
 }
+
+export type LogProps = {
+    id: string;
+    action: string;
+    details: string | null;
+    entityType: string;
+    adminId: string;
+    timestamp: Date;
+}
+
+export type LogsProps = {
+    logs: LogProps[];
+}

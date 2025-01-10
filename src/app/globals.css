@@ -19,4 +19,24 @@
     .pagination-component {
         @apply cursor-pointer border-2 hover:bg-pink-100 flex items-center justify-center rounded-lg shadow-sm min-w-[36px] w-9 h-9 text-sm
     }
+
+        .table {
+        @apply min-w-full divide-y divide-gray-200;
+    }
+
+    .table-head {
+        @apply bg-gray-50;
+    }
+
+    .table-head th {
+        @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+    }
+
+    .table-body {
+        @apply bg-white divide-y divide-gray-200;
+    }
+
+    .table-body td {
+        @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+    }
 }

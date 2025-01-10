@@ -253,22 +253,16 @@ export async function getAdminId() {
 export async function updateChatPossibility(userId: string, canSendMessages: boolean) {
     try {
         const role = await getUserRole();
-        if (role !== USER_ROLE_ADMIN) throw new Error(FORBIDDEN_MESSAGE);
+        if (role !== USER_ROLE_ADMIN) throw new Error("Forbidden");
 
         const member = await prisma.member.findUnique({
             where: { id: userId },
+            select: { id: true, userId: true, canSendMessages: true }
         });
         if (!member) throw new Error(MEMBER_NOT_FOUND);
 
-        await performAdminAction(
-            "update_chat_possibility",
-            userId,
-            "member",
-            ADMIN_UPDATED_CHAT_POSSIBILITY + userId
-        );
-
         return await prisma.member.update({
-            where: { userId },
+            where: { id: userId },
             data: { canSendMessages },
         });
     } catch (error) {

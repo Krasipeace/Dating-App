@@ -35,9 +35,6 @@ export const NO_ROLE_GIVEN = "No role has been given";
 export const TRY_REGISTER_AGAIN = "You can try register again with this email address";
 export const NO_SUCH_EMAIL = "There is no user with such email";
 
-export const CANNOT_APPROVE_PHOTO = "Cannot approve this photo";
-export const MESSAGE_NOT_ABUSE = "Message not abuse";
-
 export const SUCCESS_MESSAGE = "Success";
 export const UNATHORIZED_MESSAGE = "Unauthorized";
 export const FORBIDDEN_MESSAGE = "Forbidden";
@@ -49,6 +46,9 @@ export const ERROR_LOGGING_AUDIT_ACTION = "Error logging audit action: ";
 export const NO_USER_ID_FOUND = "Such user id cannot be found";
 
 export const FAILED_TO_FETCH_MEMBER = "Failed to fetch member ";
+
+export const IMAGE_UPLOADED_MESSAGE = "Image uploaded";
+export const IMAGE_NOT_UPLOADED_MESSAGE = "Problem occurred! Image has not been uploaded";
 
 // Messages - @ADMIN
 export const ACTION_LOG_SUCCESS = "Admin action logged successfully";
@@ -66,6 +66,9 @@ export const FAILED_TO_DELETE_MEMBER = "Failed to delete member";
 export const FAILED_TO_UPDATE_MESSAGE_POSSIBILITY = "Failed to update messaging privileges.";
 export const ADMIN_UPDATED_CHAT_POSSIBILITY = "Admin updated chat possibility for the user with id: ";
 export const ADMIN_COULT_NOT_UPDATE_CHAT_POSSIBILITY = "You could not update message privilege.";
+
+export const CANNOT_APPROVE_PHOTO = "Cannot approve this photo";
+export const MESSAGE_NOT_ABUSE = "Message not abuse";
 
 // Pusher
 export const ROUTE_NEW_MESSAGE = "message:new";

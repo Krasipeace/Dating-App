@@ -20,7 +20,6 @@ export type LikeButtonProps = {
     hasLiked: boolean;
     toggleLike: () => void;
 }
-
 export type StarButtonProps = {
     selected: boolean;
     loading: boolean;
@@ -65,4 +64,9 @@ export type OrderByFilterButtonProps = {
 export type EditUserButtonProps = {
     userId: string;
     onClick: () => void;
+}
+
+export type UserMessageToggleButtonProps = {
+    memberId: string;
+    currentStatus: boolean;
 }
