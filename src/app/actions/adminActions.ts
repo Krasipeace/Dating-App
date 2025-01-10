@@ -261,6 +261,13 @@ export async function updateChatPossibility(userId: string, canSendMessages: boo
         });
         if (!member) throw new Error(MEMBER_NOT_FOUND);
 
+        await performAdminAction(
+            "change_canSendMessages_member",
+            userId,
+            "member",
+            ADMIN_UPDATED_CHAT_POSSIBILITY + userId
+        );
+
         return await prisma.member.update({
             where: { id: userId },
             data: { canSendMessages },

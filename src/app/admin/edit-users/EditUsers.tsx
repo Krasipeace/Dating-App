@@ -27,11 +27,14 @@ export default function EditUsersInfo({ members }: MemberEditModalProps) {
                     {members.map((member) => (
                         <div key={member.id} className="flex justify-between items-center p-2 shadow-md rounded-md">
                             <span>{member.name}</span>
-                            <UserMessageToggleButton
-                                memberId={member.id}
-                                currentStatus={member.canSendMessages}
-                            />
-                            <DeleteButton onClick={() => handleDelete(member.id)} loading={false} />
+                            <div className="flex gap-2">
+                                <UserMessageToggleButton
+                                    memberId={member.id}
+                                    currentStatus={member.canSendMessages}
+                                />
+                                <DeleteButton onClick={() => handleDelete(member.id)} loading=
+                                    {false} />
+                            </div>
                         </div>
                     ))}
                 </div>
