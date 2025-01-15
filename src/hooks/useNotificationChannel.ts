@@ -8,6 +8,15 @@ import { likeNotification, messageNotification } from "@/components/Notification
 import { ROUTE_LIKE_NEW, ROUTE_NEW_MESSAGE, ROUTE_PRIVATE_PREFIX } from "@/constants/actionConstants";
 import { CONTAINER_OUTBOX, SEARCH_PARAMS_CONTAINER } from "@/constants/hookConstants";
 
+/**
+ * useNotificationChannel hook
+ * @param {string | null} userId
+ * @param {boolean} profileComplete
+ * @returns {void} void
+ * @description useNotificationChannel hook to handle notifications
+ * @example
+ *   useNotificationChannel(userId, profileComplete)
+ */
 export const useNotificationChannel = (userId: string | null, profileComplete: boolean) => {
     const channelRef = useRef<Channel | null>(null);
     const pathname = usePathname();

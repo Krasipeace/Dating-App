@@ -8,6 +8,13 @@ import { getUserInfo } from "@/app/actions/userActions";
 import FiltersWrapper from "./FiltersWrapper";
 import AdminMenu from "./AdminMenu";
 
+/**
+ * TopNav component
+ * @returns {JSX.Element} TopNav component
+ * @description TopNav component to display the top navigation
+ * @example
+ *   <TopNav />
+ */
 export default async function TopNav() {
     const session = await auth();
     const userInfo = session?.user && await getUserInfo();

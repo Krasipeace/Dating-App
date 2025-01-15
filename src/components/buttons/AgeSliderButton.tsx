@@ -3,6 +3,15 @@
 import { AgeSliderButtonProps as AgeSliderButtonProps } from "@/types/buttonProps";
 import { Slider } from "@nextui-org/react";
 
+/**
+ * AgeSliderButton component
+ * @param {AgeSliderButtonProps} { defaultValue, onChangeEnd }
+ * @returns {JSX.Element} AgeSliderButton component
+ * @description AgeSliderButton component to display a slider for age selection
+ * @example
+ *   <AgeSliderButton defaultValue={[18, 100]} onChangeEnd={onChangeEnd} />
+ * @see AgeSliderButtonProps
+ */
 export default function AgeSliderButton({ defaultValue, onChangeEnd }: AgeSliderButtonProps) {
     const minAgeValue = 18;
     const maxAgeValue = 100;

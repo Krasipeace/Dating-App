@@ -3,6 +3,17 @@ import { PaginationState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+/**
+ * usePaginationStore hook
+ * @returns {Object} PaginationState object
+ * @description usePaginationStore hook to handle pagination
+ * @example
+ *   const { pagination, setPagination, setPage, setPageSize } = usePaginationStore();
+ *   setPagination(100);
+ *   setPage(2);
+ *   setPageSize(20);
+ * @see PaginationState
+ */
 const usePaginationStore = create<PaginationState>()(devtools((set) => ({
     pagination: {
         pageNumber: 1,

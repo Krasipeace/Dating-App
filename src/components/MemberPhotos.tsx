@@ -10,6 +10,15 @@ import { removeImage, setMainImage } from "@/app/actions/userActions";
 import { toast } from "react-toastify";
 import { MemberPhotosProps } from "@/types/memberProps";
 
+/**
+ * MemberPhotos component
+ * @param {MemberPhotosProps} { photos, editing, mainImageUrl }
+ * @returns {JSX.Element} MemberPhotos component
+ * @description MemberPhotos component to display member photos
+ * @example
+ *   <MemberPhotos photos={photos} editing={editing} mainImageUrl={mainImageUrl} />
+ * @see MemberPhotosProps
+ */
 export default function MemberPhotos({ photos, editing, mainImageUrl }: MemberPhotosProps) {
     const router = useRouter();
 

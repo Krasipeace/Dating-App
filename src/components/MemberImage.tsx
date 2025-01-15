@@ -9,6 +9,15 @@ import { MemberImageProps } from "@/types/memberProps";
 import ApproveButton from "./buttons/ApprovePhotoButton";
 import RejectButton from "./buttons/RejectPhotoButton";
 
+/**
+ * MemberImage component
+ * @param {MemberImageProps} { photo }
+ * @returns {JSX.Element} MemberImage component
+ * @description MemberImage component to display a member image
+ * @example
+ *   <MemberImage photo={photo} />
+ * @see MemberImageProps
+ */
 export default function MemberImage({ photo }: MemberImageProps) {
     const role = useRole();
     const router = useRouter();

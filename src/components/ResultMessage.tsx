@@ -2,6 +2,15 @@ import { ResultMessageProps } from "@/types/uiProps";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaCircleExclamation } from "react-icons/fa6";
 
+/**
+ * ResultMessage component
+ * @param {ResultMessageProps} { result }
+ * @returns {JSX.Element | null} ResultMessage component or null if no result
+ * @description ResultMessage component to display a success or error message
+ * @example
+ *   <ResultMessage result={result} />
+ * @see ResultMessageProps
+ */
 export default function ResultMessage({ result }: ResultMessageProps) {
     if (!result) return null;
 

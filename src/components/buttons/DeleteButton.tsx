@@ -2,6 +2,15 @@ import { TiDeleteOutline, TiDelete } from "react-icons/ti";
 import { ImSpinner2 } from "react-icons/im";
 import { DeleteButtonProps } from "@/types/buttonProps";
 
+/**
+ * DeleteButton component
+ * @param {DeleteButtonProps} { loading }
+ * @returns {JSX.Element} DeleteButton component
+ * @description DeleteButton component to delete an item
+ * @example
+ *   <DeleteButton loading={loading} />
+ * @see DeleteButtonProps
+ */
 export default function DeleteButton({ loading }: DeleteButtonProps) {
     return (
         <div className="relative hover:opacity-80 transition cursor-pointer">

@@ -1,6 +1,13 @@
 import { Link } from "@nextui-org/react";
 import { RxGithubLogo } from "react-icons/rx";
 
+/**
+ * Footer component
+ * @returns {JSX.Element} Footer component
+ * @description Footer component to display the footer
+ * @example
+ *   <Footer />
+ */
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 

@@ -3,6 +3,13 @@ import { MessageState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+/**
+ * useMessageStore hook
+ * @returns {Object} MessageState object
+ * @description useMessageStore hook to handle messages
+ * @example
+ *   const { messages, add, remove, set, unreadCount, updateUnreadCount, resetMessages } = useMessageStore()
+ */
 const useMessageStore = create<MessageState>()(devtools((set) => ({
     messages: [],
     add: (message) => set(state => ({ messages: [message, ...state.messages] })),

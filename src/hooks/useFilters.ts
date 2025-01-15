@@ -6,6 +6,13 @@ import { ChangeEvent, useEffect, useTransition } from "react";
 import usePaginationStore from "./usePaginationStore";
 import { GENDER_FEMALE, GENDER_MALE, LABEL_LAST_ACTIVE, LABEL_NEW_MEMBERS, ORDER_BY_CREATED, ORDER_BY_UPDATED, SEARCH_PARAMS_AGE_RANGE, SEARCH_PARAMS_GENDER, SEARCH_PARAMS_HAS_PHOTO, SEARCH_PARAMS_ORDER_BY, SEARCH_PARAMS_PAGE_NUMBER, SEARCH_PARAMS_PAGE_SIZE } from "@/constants/hookConstants";
 
+/**
+ * useFilters hook
+ * @returns {Object} Filters object
+ * @description useFilters hook to handle filters
+ * @example
+ *   const { orderByList, filterByGender, selectAge, selectGender, selectOrder, selectUsersWithPhoto, filters, isPending, totalCount } = useFilters()
+ */
 export const useFilters = () => {
     const pathname = usePathname();
     const router = useRouter();

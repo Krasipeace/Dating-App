@@ -4,6 +4,14 @@ import usePaginationStore from "@/hooks/usePaginationStore";
 import { Pagination } from "@nextui-org/react";
 import { useEffect } from "react";
 
+/**
+ * PaginationComponent component
+ * @param {number} totalCount
+ * @returns {JSX.Element} PaginationComponent component
+ * @description PaginationComponent component to display pagination
+ * @example
+ *   <PaginationComponent totalCount={totalCount} />
+ */
 export default function PaginationComponent({ totalCount }: { totalCount: number }) {
     const { setPage, setPageSize, setPagination, pagination } = usePaginationStore(state => ({
         setPage: state.setPage,

@@ -2,6 +2,15 @@ import usePresenceStore from "@/hooks/usePresenceStore";
 import { PresenceAvatarProps } from "@/types/uiProps";
 import { Avatar, Badge } from "@nextui-org/react";
 
+/**
+ * PresenceAvatar component
+ * @param {PresenceAvatarProps} { userId, source }
+ * @returns {JSX.Element} PresenceAvatar component
+ * @description PresenceAvatar component to display the presence of a user
+ * @example
+ *   <PresenceAvatar userId={userId} source={source} />
+ * @see PresenceAvatarProps
+ */
 export default function PresenceAvatar({ userId, source }: PresenceAvatarProps) {
     const { members } = usePresenceStore(state => ({
         members: state.members

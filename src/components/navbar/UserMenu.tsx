@@ -9,6 +9,15 @@ import { GiExitDoor } from "react-icons/gi";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
 
+/**
+ * UserMenu component
+ * @param {MenuProps} { userInfo }
+ * @returns {JSX.Element} UserMenu component
+ * @description UserMenu component to display user menu
+ * @example
+ *   <UserMenu userInfo={userInfo} />
+ * @see MenuProps
+ */
 export default function UserMenu({ userInfo }: MenuProps) {
     return (
         <Dropdown placement="bottom-end">

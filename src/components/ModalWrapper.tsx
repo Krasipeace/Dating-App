@@ -1,6 +1,22 @@
 import { ModalWrapperProps } from "@/types/wrapperProps";
 import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 
+/**
+ * ModalWrapper component
+ * @param {ModalWrapperProps} { isOpen, onClose, header, body, footer, image }
+ * @returns {JSX.Element} ModalWrapper component
+ * @description ModalWrapper component to wrap any component with a modal
+ * @example
+ *   <ModalWrapper
+ *       isOpen={isOpen}
+ *       onClose={onClose}
+ *       header={header}
+ *       body={body}
+ *       footer={footer}
+ *       image={image}
+ *   />
+ * @see ModalWrapperProps
+ */
 export default function ModalWrapper({ isOpen, onClose, header, body, footer, image }: ModalWrapperProps) {
     const handleCloseModal = () => {
         setTimeout(() => onClose(), 10);

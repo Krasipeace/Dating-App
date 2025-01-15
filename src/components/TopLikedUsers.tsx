@@ -1,5 +1,14 @@
 import { TopLikedUsersTableProps } from "@/types/likeProps";
 
+/**
+ * TopLikedUsersTable component
+ * @param {TopLikedUsersTableProps} { users }
+ * @returns {JSX.Element} TopLikedUsersTable component
+ * @description TopLikedUsersTable component to display the top liked users
+ * @example
+ *   <TopLikedUsersTable users={users} />
+ * @see TopLikedUsersTableProps
+ */
 export default function TopLikedUsersTable({ users }: TopLikedUsersTableProps) {
     return (
         <div className="justify-center items-center pt-5">

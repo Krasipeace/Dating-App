@@ -5,6 +5,20 @@ import { Image } from "@nextui-org/react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
+/**
+ * NotificationToast component
+ * @param {NotificationProps} { image, href, title, sysMessage: sysMessage }
+ * @returns {JSX.Element} NotificationToast component
+ * @description NotificationToast component to display a notification toast
+ * @example
+ *   <NotificationToast
+ *       image={image}
+ *       href={href}
+ *       title={title}
+ *       sysMessage={sysMessage}
+ *   />
+ * @see NotificationProps
+ */
 export default function NotificationToast({ image, href, title, sysMessage: sysMessage }: NotificationProps) {
     return (
         <Link href={href} className="flex items-center">
@@ -24,6 +38,13 @@ export default function NotificationToast({ image, href, title, sysMessage: sysM
     )
 }
 
+/**
+ * Displays a toast notification for a new message.
+ * @param {MessageDto} message - The message data transfer object containing message details.
+ * @returns {void}
+ * @example
+ *   messageNotification(message);
+ */
 export const messageNotification = (message: MessageDto) => {
     toast(
         <NotificationToast
@@ -34,6 +55,15 @@ export const messageNotification = (message: MessageDto) => {
     )
 }
 
+/**
+ * Displays a toast notification for a new like.
+ * @param {string} name - The name of the user who liked.
+ * @param {string | null} image - The image URL of the user who liked.
+ * @param {string} userId - The user ID of the user who liked.
+ * @returns {void}
+ * @example
+ *   likeNotification(name, image, userId);
+ */
 export const likeNotification = (name: string, image: string | null, userId: string) => {
     toast(
         <NotificationToast

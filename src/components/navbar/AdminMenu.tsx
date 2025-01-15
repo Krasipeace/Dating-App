@@ -9,6 +9,15 @@ import { FaUsersCog } from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";
 import { TbLogs, TbMessageSearch, TbPhotoSearch } from "react-icons/tb";
 
+/**
+ * AdminMenu component
+ * @param {MenuProps} { userInfo }
+ * @returns {JSX.Element} AdminMenu component
+ * @description AdminMenu component to display admin menu
+ * @example
+ *   <AdminMenu userInfo={userInfo} />
+ * @see MenuProps
+ */
 export default function AdminMenu({ userInfo }: MenuProps) {
     return (
         <Dropdown placement="bottom-end">

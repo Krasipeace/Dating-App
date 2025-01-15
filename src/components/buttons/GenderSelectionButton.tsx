@@ -1,5 +1,3 @@
-// components/GenderButton.tsx
-
 "use client";
 
 import { GenderSelectionButtonProps } from "@/types/buttonProps";

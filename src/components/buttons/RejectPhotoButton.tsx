@@ -7,6 +7,15 @@ import { rejectPhoto } from "@/app/actions/adminActions";
 import { useRouter } from "next/navigation";
 import { RejectButtonProps } from "@/types/buttonProps";
 
+/**
+ * RejectButton component
+ * @param {RejectButtonProps} { photo }
+ * @returns {JSX.Element} RejectButton component
+ * @description RejectButton component to reject a photo
+ * @example
+ *   <RejectButton photo={photo} />
+ * @see RejectButtonProps
+ */
 export default function RejectButton({ photo }: RejectButtonProps) {
     const router = useRouter();
 

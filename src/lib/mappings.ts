@@ -1,6 +1,13 @@
 import { dateTimeFormatHandler } from "./utilities";
 import { MessageWithSenderRecipient } from "@/types";
 
+/**
+ * Maps a message object to a message data transfer object.
+ * @param {MessageWithSenderRecipient} message - The message object to map.
+ * @returns {MessageDto} The message data transfer object.
+ * @example
+ *   mapMessageToMessageDto(message);
+ */
 export function mapMessageToMessageDto(message: MessageWithSenderRecipient) {
     return {
         id: message.id,

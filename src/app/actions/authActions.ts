@@ -12,6 +12,30 @@ import { TokenType, User } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 
+/**
+ * Register a new user in the system.
+ * 
+ * @param {RegisterSchema} data - The user registration details, including name, email, password, gender, birth date, country, city, and description.
+ * @returns {Promise<ActionResult<User>>} The result of the registration operation, including the created user or an error message.
+ * @description Validates user input, hashes the password, checks for existing users, creates a new user with associated member details, and sends a verification email.
+ * @example
+ *     const result = await registerUser({
+ *         name: "John Doe",
+ *         email: "example@test.com",
+ *         password: "SecurePassword123!",
+ *         gender: "male",
+ *         birthDate: "1990-01-01",
+ *         country: "USA",
+ *         city: "New York",
+ *         description: "A short bio about the user"
+ *     });
+ *     if (result.status === STATUS_SUCCESS) {
+ *         console.log(result.data);
+ *     } else {
+ *         console.error(result.error);
+ *     }
+ * @throws An error if the database query, validation, or email sending fails.
+ */
 export async function registerUser(data: RegisterSchema): Promise<ActionResult<User>> {
     try {
         const validated = userRegisterSchema.safeParse(data);
@@ -57,6 +81,24 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
     }
 }
 
+/**
+ * Sign in an existing user.
+ * 
+ * @param {LoginSchema} data - The user login details, including email and password.
+ * @returns {Promise<ActionResult<string>>} The result of the sign-in operation, including a success message or an error.
+ * @description Validates user input, checks for existing users, verifies the email status, and signs in the user.
+ * @example
+ *     const result = await signInUser({
+ *         email: "example@test.com", 
+ *         password: "SecurePassword123!"
+ *     });
+ *     if (result.status === STATUS_SUCCESS) {
+ *         console.log(result.data);
+ *     } else {
+ *         console.error(result.error);
+ * }
+ * @throws An error if the database query, validation, or sign-in process fails.
+ */
 export async function signInUser(data: LoginSchema): Promise<ActionResult<string>> {
     try {
         const existingUser = await getUserByEmail(data.email);
@@ -93,6 +135,14 @@ export async function signInUser(data: LoginSchema): Promise<ActionResult<string
     }
 }
 
+/**
+ * Completes the social profile of a user by updating their profile information in the database.
+ * 
+ * @param data - The profile data to be updated.
+ * @returns A promise that resolves to an ActionResult containing the provider of the user's account.
+ * 
+ * @throws Will throw an error if the profile update fails.
+ */
 export async function completeSocialProfile(data: ProfileSchema): Promise<ActionResult<string>> {
     const session = await auth();
     if (!session?.user) return { status: STATUS_ERROR, error: USER_NOT_FOUND }
@@ -131,22 +181,45 @@ export async function completeSocialProfile(data: ProfileSchema): Promise<Action
     }
 }
 
+/**
+ * Signs out the authenticated user.
+ * 
+ * @returns A promise that resolves when the user is signed out.
+ */
 export async function signOutUser() {
     await signOut({ redirectTo: "/" });
 }
 
+/**
+ * Retrieves a user by their email address.
+ * 
+ * @param email - The email address of the user to retrieve.
+ * @returns A promise that resolves to the user object or null if not found.
+ */
 export async function getUserByEmail(email: string) {
     return prisma.user.findUnique({
         where: { email }
     });
 }
 
+/**
+ * Retrieves a user by their ID.
+ * 
+ * @param id - The ID of the user to retrieve.
+ * @returns A promise that resolves to the user object or null if not found.
+ */
 export async function getUserById(id: string) {
     return prisma.user.findUnique({
         where: { id }
     });
 }
 
+/**
+ * Retrieves the authenticated user's ID.
+ * 
+ * @returns A promise that resolves to the ID of the authenticated user.
+ * @throws An error if the user is not authenticated.
+ */
 export async function getAuthUserId() {
     const session = await auth();
     const userId = session?.user?.id;
@@ -156,6 +229,13 @@ export async function getAuthUserId() {
     return userId;
 }
 
+/**
+ * Verifies a user's email address.
+ * 
+ * @param token - The verification token to verify.
+ * @returns A promise that resolves to the result of the verification operation.
+ * @throws An error if the token is invalid or expired.
+ */
 export async function verifyEmail(token: string): Promise<ActionResult<string>> {
     try {
         const existingToken = await getToken(token);
@@ -187,6 +267,13 @@ export async function verifyEmail(token: string): Promise<ActionResult<string>> 
     }
 }
 
+/**
+ * Sends a password reset email to the user.
+ * 
+ * @param email - The email address of the user requesting the password reset.
+ * @returns A promise that resolves to the result of the password reset operation.
+ * @throws An error if the email address is not found or the operation fails.
+ */
 export async function resetPasswordEmail(email: string): Promise<ActionResult<string>> {
     try {
         const userByEmail = await getUserByEmail(email);
@@ -204,6 +291,14 @@ export async function resetPasswordEmail(email: string): Promise<ActionResult<st
     }
 }
 
+/**
+ * Resets the user's password.
+ * 
+ * @param password - The new password to set.
+ * @param token - The password reset token.
+ * @returns A promise that resolves to the result of the password reset operation.
+ * @throws An error if the token is invalid, expired, or the operation fails.
+ */
 export async function resetPassword(password: string, token: string | null): Promise<ActionResult<string>> {
     try {
         if (!token) return { status: STATUS_ERROR, error: MISSING_TOKEN }
@@ -242,6 +337,12 @@ export async function resetPassword(password: string, token: string | null): Pro
     }
 }
 
+/**
+ * Retrieves the role of the authenticated user.
+ * 
+ * @returns A promise that resolves to the role of the authenticated user.
+ * @throws An error if the user is not authenticated or no role is found.
+ */
 export async function getUserRole() {
     const session = await auth();
 

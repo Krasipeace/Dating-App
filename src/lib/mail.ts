@@ -3,6 +3,13 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
+/**
+ * Sends a verification email to the specified email address with a verification token.
+ *
+ * @param email - The recipient's email address.
+ * @param token - The verification token to be included in the email.
+ * @returns A promise that resolves when the email has been sent.
+ */
 export async function sendVerificationEmail(email: string, token: string) {
     const link = `${baseUrl}/verify-email?token=${token}`;
     const currentYear = new Date().getFullYear();
@@ -39,6 +46,13 @@ export async function sendVerificationEmail(email: string, token: string) {
     })
 }
 
+/**
+ * Sends a forgotten password email to the specified email address with a reset token.
+ *
+ * @param email - The recipient's email address.
+ * @param token - The reset token to be included in the email.
+ * @returns A promise that resolves when the email has been sent.
+ */
 export async function sendForgottenPasswordEmail(email: string, token: string) {
     const link = `${baseUrl}/reset-password?token=${token}`;
     const currentYear = new Date().getFullYear();

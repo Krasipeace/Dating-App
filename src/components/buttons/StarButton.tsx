@@ -2,6 +2,15 @@ import { StarButtonProps } from "@/types/buttonProps";
 import { GoStar, GoStarFill } from "react-icons/go";
 import { ImSpinner2 } from "react-icons/im";
 
+/**
+ * StarButton component
+ * @param {StarButtonProps} { selected, loading }
+ * @returns {JSX.Element} StarButton component
+ * @description StarButton component to display a star button
+ * @example
+ *   <StarButton selected={selected} loading={loading} />
+ * @see StarButtonProps
+ */
 export default function StarButton({ selected, loading }: StarButtonProps) {
     return (
         <div className="relative hover:opacity-80 transition cursor-pointer">

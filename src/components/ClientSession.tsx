@@ -3,6 +3,13 @@
 import { useSession } from "next-auth/react";
 import GifHandler from "./GifHandler";
 
+/**
+ * ClientSession component
+ * @returns {JSX.Element} ClientSession component
+ * @description ClientSession component to display the client session data
+ * @example
+ *   <ClientSession />
+ */
 export default function ClientSession() {
     const session = useSession();
 

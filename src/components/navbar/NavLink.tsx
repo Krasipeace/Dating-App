@@ -6,6 +6,15 @@ import { usePathname } from "next/navigation";
 import useMessageStore from "@/hooks/useMessageStore";
 import { NavLinkProps } from "@/types/uiProps";
 
+/**
+ * NavLink component
+ * @param {NavLinkProps} { href, label }
+ * @returns {JSX.Element} NavLink component
+ * @description NavLink component to display a navigation link
+ * @example
+ *   <NavLink href={href} label={label} />
+ * @see NavLinkProps
+ */
 export default function NavLink({ href, label }: NavLinkProps) {
     const pathName = usePathname();
     const { unreadCount } = useMessageStore(state => ({

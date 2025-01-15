@@ -3,6 +3,15 @@ import { FilterState } from "@/types/states";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+/** 
+ * useFilterStore hook
+ * @returns {Object} FilterState object
+ * @description useFilterStore hook to handle filters
+ * @example
+ *  const { filters, setFilters } = useFilterStore();
+ *  setFilters("ageRange", [18, 100]);
+ * @see FilterState
+ * */
 const useFilterStore = create<FilterState>()(devtools((set) => ({
     filters: {
         ageRange: [18, 100],

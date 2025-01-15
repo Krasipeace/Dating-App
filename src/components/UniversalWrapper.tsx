@@ -1,6 +1,23 @@
 import { UniversalWrapperProps } from "@/types/wrapperProps";
 import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
 
+/**
+ * UniversalWrapper component
+ * @param {UniversalWrapperProps} { footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }
+ * @returns {JSX.Element} UniversalWrapper component
+ * @description UniversalWrapper component to wrap any component with a card
+ * @example
+ *   <UniversalWrapper
+ *       headerIcon={Icon}
+ *       headerText="Header Text"
+ *       subHeaderText="Sub Header Text"	
+ *       action={action}
+ *       actionLabel="Action Label"
+ *       footer={footer}
+ *       body={body}
+ *   />
+ * @see UniversalWrapperProps
+ */
 export default function UniversalWrapper({ footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }: UniversalWrapperProps) {
     return (
         <div className="flex items-start justify-center vertical-center">

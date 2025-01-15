@@ -3,6 +3,15 @@
 import { OrderByFilterButtonProps } from "@/types/buttonProps";
 import { Select, SelectItem } from "@nextui-org/react";
 
+/**
+ * OrderByFilterButton component
+ * @param {OrderByFilterButtonProps} { orderByList, selectedKey, onSelectionChange }
+ * @returns {JSX.Element} OrderByFilterButton component
+ * @description OrderByFilterButton component to display a select button for ordering
+ * @example
+ *   <OrderByFilterButton orderByList={orderByList} selectedKey={selectedKey} onSelectionChange={onSelectionChange} />
+ * @see OrderByFilterButtonProps
+ */
 export default function OrderByFilterButton({ orderByList, selectedKey, onSelectionChange }: OrderByFilterButtonProps) {
     return (
         <Select

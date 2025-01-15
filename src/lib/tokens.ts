@@ -1,6 +1,13 @@
 import { prisma } from "./prisma";
 import { TokenType } from "@prisma/client";
 
+/**
+ * Retrieves a token by email.
+ * 
+ * @param email - The email address associated with the token.
+ * @returns A promise that resolves to the token object if found, otherwise null.
+ * @throws An error if the database query fails.
+ */
 export async function getTokenByEmail(email: string) {
     try {
         return prisma.token.findFirst({
@@ -12,6 +19,14 @@ export async function getTokenByEmail(email: string) {
     }
 }
 
+/**
+ * Generates a new token for the given email and token type.
+ * 
+ * @param email - The email address for which the token is generated.
+ * @param type - The type of the token.
+ * @returns A promise that resolves to the newly created token object.
+ * @throws An error if the database query fails.
+ */
 export async function generateToken(email: string, type: TokenType) {
     const arrayBuffer = new Uint8Array(48);
     crypto.getRandomValues(arrayBuffer);
@@ -32,6 +47,13 @@ export async function generateToken(email: string, type: TokenType) {
     })
 }
 
+/**
+ * Retrieves a token by its token string.
+ * 
+ * @param token - The token string.
+ * @returns A promise that resolves to the token object if found, otherwise null.
+ * @throws An error if the database query fails.
+ */
 export async function getToken(token: string) {
     try {
         return prisma.token.findFirst({

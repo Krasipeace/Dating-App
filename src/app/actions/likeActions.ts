@@ -5,6 +5,13 @@ import { getAuthUserId } from "./authActions";
 import { pusherServer } from "@/lib/pusher";
 import { CASE_TYPE_MUTUAL, CASE_TYPE_SOURCE, CASE_TYPE_TARGET, ROUTE_LIKE_NEW, ROUTE_PRIVATE_PREFIX } from "@/constants/actionConstants";
 
+/**
+ * Toggles the like status of a member.
+ * 
+ * @param targetUserId - The ID of the member to like or unlike.
+ * @param isLiked - A flag indicating if the member is liked or not.
+ * @throws An error if the database query fails.
+ */
 export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
     try {
         const userId = await getAuthUserId();
@@ -47,6 +54,12 @@ export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
     }
 }
 
+/**
+ * Fetches the list of user IDs that the current user has liked.
+ * 
+ * @returns A promise that resolves to an array of user IDs.
+ * @throws An error if the database query fails.
+ */
 export async function fetchCurrentUserLikesIds() {
     try {
         const userId = await getAuthUserId();
@@ -67,6 +80,13 @@ export async function fetchCurrentUserLikesIds() {
     }
 }
 
+/**
+ * Fetches the list of members that the current user has liked.
+ * 
+ * @param type - The type of likes to fetch.
+ * @returns A promise that resolves to an array of members.
+ * @throws An error if the database query fails.
+ */
 export async function fetchLikedMembers(type = CASE_TYPE_SOURCE) {
     try {
         const userId = await getAuthUserId();
@@ -98,6 +118,7 @@ async function fetchSourceLikes(userId: string) {
 
     return sourceList.map(s => s.targetMember);
 }
+
 async function fetchTargetLikes(userId: string) {
     const targetList = await prisma.like.findMany({
         where: {

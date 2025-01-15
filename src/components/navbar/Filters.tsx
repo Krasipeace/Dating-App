@@ -7,6 +7,13 @@ import GenderSelectionButton from "../buttons/GenderSelectionButton";
 import PhotoSwitchButton from "../buttons/PhotoSwitchButton";
 import OrderByFilterButton from "../buttons/OrderByFilterButton";
 
+/**
+ * Filters component
+ * @returns {JSX.Element} Filters component
+ * @description Filters component to display filters for members page
+ * @example
+ *   <Filters />
+ */
 export default function Filters() {
     const { orderByList, filterByGender, selectAge, selectGender, selectOrder, selectUsersWithPhoto, filters, isPending, totalCount } = useFilters();
 

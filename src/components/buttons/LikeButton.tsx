@@ -4,6 +4,15 @@ import { LikeButtonProps } from "@/types/buttonProps";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { PiSpinnerGapBold } from "react-icons/pi";
 
+/**
+ * LikeButton component
+ * @param {LikeButtonProps} { loading, hasLiked, toggleLike }
+ * @returns {JSX.Element} LikeButton component
+ * @description LikeButton component to like or unlike a post
+ * @example
+ *   <LikeButton loading={loading} hasLiked={hasLiked} toggleLike={toggleLike} />
+ * @see LikeButtonProps
+ */
 export default function LikeButton({ loading, hasLiked, toggleLike }: LikeButtonProps) {
     return (
         <>

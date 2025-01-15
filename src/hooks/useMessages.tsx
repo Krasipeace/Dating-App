@@ -5,6 +5,15 @@ import { Key, useCallback, useEffect, useRef, useState } from "react";
 import useMessageStore from "./useMessageStore";
 import { COL_ACTIONS, COL_TEXT, CONTAINER_OUTBOX, LABEL_ACTIONS, LABEL_DATE_RECEIVED, LABEL_DATE_SENT, LABEL_MESSAGE, RECIPIENT_NAME, RECIPIENT_OUTBOX, SEARCH_PARAMS_CONTAINER, SENDER_INBOX, SENDER_NAME } from "@/constants/hookConstants";
 
+/**
+ * useMessages hook
+ * @param {MessageDto[]} initialMessages
+ * @param {string} nextCursor
+ * @returns {Object} Messages object
+ * @description useMessages hook to handle messages
+ * @example
+ *   const { isOutbox, columns, isDeleting, deleteMessage, isReporting, reportMessage, selectRow, messages, loadingMoreMessages, loadMoreMessages, hasMoreMessages } = useMessages(initialMessages, nextCursor)
+ */
 export const useMessages = (initialMessages: MessageDto[], nextCursor?: string) => {
     const cursorRef = useRef(nextCursor);
     const { set, remove, messages, updateUnreadCount, resetMessages } = useMessageStore(state => ({

@@ -4,6 +4,15 @@ import { UploadImageButtonProps } from "@/types/buttonProps";
 import { CldUploadButton } from "next-cloudinary";
 import { MdAddPhotoAlternate } from "react-icons/md";
 
+/**
+ * UploadImageButton component
+ * @param {UploadImageButtonProps} { onUploadImage }
+ * @returns {JSX.Element} UploadImageButton component
+ * @description UploadImageButton component to upload an image
+ * @example
+ *   <UploadImageButton onUploadImage={onUploadImage} />
+ * @see UploadImageButtonProps
+ */
 export default function UploadImageButton({ onUploadImage }: UploadImageButtonProps) {
     return (
         <CldUploadButton

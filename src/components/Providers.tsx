@@ -10,6 +10,18 @@ import useMessageStore from "@/hooks/useMessageStore";
 import { getUnreadMessageCount } from "@/app/actions/messageActions";
 import { SessionProvider } from "next-auth/react";
 
+/**
+ * Providers component
+ * @param {ReactNode} children
+ * @param {string | null} userId
+ * @param {boolean} profileComplete
+ * @returns {JSX.Element} Providers component
+ * @description Providers component to wrap the app with providers
+ * @example
+ *   <Providers userId={userId} profileComplete={profileComplete}>
+ *       {children}
+ *   </Providers>
+ */
 export default function Providers({ children, userId, profileComplete }: { children: ReactNode, userId: string | null, profileComplete: boolean }) {
     const isUnreadCountSet = useRef(false);
 

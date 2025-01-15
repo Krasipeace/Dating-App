@@ -8,6 +8,12 @@ import { ACTION_LOG_FAILED, ACTION_LOG_SUCCESS, ADMIN_APPROVE_PHOTO, ADMIN_COULT
 import { updateMemberSchema } from "@/lib/schemas/adminFunctionsSchema";
 import { auth } from "@/auth";
 
+/**
+ * Retrieves a list of photos that have not been approved.
+ * 
+ * @returns A list of photos that have not been approved.
+ * @throws An error if the database query fails.
+ */
 export async function getNonApprovedPhotos() {
     try {
         const role = await getUserRole();
@@ -24,6 +30,13 @@ export async function getNonApprovedPhotos() {
     }
 }
 
+/**
+ * Approves a photo that has not been approved.
+ * 
+ * @param photoId - The ID of the photo to approve.
+ * @returns The approved photo.
+ * @throws An error if the database query fails.
+ */
 export async function approvePhoto(photoId: string) {
     try {
         const role = await getUserRole();
@@ -95,6 +108,15 @@ export async function approvePhoto(photoId: string) {
     }
 }
 
+/**
+ * Rejects a photo that has not been approved.
+ * 
+ * @param photo - The photo to reject.
+ * @returns The rejected photo.
+ * @throws An error if the database query fails.
+ * @example
+ *     await rejectPhoto(photo);
+ */
 export async function rejectPhoto(photo: Photo) {
     try {
         const role = await getUserRole();
@@ -122,6 +144,12 @@ export async function rejectPhoto(photo: Photo) {
     }
 }
 
+/**
+ * Retrieves a list of reported messages.
+ * 
+ * @returns A list of reported messages.
+ * @throws An error if the database query fails.
+ */
 export async function getReportedMessages() {
     try {
         const role = await getUserRole();
@@ -138,6 +166,15 @@ export async function getReportedMessages() {
     }
 }
 
+/**
+ * Approves a reported message.
+ * 
+ * @param messageId - The ID of the message to approve.
+ * @returns An object containing the status and the approved message data.
+ * @throws An error if the database query fails.
+ * @example
+ *     await approveReportedMessage(messageId);
+ */
 export async function declineReportedMessage(messageId: string) {
     try {
         const role = await getUserRole();
@@ -166,6 +203,19 @@ export async function declineReportedMessage(messageId: string) {
     }
 }
 
+/**
+ * Logs an admin action to the audit log.
+ * 
+ * @param adminId - The ID of the admin performing the action.
+ * @param action - The action to log.
+ * @param entityId - The ID of the entity to log.
+ * @param entityType - The type of entity to log.
+ * @param details - Additional details to log.
+ * @throws An error if the database query fails.
+ * @returns A promise that resolves when the action is logged.
+ * @example
+ *     await logAuditAction("admin-id", "approve_photo", "photo-id", "photo", "Approved photo with ID photo-id");
+ */
 async function logAuditAction(adminId: string, action: string, entityId: string | null, entityType: string, details: string | null = null) {
     try {
         await prisma.auditLog.create({
@@ -182,6 +232,18 @@ async function logAuditAction(adminId: string, action: string, entityId: string 
     }
 }
 
+/**
+ * Logs an admin action to the audit log.
+ * 
+ * @param action - The action to log.
+ * @param entityId - The ID of the entity to log.
+ * @param entityType - The type of entity to log.
+ * @param details - Additional details to log.
+ * @throws An error if the database query fails.
+ * @returns A promise that resolves when the action is logged.
+ * @example
+ *     await performAdminAction("approve_photo", "photo-id", "photo", "Approved photo with ID photo-id");
+ */
 export async function performAdminAction(action: string, entityId: string | null, entityType: string, details: string | null = null) {
     try {
         const adminId = await getAdminId();
@@ -193,6 +255,15 @@ export async function performAdminAction(action: string, entityId: string | null
     }
 }
 
+/**
+ * Retrieves a list of audit logs.
+ * 
+ * @param memberId - The ID of the member to retrieve audit logs for.
+ * @returns A list of audit logs.
+ * @throws An error if the database query fails.
+ * @example 
+ *    await getAuditLogs();
+ */
 export async function getAuditLogs() {
     try {
         const role = await getUserRole();
@@ -209,6 +280,13 @@ export async function getAuditLogs() {
     }
 }
 
+/**
+ * Deletes a member and their associated data from the database.
+ * 
+ * @param memberId - The ID of the member to delete.
+ * @returns An object containing the status and the deleted member data.
+ * @throws An error if the user role is not admin, if the member is not found, or if the deletion fails.
+ */
 export async function deleteMember(memberId: string) {
     try {
         const role = await getUserRole();
@@ -250,6 +328,14 @@ export async function getAdminId() {
     return userId;
 }
 
+/**
+ * Updates the chat possibility for a member.
+ * 
+ * @param userId - The ID of the user whose chat possibility is to be updated.
+ * @param canSendMessages - A boolean indicating whether the user can send messages or not.
+ * @returns The updated member object.
+ * @throws Will throw an error if the user is not an admin, if the member is not found, or if the update fails.
+ */
 export async function updateChatPossibility(userId: string, canSendMessages: boolean) {
     try {
         const role = await getUserRole();
@@ -278,10 +364,26 @@ export async function updateChatPossibility(userId: string, canSendMessages: boo
     }
 }
 
+/**
+ * Retrieves a list of all members.
+ * 
+ * @returns A list of all members.
+ * @throws An error if the database query fails.
+ * @example
+ *    const members = await getAllMembers();
+ */
 export async function getAllMembers(): Promise<Member[]> {
     return await prisma.member.findMany();
 }
 
+/**
+ * Updates a member's information in the database.
+ *
+ * @param memberId - The ID of the member to update.
+ * @param data - The new data for the member.
+ * @returns An object containing the status and the updated member data.
+ * @throws Will throw an error if the user role is not admin or if there is an issue with the update.
+ */
 export async function updateMember(memberId: string, data: any) {
     try {
         const role = await getUserRole();

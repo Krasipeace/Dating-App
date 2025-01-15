@@ -2,6 +2,15 @@ import usePresenceStore from "@/hooks/usePresenceStore";
 import { PresenceIndicatorProps } from "@/types/uiProps";
 import { GoDot, GoDotFill } from "react-icons/go";
 
+/**
+ * PresenceIndicator component
+ * @param {PresenceIndicatorProps} { member }
+ * @returns {JSX.Element} PresenceIndicator component
+ * @description PresenceIndicator component to display the presence of a member
+ * @example
+ *   <PresenceIndicator member={member} />
+ * @see PresenceIndicatorProps
+ */
 export default function PresenceIndicator({ member }: PresenceIndicatorProps) {
     const { members } = usePresenceStore(state => ({
         members: state.members

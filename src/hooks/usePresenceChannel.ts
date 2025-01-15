@@ -5,6 +5,15 @@ import { pusherClient } from "@/lib/pusher";
 import { updateLastActiveUser } from "@/app/actions/memberActions";
 import { PRESENCE_PREFIX, PUSHER_MEMBER_ADDED, PUSHER_MEMBER_REMOVED, PUSHER_SUBSCRIPTION_SUCCESS } from "@/constants/hookConstants";
 
+/**
+ * usePresenceChannel hook
+ * @param {string | null} userId
+ * @param {boolean} profileComplete
+ * @returns {void} void
+ * @description usePresenceChannel hook to handle presence channel
+ * @example
+ *   usePresenceChannel(userId, profileComplete)
+ */
 export const usePresenceChannel = (userId: string | null, profileComplete: boolean) => {
     const { set, add, remove } = usePresenceStore(state => ({
         set: state.set,

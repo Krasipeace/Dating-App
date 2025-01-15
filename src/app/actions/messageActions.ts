@@ -10,6 +10,14 @@ import { getChatId } from "@/lib/utilities";
 import { ADMIN_APPROVE_MESSAGE, ORDER_BY_ASC, ORDER_BY_DESC, OUTBOX_CONTAINER, RECIPIENT_DELETED, RECIPIENT_ID, ROUTE_NEW_MESSAGE, ROUTE_PRIVATE_PREFIX, ROUTE_READ_MESSAGES, SENDER_DELETED, SENDER_ID, SOMETHING_WENT_WRONG, STATUS_ERROR, STATUS_SUCCESS, USER_ROLE_ADMIN } from "@/constants/actionConstants";
 import { performAdminAction } from "./adminActions";
 
+/**
+ * Creates a new message and triggers pusher events for real-time updates.
+ * 
+ * @param receiverId - The ID of the message recipient.
+ * @param data - The message data to be validated and saved.
+ * @returns An ActionResult containing the created MessageDto or an error.
+ * @throws An error if the database query fails.
+ */
 export async function createMessage(receiverId: string, data: MessageSchema): Promise<ActionResult<MessageDto>> {
     try {
         const userId = await getAuthUserId();
@@ -40,6 +48,14 @@ export async function createMessage(receiverId: string, data: MessageSchema): Pr
     }
 }
 
+/**
+ * Retrieves the message thread between the authenticated user and the specified recipient.
+ * Marks unread messages as read and triggers pusher events for real-time updates.
+ * 
+ * @param recipientId - The ID of the message recipient.
+ * @returns An object containing the messages and the count of newly read messages.
+ * @throws An error if the database query fails.
+ */
 export async function getMessageThread(recipientId: string) {
     try {
         const userId = await getAuthUserId();
@@ -90,6 +106,16 @@ export async function getMessageThread(recipientId: string) {
     }
 }
 
+/**
+ * Retrieves messages for the authenticated user based on the specified container (inbox or outbox).
+ * Supports pagination using a cursor and limit.
+ * 
+ * @param container - The container type (inbox or outbox).
+ * @param cursor - The cursor for pagination.
+ * @param limit - The maximum number of messages to retrieve.
+ * @returns An object containing the messages and the next cursor for pagination.
+ * @throws An error if the database query fails.
+ */
 export async function getMessagesByContainer(container?: string | null, cursor?: string, limit = 10) {
     try {
         const userId = await getAuthUserId();
@@ -128,6 +154,14 @@ export async function getMessagesByContainer(container?: string | null, cursor?:
     }
 }
 
+/**
+ * Deletes a message for the authenticated user. If the user is an admin, the message is permanently deleted.
+ * Otherwise, it is marked as deleted for the user.
+ * 
+ * @param messageId - The ID of the message to delete.
+ * @param isOutbox - Indicates if the message is in the outbox.
+ * @throws An error if the database query fails.
+ */
 export async function deleteMessage(messageId: string, isOutbox?: boolean) {
     const selector = isOutbox ? SENDER_DELETED : RECIPIENT_DELETED;
 
@@ -189,6 +223,12 @@ export async function deleteMessage(messageId: string, isOutbox?: boolean) {
     }
 }
 
+/**
+ * Retrieves the count of unread messages for the authenticated user.
+ * 
+ * @returns The count of unread messages.
+ * @throws An error if the database query fails.
+ */
 export async function getUnreadMessageCount() {
     try {
         const userId = await getAuthUserId();
@@ -206,6 +246,13 @@ export async function getUnreadMessageCount() {
     }
 }
 
+/**
+ * Reports a message as abusive.
+ * 
+ * @param messageId - The ID of the message to report.
+ * @returns The updated message with the abuse flag set.
+ * @throws An error if the database query fails.
+ */
 export async function reportMessage(messageId: string) {
     try {
         const userId = await getAuthUserId();
