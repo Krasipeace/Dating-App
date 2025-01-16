@@ -2,7 +2,7 @@
 
 import { deleteMessage } from "@/app/actions/messageActions";
 import { ThumbsButtonProps } from "@/types/buttonProps";
-import { Button } from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { FaRegThumbsDown } from "react-icons/fa";
 
 /**
@@ -16,11 +16,13 @@ import { FaRegThumbsDown } from "react-icons/fa";
  */
 export default function ThumpsDownButton({ messageId }: ThumbsButtonProps) {
     return (
-        <Button
-            color="danger"
-            onClick={() => deleteMessage(messageId)}
-        >
-            <FaRegThumbsDown color="success" size={20} />
-        </Button>
+        <Tooltip content="Delete message" placement="top">
+            <Button
+                color="danger"
+                onClick={() => deleteMessage(messageId)}
+            >
+                <FaRegThumbsDown color="success" size={20} />
+            </Button>
+        </Tooltip>
     )
 }

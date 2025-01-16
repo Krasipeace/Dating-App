@@ -1,4 +1,5 @@
 import { StarButtonProps } from "@/types/buttonProps";
+import { Tooltip } from "@nextui-org/react";
 import { GoStar, GoStarFill } from "react-icons/go";
 import { ImSpinner2 } from "react-icons/im";
 
@@ -16,7 +17,9 @@ export default function StarButton({ selected, loading }: StarButtonProps) {
         <div className="relative hover:opacity-80 transition cursor-pointer">
             {!loading ? (
                 <>
-                    <GoStar size={32} className="fill-white absolute -top-[2px] -right-[2px]" />
+                    <Tooltip content={selected ? "" : "Set as profile image"} placement="top">
+                        <GoStar size={32} className="fill-white absolute -top-[2px] -right-[2px]" />
+                    </Tooltip>
                     <GoStarFill size={28} className={selected ? "fill-orange-300" : "fill-neutral-500/70"} data-testid="GoStarFill" />
                 </>
             ) : (

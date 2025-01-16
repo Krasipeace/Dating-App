@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { TbPhotoCheck } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { approvePhoto } from "@/app/actions/adminActions";
@@ -29,13 +29,15 @@ export default function ApproveButton({ photoId }: ApprovePhotoProps) {
     };
 
     return (
-        <Button
-            onClick={approve}
-            color="success"
-            variant="light"
-            fullWidth
-        >
-            <TbPhotoCheck size={20} />
-        </Button>
+        <Tooltip content="Approve photo" placement="top">
+            <Button
+                onClick={approve}
+                color="success"
+                variant="light"
+                fullWidth
+            >
+                <TbPhotoCheck size={20} />
+            </Button>
+        </Tooltip>
     );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { TbPhotoCancel } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { rejectPhoto } from "@/app/actions/adminActions";
@@ -29,13 +29,15 @@ export default function RejectButton({ photo }: RejectButtonProps) {
     };
 
     return (
-        <Button
-            onClick={reject}
-            color="danger"
-            variant="light"
-            fullWidth
-        >
-            <TbPhotoCancel size={20} />
-        </Button>
+        <Tooltip content="Reject photo" placement="top">
+            <Button
+                onClick={reject}
+                color="danger"
+                variant="light"
+                fullWidth
+            >
+                <TbPhotoCancel size={20} />
+            </Button>
+        </Tooltip>
     );
 }

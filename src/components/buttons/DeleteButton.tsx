@@ -1,6 +1,7 @@
 import { TiDeleteOutline, TiDelete } from "react-icons/ti";
 import { ImSpinner2 } from "react-icons/im";
 import { DeleteButtonProps } from "@/types/buttonProps";
+import { Tooltip } from "@nextui-org/react";
 
 /**
  * DeleteButton component
@@ -16,8 +17,10 @@ export default function DeleteButton({ loading }: DeleteButtonProps) {
         <div className="relative hover:opacity-80 transition cursor-pointer">
             {!loading ? (
                 <>
-                    <TiDeleteOutline size={32}
-                        data-testid="TiDeleteOutline" className="fill-white absolute -top-[2px] -right-[2px]" />
+                    <Tooltip content="Delete" placement="top">
+                        <TiDeleteOutline size={32}
+                            data-testid="TiDeleteOutline" className="fill-white absolute -top-[2px] -right-[2px]" />
+                    </Tooltip>
                     <TiDelete size={28} data-testid="TiDelete" className="fill-red-600" />
                 </>
             ) : (
