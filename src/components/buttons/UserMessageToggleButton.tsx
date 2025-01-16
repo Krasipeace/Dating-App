@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { updateChatPossibility } from "@/app/actions/adminActions";
 import { toast } from "react-toastify";
 import { FAILED_TO_UPDATE_MESSAGE_POSSIBILITY } from "@/constants/actionConstants";
@@ -14,10 +14,13 @@ import { UserMessageToggleButtonProps } from "@/types/buttonProps";
  * @see UserMessageToggleButtonProps
  */
 export default function UserMessageToggleButton({ memberId, currentStatus }: UserMessageToggleButtonProps ) {
+    const [isMessagingEnabled, setIsMessagingEnabled] = useState(currentStatus);
+
     const handleToggleMessaging = async () => {
         try {
-            await updateChatPossibility(memberId, !currentStatus);
-            toast.success(`Messaging ${!currentStatus ? "enabled" : "disabled"} for the user.`);
+            await updateChatPossibility(memberId, !isMessagingEnabled);
+            setIsMessagingEnabled(!isMessagingEnabled);
+            toast.success(`Messaging ${!isMessagingEnabled ? "enabled" : "disabled"} for the user.`);
         } catch (error) {
             console.error(error);
             toast.warning(FAILED_TO_UPDATE_MESSAGE_POSSIBILITY);
@@ -26,7 +29,7 @@ export default function UserMessageToggleButton({ memberId, currentStatus }: Use
 
     return (
         <button onClick={handleToggleMessaging}>
-            {currentStatus ? "Disable Messaging" : "Enable Messaging"}
+            {isMessagingEnabled ? "Disable Messaging" : "Enable Messaging"}
         </button>
     );
 }

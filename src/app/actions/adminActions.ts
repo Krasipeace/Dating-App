@@ -258,7 +258,6 @@ export async function performAdminAction(action: string, entityId: string | null
 /**
  * Retrieves a list of audit logs.
  * 
- * @param memberId - The ID of the member to retrieve audit logs for.
  * @returns A list of audit logs.
  * @throws An error if the database query fails.
  * @example 
