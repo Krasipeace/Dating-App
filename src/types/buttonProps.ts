@@ -39,9 +39,12 @@ export type RejectButtonProps = {
 }
 
 export type AgeSliderButtonProps = {
-    defaultValue: number[];
-    onChangeEnd: (value: number[]) => void;
-}
+    defaultValue: number | number[]; 
+    onChange?: (value: number | number[]) => void; 
+    onChangeEnd: (value: number | number[]) => void; 
+    minValue?: number; 
+    maxValue?: number; 
+};
 
 export type GenderSelectionButtonProps = {
     icon: IconType;

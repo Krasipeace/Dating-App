@@ -2,7 +2,7 @@
 
 # HeartBound - Dating app
 
-My `Learning by Doing` **Full-Stack App**, build with Next/React.
+My `Learning by Doing` **Full-Stack App**, build with NEXT.js.
 
 <details><summary>Home page</summary>
     <img src="assets/homepage.PNG" width="550" title="home page">

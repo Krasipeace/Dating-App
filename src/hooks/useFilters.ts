@@ -56,7 +56,7 @@ export const useFilters = () => {
         { value: GENDER_FEMALE, icon: FaFemale }
     ]
 
-    const handleAgeSelection = (value: number[]) => {
+    const handleAgeSelection = (value: number | number[]) => {
         setFilters(SEARCH_PARAMS_AGE_RANGE, value);
     }
 

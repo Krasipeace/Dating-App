@@ -2,6 +2,7 @@
 
 import { AgeSliderButtonProps as AgeSliderButtonProps } from "@/types/buttonProps";
 import { Slider } from "@nextui-org/react";
+import { useState } from "react";
 
 /**
  * AgeSliderButton component
@@ -12,20 +13,46 @@ import { Slider } from "@nextui-org/react";
  *   <AgeSliderButton defaultValue={[18, 100]} onChangeEnd={onChangeEnd} />
  * @see AgeSliderButtonProps
  */
-export default function AgeSliderButton({ defaultValue, onChangeEnd }: AgeSliderButtonProps) {
-    const minAgeValue = 18;
-    const maxAgeValue = 100;
+export default function AgeSliderButton({ defaultValue, minValue = 18, maxValue = 100, onChange, onChangeEnd }: AgeSliderButtonProps) {
+    const [selectedValue, setSelectedValue] = useState<number | number[]>(defaultValue);
 
     return (
-        <Slider
-            label="Age range"
-            aria-label="Slider selection for age between 18 and 100"
-            color="secondary"
-            size="sm"
-            minValue={minAgeValue}
-            maxValue={maxAgeValue}
-            defaultValue={defaultValue}
-            onChangeEnd={(value) => onChangeEnd(value as number[])}
-        />
+        <>
+            <Slider
+                label="Age range"
+                aria-label="Select age range"
+                title={`Selected age range: ${Array.isArray(selectedValue) ? `${selectedValue[0]} to ${selectedValue[1]}` : selectedValue}`}
+                color="secondary"
+                size="md"
+                minValue={minValue}
+                maxValue={maxValue}
+                defaultValue={defaultValue}
+                onChange={(value) => {
+                    setSelectedValue(value as number | number[]);
+                    if (onChange) onChange(value as number | number[]);
+                }}
+                onChangeEnd={(value) => onChangeEnd(value as number[])}
+                data-testid="AgeSliderButton"
+            />
+
+            {/* screen readers */}
+            <div
+                id="age-range-label"
+                aria-live="polite"
+                style={{
+                    position: "absolute",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                    clip: "rect(1px, 1px, 1px, 1px)",
+                    whiteSpace: "nowrap",
+                }}
+            >
+                {`Selected age range: ${Array.isArray(selectedValue)
+                    ? `${selectedValue[0]} to ${selectedValue[1]}`
+                    : selectedValue}`
+                }
+            </div>
+        </>
     );
 }

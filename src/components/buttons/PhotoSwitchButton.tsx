@@ -16,6 +16,7 @@ export default function PhotoSwitchButton({ onChange, defaultSelected = true }: 
     return (
         <Switch
             defaultSelected={defaultSelected}
+            aria-label="Switch photo selection"
             color="secondary"
             size="sm"
             onChange={onChange}

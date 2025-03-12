@@ -29,14 +29,15 @@ export default function ApproveButton({ photoId }: ApprovePhotoProps) {
     };
 
     return (
-        <Tooltip content="Approve photo" placement="top">
+        <Tooltip content="Approve photo" placement="top" aria-live="polite">
             <Button
                 onClick={approve}
                 color="success"
                 variant="light"
                 fullWidth
+                aria-label="Approve photo button"
             >
-                <TbPhotoCheck size={20} />
+                <TbPhotoCheck size={20} aria-hidden="true" />
             </Button>
         </Tooltip>
     );

@@ -16,12 +16,13 @@ import { FaRegThumbsDown } from "react-icons/fa";
  */
 export default function ThumpsDownButton({ messageId }: ThumbsButtonProps) {
     return (
-        <Tooltip content="Delete message" placement="top">
+        <Tooltip content="Delete message" placement="top" aria-live="polite">
             <Button
                 color="danger"
                 onClick={() => deleteMessage(messageId)}
+                aria-label="Delete message button"
             >
-                <FaRegThumbsDown color="success" size={20} />
+                <FaRegThumbsDown color="success" size={20} aria-hidden="true" />
             </Button>
         </Tooltip>
     )

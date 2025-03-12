@@ -20,7 +20,7 @@ export default function OrderByFilterButton({ orderByList, selectedKey, onSelect
             size="sm"
             variant="bordered"
             color="secondary"
-            aria-label="Order by selector"
+            aria-label="Select order of users"
             selectedKeys={new Set([selectedKey])}
             onSelectionChange={onSelectionChange}
         >

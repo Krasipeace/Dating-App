@@ -29,14 +29,15 @@ export default function RejectButton({ photo }: RejectButtonProps) {
     };
 
     return (
-        <Tooltip content="Reject photo" placement="top">
+        <Tooltip content="Reject photo" placement="top" aria-live="polite">
             <Button
                 onClick={reject}
                 color="danger"
                 variant="light"
                 fullWidth
+                aria-label="Reject photo button"
             >
-                <TbPhotoCancel size={20} />
+                <TbPhotoCancel size={20} aria-hidden="true" />
             </Button>
         </Tooltip>
     );

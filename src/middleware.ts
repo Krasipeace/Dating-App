@@ -10,6 +10,10 @@ export default auth((req) => {
     const isProfileComplete = req.auth?.user.profileComplete;
     const isAdmin = req.auth?.user.role === "ADMIN";
     const isAdminRoute = nextUrl.pathname.startsWith("/admin");
+    const response = NextResponse.next();
+
+    response.headers.set("X-XSS-Protection", "1; mode=block");
+    response.headers.set("X-Content-Type-Options", "nosniff");
 
     if (isPublic || isAdmin) return NextResponse.next();
 

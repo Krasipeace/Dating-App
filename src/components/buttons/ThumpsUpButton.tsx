@@ -16,12 +16,13 @@ import { FaRegThumbsUp } from "react-icons/fa";
  */
 export default function ThumpsUpButton({ messageId }: ThumbsButtonProps) {
     return (
-        <Tooltip content="Let message stay" placement="top">
+        <Tooltip content="Let message stay" placement="top" aria-live="polite">
             <Button
                 color="success"
                 onClick={() => declineReportedMessage(messageId)}
+                aria-label="Approve message button"
             >
-                <FaRegThumbsUp color="success" size={20} />
+                <FaRegThumbsUp color="success" size={20} aria-hidden="true" />
             </Button>
         </Tooltip>
     )
