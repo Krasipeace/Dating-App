@@ -1,7 +1,7 @@
 "use client";
 
-import { useFilters } from "@/hooks/useFilters";
 import { Spinner } from "@nextui-org/react";
+import { useFilters } from "@/hooks/useFilters";
 import AgeSliderButton from "../buttons/AgeSliderButton";
 import GenderSelectionButton from "../buttons/GenderSelectionButton";
 import PhotoSwitchButton from "../buttons/PhotoSwitchButton";

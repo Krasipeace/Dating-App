@@ -48,10 +48,10 @@ export default function MessageSidebar() {
                         : "flex flex-row items-center rounded-t-lg gap-2 p-3 text-black hover:text-secondary/70"}`}
                     onClick={() => { handleSelect(key) }}
                 >
-                    <Icon size={24} />
+                    <Icon size={24} aria-hidden="true" />
                     <div className="flex justify-between flex-grow">
                         <span>{label}</span>
-                        {chip && <Chip>{unreadCount}</Chip>}
+                        {chip && <Chip aria-label="Unread messages:">{unreadCount}</Chip>}
                     </div>
                 </div>
             ))}

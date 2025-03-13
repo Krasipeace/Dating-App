@@ -1,10 +1,10 @@
 import { Button, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
-import NavLink from "./NavLink";
-import Link from "next/link";
 import { GiHalfHeart } from "react-icons/gi";
+import Link from "next/link";
 import { auth } from "@/auth";
-import UserMenu from "./UserMenu";
 import { getUserInfo } from "@/app/actions/userActions";
+import NavLink from "./NavLink";
+import UserMenu from "./UserMenu";
 import FiltersWrapper from "./FiltersWrapper";
 import AdminMenu from "./AdminMenu";
 
@@ -45,10 +45,11 @@ export default async function TopNav() {
                         "data-[active=true]:text-yellow-200"
                     ]
                 }}
+                aria-label="Main menu"
             >
                 <NavbarBrand as={Link} href="/">
-                    <GiHalfHeart size={50} className="text-orange-400" />
-                    <div className="font-bold text-3xl flex">
+                    <GiHalfHeart size={50} className="text-orange-400" aria-hidden="true" />
+                    <div className="font-bold text-3xl flex" aria-label="Click to go back to home page">
                         <span className="text-red-900">Heart</span>
                         <span className="text-orange-400">Bound</span>
                     </div>
@@ -71,10 +72,22 @@ export default async function TopNav() {
                         )
                     ) : (
                         <>
-                            <Button as={Link} href="/login" variant="bordered" className="text-green-100">
+                            <Button
+                                as={Link}
+                                href="/login"
+                                variant="bordered"
+                                className="text-green-100"
+                                aria-label="Click to go to login page"
+                            >
                                 Login
                             </Button>
-                            <Button as={Link} href="/register" variant="bordered" className="text-green-100">
+                            <Button
+                                as={Link}
+                                href="/register"
+                                variant="bordered"
+                                className="text-green-100"
+                                aria-label="Click to go to register page"
+                            >
                                 Register
                             </Button>
                         </>

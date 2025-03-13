@@ -21,9 +21,9 @@ export default function ResultMessage({ result }: ResultMessageProps) {
             }`}
         >
             {result.status === "success" ? (
-                <FaCheckCircle size={20} />
+                <FaCheckCircle size={20} aria-label="Icon with positive feedback" aria-hidden="true" />
             ) : (
-                <FaCircleExclamation size={20} />
+                <FaCircleExclamation size={20} aria-label="Icon with warning feedback" aria-hidden="true" />
             )}
             <p>
                 {result.status === 'success' ? result.data : result.error as string}

@@ -57,6 +57,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                             variant="light"
                             onClick={() => onDeleteOpen()}
                             isLoading={isDeleting}
+                            aria-label="Delete this message"
                         >
                             <TiDeleteOutline size={20} className="text-danger" />
                         </Button>
@@ -66,6 +67,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                             header="Delete Message"
                             body={<div>Are you sure you want to delete this message?</div>}
                             footer={deleteMsgFooter}
+                            aria-label="Confirmation to delete this message"
                         />
                     </>
                     <>
@@ -74,6 +76,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                             variant="light"
                             onClick={() => onReportOpen()}
                             isLoading={isReporting}
+                            aria-label="Report this message"
                         >
                             <MdReportGmailerrorred size={20} className="text-warning" />
                         </Button>
@@ -83,6 +86,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                             header="Report Message"
                             body={<div>Are you sure you want to report this message?</div>}
                             footer={reportMsgFooter}
+                            aria-label="Confirmation to report this message"
                         />
                     </>
                 </>

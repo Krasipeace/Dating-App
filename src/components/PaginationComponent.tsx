@@ -1,8 +1,8 @@
 "use client";
 
-import usePaginationStore from "@/hooks/usePaginationStore";
-import { Pagination } from "@nextui-org/react";
 import { useEffect } from "react";
+import { Pagination } from "@nextui-org/react";
+import usePaginationStore from "@/hooks/usePaginationStore";
 
 /**
  * PaginationComponent component
@@ -43,14 +43,19 @@ export default function PaginationComponent({ totalCount }: { totalCount: number
                     color="secondary"
                     variant="bordered"
                     onChange={setPage}
+                    aria-label="Pagination navigation"
                 />
                 <div className="flex flex-row gap-1 items-center">
                     Show per page:
                     {[pageThreeSelector, pageSixSelector, pageTwelveSelector].map(size => (
                         <div
                             key={size}
-                            className={`${pageSize === size ? "pagination-component bg-secondary text-white hover:bg-secondary hover:text-white" : "pagination-component"}`}
+                            className={`${pageSize === size
+                                ? "pagination-component bg-secondary text-white hover:bg-secondary hover:text-white"
+                                : "pagination-component"}`
+                            }
                             onClick={() => setPageSize(size)}
+                            aria-label={`Click to show ${size} per page`}
                         >
                             {size}
                         </div>
