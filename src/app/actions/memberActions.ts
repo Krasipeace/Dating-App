@@ -6,6 +6,7 @@ import { MemberParams, PaginationRespone } from "@/types";
 import { Member, Photo } from "@prisma/client";
 import { getAuthUserId } from "./authActions";
 import { AGE_RANGE, BOOLEAN_TRUE, GENDERS, ORDER_BY_DESC, ORDER_BY_UPDATED, PAGE_SIZE, START_PAGE_NUMBER } from "@/constants/actionConstants";
+import { FILTER_BY_CITY, FILTER_BY_COUNTRY, ORDER_BY_CREATED } from "@/constants/hookConstants";
 
 /**
  * Get members based on the specified parameters.
@@ -28,22 +29,31 @@ export async function getMembers({ ageRange = AGE_RANGE, gender = GENDERS, order
     const limit = parseInt(pageSize);
     const skip = (page - 1) * limit;
 
+    const currentUser = await prisma.member.findUnique({ where: { userId } });
+    if (!currentUser) throw new Error("Can't fetch user data. Check connection to server.");
+
+    const baseFilters: any[] = [
+        { birthDate: { gte: minDateOfBirth } },
+        { birthDate: { lte: maxDateOfBirth } },
+        { gender: { in: selectedGender } },
+        ...(hasPhoto === BOOLEAN_TRUE ? [{ image: { not: null } }] : [])
+    ];
+
+    if (orderBy === FILTER_BY_COUNTRY) {
+        baseFilters.push({ country: currentUser.country });
+    }
+
+    if (orderBy === FILTER_BY_CITY) {
+        baseFilters.push({ city: currentUser.city });
+    }
+
     const whereClause = {
-        AND: [
-            { birthDate: { gte: minDateOfBirth } },
-            { birthDate: { lte: maxDateOfBirth } },
-            { gender: { in: selectedGender } },
-            ...(hasPhoto === BOOLEAN_TRUE ? [{ image: { not: null } }] : [])
-        ],
-        NOT: {
-            userId
-        }
+        AND: baseFilters,
+        NOT: { userId }
     };
 
     try {
-        const count = await prisma.member.count({
-            where: whereClause,
-        })
+        const count = await prisma.member.count({ where: whereClause });
 
         const members = await prisma.member.findMany({
             where: whereClause,

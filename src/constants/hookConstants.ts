@@ -11,12 +11,16 @@ export const GENDER_FEMALE = "female";
 
 export const ORDER_BY_UPDATED = "updated";
 export const ORDER_BY_CREATED = "created";
+export const FILTER_BY_COUNTRY = "country";
+export const FILTER_BY_CITY = "city";
 
 export const COL_TEXT = "text";
 export const COL_ACTIONS = "actions";
 
 export const LABEL_LAST_ACTIVE = "Last Active";
 export const LABEL_NEW_MEMBERS = "Newest Members";
+export const LABEL_IN_SAME_CITY = "Same City";
+export const LABEL_IN_SAME_COUNTRY = "Same Country";
 export const LABEL_MESSAGE = "Message";
 export const LABEL_DATE_SENT = "Date sent";
 export const LABEL_DATE_RECEIVED = "Date received";

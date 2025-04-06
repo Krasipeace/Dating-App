@@ -15,12 +15,12 @@ import { Select, SelectItem } from "@nextui-org/react";
 export default function OrderByFilterButton({ orderByList, selectedKey, onSelectionChange }: OrderByFilterButtonProps) {
     return (
         <Select
-            label="Order by"
+            label="Filter by"
             fullWidth
             size="sm"
             variant="bordered"
             color="secondary"
-            aria-label="Select order of users"
+            aria-label="Select filter for users(default: last active)"
             selectedKeys={new Set([selectedKey])}
             onSelectionChange={onSelectionChange}
         >
