@@ -7,7 +7,7 @@ export default function Logs({ logs }: LogsProps) {
         <div className="shadow-md">
             <h3 className="italic flex flex-col items-center pb-5">Administrator logs</h3>
             {logs.length > 0 ? (
-                <Card>
+                <Card className="pb-7">
                     <CardBody>
                         <table className="table">
                             <thead className="table-head">

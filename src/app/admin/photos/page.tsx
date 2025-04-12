@@ -12,7 +12,7 @@ export default async function AdminPhotosPage() {
             <div className="shadow-md flex flex-col items-center pb-2">
                 <h3 className="italic">Images awaiting approval</h3>
             </div>
-            <Card>
+            <Card className="pb-7">
                 <MemberPhotos photos={photos} />
             </Card>
         </>

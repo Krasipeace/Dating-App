@@ -8,9 +8,9 @@ export default async function EditUsersPage() {
     return (
         <>
             <div className="shadow-md flex flex-col items-center pb-2">
-                <h3 className="italic">Edit users</h3>
+                <h3 className="italic">App Users</h3>
             </div>
-            <Card>
+            <Card className="pb-7">
                 <EditUsersInfo members={members} />
             </Card>
         </>

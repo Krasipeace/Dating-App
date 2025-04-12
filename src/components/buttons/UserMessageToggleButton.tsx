@@ -29,7 +29,7 @@ export default function UserMessageToggleButton({ memberId, currentStatus }: Use
 
     return (
         <button onClick={handleToggleMessaging}>
-            {isMessagingEnabled ? "BAN chat messaging" : "UnBan chat messaging"}
+            {isMessagingEnabled ? "BAN chat" : "UnBan chat"}
         </button>
     );
 }
