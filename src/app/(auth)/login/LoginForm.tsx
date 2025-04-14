@@ -13,6 +13,7 @@ import { useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { PiPasswordBold } from "react-icons/pi";
 import EyeToggleButton from "@/components/buttons/EyeToggleButton";
+import AuthWrapper from "@/components/AuthWrapper";
 
 export default function LoginForm() {
     const router = useRouter();
@@ -35,17 +36,11 @@ export default function LoginForm() {
     }
 
     return (
-        <Card className="w-2/5 mx-auto">
-            <CardHeader className="flex flex-col items-center justify-center">
-                <div className="flex flex-col gap-2 items-center text-secondary-600">
-                    <div className="flex flex-row items-center gap-2">
-                        <GiPadlock size={20} />
-                        <h2 className="text-2xl font-bold">Login</h2>
-                    </div>
-                    <p className="text-neutral-500">Enter e-mail and password to login</p>
-                </div>
-            </CardHeader>
-            <CardBody>
+        <AuthWrapper
+            headerIcon={GiPadlock}
+            headerText="Login"
+            subHeaderText="Enter e-mail and password to login"
+            body={
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-4">
                         <Input
@@ -77,18 +72,22 @@ export default function LoginForm() {
                         <Button
                             isLoading={isSubmitting}
                             isDisabled={!isValid}
-                            fullWidth color="secondary"
-                            type="submit">
+                            fullWidth
+                            color="secondary"
+                            type="submit"
+                        >
                             Login
                         </Button>
                         <p className="text-secondary-800 text-center font-semibold">Login with</p>
                         <SocialLogin />
-                        <div className="flex justify-center hover:underline text-sm">
-                            <Link href="/forgot-password">Forgot password?</Link>
-                        </div>
                     </div>
                 </form>
-            </CardBody>
-        </Card>
+            }
+            footer={
+                <div className="flex justify-center w-full">
+                    <Link href="/forgot-password" className="text-sm underline text-red-800">Forgot password?</Link>
+                </div>
+            }
+        />
     )
 }

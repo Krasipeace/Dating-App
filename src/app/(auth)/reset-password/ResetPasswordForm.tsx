@@ -2,7 +2,7 @@
 
 import { resetPassword } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
-import UniversalWrapper from "@/components/UniversalWrapper";
+import AuthWrapper from "@/components/AuthWrapper";
 import { ForgotPasswordSchema, forgotPasswordSchema } from "@/lib/schemas/forgotPasswordSchema";
 import { ActionResult } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,7 +27,7 @@ export default function ResetPasswordForm() {
     }
 
     return (
-        <UniversalWrapper
+        <AuthWrapper
             headerIcon={GiHouseKeys}
             headerText="Reset Password"
             subHeaderText="Enter your new password below (Strong passwords has combination of uppercase and lowercase letters, numbers, and symbols)"

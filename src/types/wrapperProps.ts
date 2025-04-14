@@ -17,7 +17,7 @@ export type ModalWrapperProps = {
     image?: boolean;
 }
 
-export type UniversalWrapperProps = {
+export type AuthWrapperProps = {
     body?: ReactNode;
     headerIcon: IconType;
     headerText: string;

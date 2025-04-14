@@ -1,9 +1,9 @@
-import { UniversalWrapperProps } from "@/types/wrapperProps";
+import { AuthWrapperProps } from "@/types/wrapperProps";
 import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
 
 /**
  * UniversalWrapper component
- * @param {UniversalWrapperProps} { footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }
+ * @param {AuthWrapperProps} { footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }
  * @returns {JSX.Element} UniversalWrapper component
  * @description UniversalWrapper component to wrap any component with a card
  * @example
@@ -16,12 +16,12 @@ import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/reac
  *       footer={footer}
  *       body={body}
  *   />
- * @see UniversalWrapperProps
+ * @see AuthWrapperProps
  */
-export default function UniversalWrapper({ footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }: UniversalWrapperProps) {
+export default function AuthWrapper({ footer, body, headerIcon: Icon, headerText, subHeaderText, action, actionLabel }: AuthWrapperProps) {
     return (
-        <div className="flex items-start justify-center vertical-center">
-            <Card className="w-2/5 mx-auto p-5">
+        <div className="flex items-start justify-center vertical-center min-w-[400px]">
+            <Card className="w-[400px] sm:w-[500px] md:w-[600px] mx-auto p-5">
                 <CardHeader className="flex flex-col items-center justify-center">
                     <div className="flex flex-col gap-2 items-center text-secondary">
                         <div className="flex flex-row items-center gap-2">

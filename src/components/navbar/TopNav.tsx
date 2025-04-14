@@ -1,4 +1,4 @@
-import { Button, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
+import { Button, ButtonGroup, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import { GiHalfHeart } from "react-icons/gi";
 import Link from "next/link";
 import { auth } from "@/auth";
@@ -40,9 +40,9 @@ export default async function TopNav() {
                 classNames={{
                     item: [
                         "text-xl",
-                        "text-white",
+                        "text-black",
                         "uppercase",
-                        "data-[active=true]:text-yellow-200"
+                        "data-[active=true]:text-pink-200"
                     ]
                 }}
                 aria-label="Main menu"
@@ -71,12 +71,12 @@ export default async function TopNav() {
                             <AdminMenu userInfo={userInfo} />
                         )
                     ) : (
-                        <>
+                        <ButtonGroup>
                             <Button
                                 as={Link}
                                 href="/login"
-                                variant="bordered"
-                                className="text-green-100"
+                                variant="light"
+                                className="text-xl text-emerald-300"
                                 aria-label="Click to go to login page"
                             >
                                 Login
@@ -84,13 +84,13 @@ export default async function TopNav() {
                             <Button
                                 as={Link}
                                 href="/register"
-                                variant="bordered"
-                                className="text-green-100"
+                                variant="light"
+                                    className="text-xl text-cyan-300"
                                 aria-label="Click to go to register page"
                             >
                                 Register
                             </Button>
-                        </>
+                        </ButtonGroup>
                     )}
                 </NavbarContent>
             </Navbar>

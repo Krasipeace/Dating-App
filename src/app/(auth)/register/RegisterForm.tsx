@@ -4,7 +4,7 @@ import { registerUser } from "@/app/actions/authActions";
 import { RegisterSchema, profileSchema, registerSchema } from "@/lib/schemas/registerSchema";
 import { handleFormServerErrors } from "@/lib/utilities";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { GiArchiveRegister } from "react-icons/gi";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ import UserDetailsForm from "./UserDetailsForm";
 import { useState } from "react";
 import ProfileForm from "./ProfileForm";
 import { useRouter } from "next/navigation";
+import AuthWrapper from "@/components/AuthWrapper";
 
 const stepSchemas = [registerSchema, profileSchema];
 
@@ -62,17 +63,11 @@ export default function RegisterForm() {
     }
 
     return (
-        <Card className="w-2/5 mx-auto">
-            <CardHeader className="flex flex-col items-center justify-center">
-                <div className="flex flex-col gap-2 items-center text-secondary">
-                    <div className="flex flex-row items-center gap-2">
-                        <GiArchiveRegister size={30} />
-                        <h2 className="text-2xl font-bold">Register</h2>
-                    </div>
-                    <p className="text-neutral-500">Welcome to HeartBound</p>
-                </div>
-            </CardHeader>
-            <CardBody>
+        <AuthWrapper
+            headerIcon={GiArchiveRegister}
+            headerText="Register"
+            subHeaderText="Welcome to HeartBound"
+            body={
                 <FormProvider {...methods}>
                     <form onSubmit={handleSubmit(onNext)}>
                         <div className="space-y-4">
@@ -86,14 +81,25 @@ export default function RegisterForm() {
                                         Back
                                     </Button>
                                 )}
-                                <Button isLoading={isSubmitting} isDisabled={!isValid} fullWidth color="secondary" type="submit">
+                                <Button
+                                    isLoading={isSubmitting}
+                                    isDisabled={!isValid}
+                                    fullWidth
+                                    color="secondary"
+                                    type="submit"
+                                >
                                     {activeStep === stepSchemas.length - 1 ? "Submit" : "Continue"}
                                 </Button>
                             </div>
                         </div>
                     </form>
                 </FormProvider>
-            </CardBody>
-        </Card>
+            }
+            footer={
+                <div className="flex justify-center w-full">
+                    <Link href="/login" className="text-sm underline text-neutral-600">Already have an account?</Link>
+                </div>
+            }
+        />
     )
 }

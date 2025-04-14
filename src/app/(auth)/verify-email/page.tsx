@@ -1,6 +1,6 @@
 import { verifyEmail } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
-import UniversalWrapper from "@/components/UniversalWrapper";
+import AuthWrapper from "@/components/AuthWrapper";
 import { Spinner } from "@nextui-org/react";
 import { BsMailbox2Flag } from "react-icons/bs";
 
@@ -8,7 +8,7 @@ export default async function VerifyEmailPage({ searchParams }: { searchParams: 
     const result = await verifyEmail(searchParams.token);
 
     return (
-        <UniversalWrapper
+        <AuthWrapper
             headerText="Verifying your email address"
             headerIcon={BsMailbox2Flag}
             body={

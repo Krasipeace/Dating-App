@@ -2,7 +2,7 @@
 
 import { resetPasswordEmail } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
-import UniversalWrapper from "@/components/UniversalWrapper";
+import AuthWrapper from "@/components/AuthWrapper";
 import { ActionResult } from "@/types";
 import { Button, Input } from "@nextui-org/react";
 import { useState } from "react";
@@ -20,7 +20,7 @@ export default function ForgotPasswordForm() {
     }
 
     return (
-        <UniversalWrapper
+        <AuthWrapper
             headerIcon={GiHouseKeys}
             headerText="Forgot Password"
             subHeaderText="Enter your email address to receive a link to reset your password"

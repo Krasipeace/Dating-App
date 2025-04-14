@@ -1,6 +1,6 @@
 "use client";
 
-import UniversalWrapper from "@/components/UniversalWrapper";
+import AuthWrapper from "@/components/AuthWrapper";
 import { ProfileSchema, profileSchema } from "@/lib/schemas/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
@@ -27,7 +27,7 @@ export default function CompleteProfileForm() {
         }
     }
     return (
-        <UniversalWrapper
+        <AuthWrapper
             headerText="Profile details missing"
             subHeaderText="In order to use the app, you must add more details about yourself"
             headerIcon={ImProfile}
