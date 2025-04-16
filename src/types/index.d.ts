@@ -74,7 +74,7 @@ type MemberParams = {
 type ConsentStatus = "accepted" | "declined" | null;
 
 interface CookieConsentContextType {
-    consent: "accepted" | "declined" | null;
+    consent: ConsentStatus;
     setConsent: (consent: "accepted" | "declined") => void;
     openBanner: () => void;
 }
