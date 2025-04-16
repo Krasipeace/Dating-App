@@ -43,3 +43,5 @@ export const PRESENCE_PREFIX = "presence-hb";
 export const PUSHER_SUBSCRIPTION_SUCCESS = "pusher:subscription_succeeded";
 export const PUSHER_MEMBER_ADDED = "pusher:member_added";
 export const PUSHER_MEMBER_REMOVED = "pusher:member_removed";
+
+export const COOKIE_NAME = "cookie_consent";

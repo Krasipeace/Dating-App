@@ -4,6 +4,7 @@ import Providers from "@/components/Providers";
 import TopNav from "@/components/navbar/TopNav";
 import Footer from "@/components/Footer";
 import { auth } from "@/auth";
+import CookieConsentBar from "@/components/CookieConsentBar";
 
 export const metadata: Metadata = {
 	title: "HeartBound",
@@ -27,6 +28,7 @@ export default async function RootLayout({
 					<main className="container mx-auto p-10">
 						{children}
 					</main>
+					<CookieConsentBar />
 					<Footer />
 				</Providers>
 			</body>

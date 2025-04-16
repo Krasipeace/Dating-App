@@ -9,6 +9,7 @@ import { useNotificationChannel } from "@/hooks/useNotificationChannel";
 import useMessageStore from "@/hooks/useMessageStore";
 import { getUnreadMessageCount } from "@/app/actions/messageActions";
 import { SessionProvider } from "next-auth/react";
+import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 
 /**
  * Providers component
@@ -46,11 +47,13 @@ export default function Providers({ children, userId, profileComplete }: { child
     useNotificationChannel(userId, profileComplete);
 
     return (
-        <SessionProvider>
-            <NextUIProvider>
-                <ToastContainer position="bottom-right" className="z-50" pauseOnHover />
-                {children}
-            </NextUIProvider>
-        </SessionProvider>
+        <CookieConsentProvider>
+            <SessionProvider>
+                <NextUIProvider>
+                    <ToastContainer position="bottom-right" className="z-50" pauseOnHover />
+                    {children}
+                </NextUIProvider>
+            </SessionProvider>
+        </CookieConsentProvider>
     )
 }

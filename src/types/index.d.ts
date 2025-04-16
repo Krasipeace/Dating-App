@@ -70,3 +70,11 @@ type MemberParams = {
     orderBy?: string;
     hasPhoto?: string;
 }
+
+type ConsentStatus = "accepted" | "declined" | null;
+
+interface CookieConsentContextType {
+    consent: "accepted" | "declined" | null;
+    setConsent: (consent: "accepted" | "declined") => void;
+    openBanner: () => void;
+}
