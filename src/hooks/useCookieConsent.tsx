@@ -8,7 +8,7 @@ export const CookieConsentProvider: React.FC<{ children: ReactNode }> = ({ child
 
     const setConsent = (consent: "accepted" | "declined") => {
         setConsentState(consent);
-        document.cookie = `cookie_consent=${consent}; path=/; max-age=31536000`; // Optional cookie storage
+        document.cookie = `cookie_consent=${consent}; path=/; max-age=31536000`;
     };
 
     const openBanner = () => {

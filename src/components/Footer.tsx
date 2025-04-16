@@ -21,7 +21,7 @@ export default function Footer() {
                     </Link>
                 </Tooltip>&nbsp;|&nbsp;
                 <Tooltip content="go to Privacy policy page" aria-label="Privacy policy" aria-live="polite">
-                    <Link href="https://heartbound.vercel.app/privacy" target="_blank" aria-label="Privacy Policy" className="text-sm text-indigo-200">
+                    <Link href="/privacy" target="_blank" aria-label="Privacy Policy" className="text-sm text-indigo-200">
                         Privacy
                     </Link>
                 </Tooltip>&nbsp;

@@ -4,7 +4,7 @@ export default function page() {
     return (
         <div className="container mx-auto p-4">
             <Card>
-                <CardHeader className="items-center justify-between">
+                <CardHeader className="justify-center">
                     <h2 className="text-cyan-800 text-2xl">Privacy Policy</h2>
                 </CardHeader>
                 <CardBody>
@@ -49,6 +49,22 @@ export default function page() {
                         <p>
                             We take the security of your personal information seriously and use reasonable measures to protect it. However, please note that no method of transmission over the Internet or method of electronic storage is 100% secure.
                         </p>
+
+                        <h3 className="font-bold text-center text-blue-700">Cookies</h3>
+                        <p>
+                            We use cookies to enhance functionality and analyze usage. You can manage your preferences via our cookie consent bar. Refusing cookies may limit access to certain features(like loging in and/or registration).
+                        </p>
+
+                        <h3 className="font-bold text-center text-blue-700">Legal Basis for Processing</h3>
+                        <p>
+                            We process your personal data on the following legal bases under the GDPR:
+                        </p>
+                        <ul>
+                            <li><strong>Consent:</strong> When you explicitly agree to our terms.</li>
+                            <li><strong>Contract:</strong> When processing is necessary for a contract between you and us.</li>
+                            <li><strong>Legal obligations:</strong> For compliance with legal requirements.</li>
+                            <li><strong>Legitimate interests:</strong> Where processing is needed for our legitimate business interests and does not override your rights.</li>
+                        </ul>
 
                         <h3 className="font-bold text-center text-blue-700">Your Privacy Rights</h3>
                         <p>
