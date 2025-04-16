@@ -3,33 +3,25 @@ import { render, screen } from '@testing-library/react'
 import Footer from './Footer'
 
 describe('Footer Component tests', () => {
-    it('renders a footer text', () => {
+    it("displays the full footer content correctly", () => {
         render(<Footer />);
-        const text = screen.getByText(/Krasimir Dramaliev/i);
-        expect(text).toBeInTheDocument();
-    });
+        const year = new Date().getFullYear();
 
-    it('renders a Link component', () => {
-        render(<Footer />);
-        const link = screen.getByRole('link');
-        expect(link).toBeInTheDocument();
-    });
+        expect(screen.getByText(`© ${year}`)).toBeInTheDocument();
+        expect(screen.getByText("Heart")).toBeInTheDocument();
+        expect(screen.getByText("Bound")).toBeInTheDocument();
 
-    it("displays the copyright text", () => {
-        render(<Footer />);
-        expect(screen.getByText(/© \d{4} - Krasimir Dramaliev/i)).toBeInTheDocument();
-    });
-
-    it("renders GitHub link with correct aria-label", () => {
-        render(<Footer />);
-        const githubLink = screen.getByRole("link", { name: "go to GitHub" });
+        const githubLink = screen.getByRole("link", { name: /go to GitHub source code/i });
         expect(githubLink).toBeInTheDocument();
-        expect(githubLink).toHaveAttribute("href", "https://github.com/krasipeace");
-    });
+        expect(githubLink).toHaveAttribute("href", "https://github.com/Krasipeace/Dating-App");
+        expect(githubLink).toHaveAttribute("target", "_blank");
 
-    it("renders GitHub icon with correct accessibility attributes", () => {
-        render(<Footer />);
-        const githubIcon = screen.getByLabelText("github icon");
+        const githubIcon = screen.getByLabelText(/github icon/i);
         expect(githubIcon).toBeInTheDocument();
+
+        const privacyLink = screen.getByRole("link", { name: /privacy policy/i });
+        expect(privacyLink).toBeInTheDocument();
+        expect(privacyLink).toHaveAttribute("href", "https://heartbound.vercel.app/privacy");
+        expect(privacyLink).toHaveAttribute("target", "_blank");
     });
 });
