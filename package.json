@@ -23,7 +23,7 @@
     "cloudinary": "^2.2.0",
     "framer-motion": "^11.2.10",
     "js-cookie": "^3.0.5",
-    "next": "^14.2.26",
+    "next": "^14.2.30",
     "next-auth": "^5.0.0-beta.25",
     "next-cloudinary": "^6.6.2",
     "pusher": "^5.2.0",
