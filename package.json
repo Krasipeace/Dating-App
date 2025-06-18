@@ -1,6 +1,6 @@
 {
   "name": "dating-app",
-  "version": "0.4.2",
+  "version": "0.4.4",
   "description": "Dating app with chat system",
   "private": true,
   "author": "Krasimir Dramaliev",
@@ -23,7 +23,7 @@
     "cloudinary": "^2.2.0",
     "framer-motion": "^11.2.10",
     "js-cookie": "^3.0.5",
-    "next": "^14.2.26",
+    "next": "^14.2.30",
     "next-auth": "^5.0.0-beta.25",
     "next-cloudinary": "^6.6.2",
     "pusher": "^5.2.0",
@@ -33,7 +33,7 @@
     "react-hook-form": "^7.51.5",
     "react-icons": "^5.2.1",
     "react-toastify": "^10.0.5",
-    "resend": "^3.4.0",
+    "resend": "^4.6.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
@@ -52,7 +52,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
     "prisma": "^5.15.0",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
