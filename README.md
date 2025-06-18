@@ -171,7 +171,7 @@ Login with test users info:
 ### Tech Stack / Libraries / Packages
 
 - [Next.js](https://nextjs.org/)
-- [NextUI](https://nextui.org/)
+- [HeroUI](https://www.heroui.com/)
 - [NextAuth.js](https://authjs.dev/getting-started/installation)
 - [React](https://react.dev/)
 - [React-Icons](https://react-icons.github.io/react-icons/)

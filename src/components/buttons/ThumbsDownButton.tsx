@@ -19,7 +19,7 @@ export default function ThumpsDownButton({ messageId }: ThumbsButtonProps) {
         <Tooltip content="Delete message" placement="top" aria-live="polite">
             <Button
                 color="danger"
-                onClick={() => deleteMessage(messageId)}
+                onPress={() => deleteMessage(messageId)}
                 aria-label="Delete message button"
             >
                 <FaRegThumbsDown color="success" size={20} aria-hidden="true" />

@@ -16,7 +16,7 @@ export default function SocialLogin() {
                 size="lg"
                 fullWidth
                 variant="faded"
-                onClick={() => onClick("github")}
+                onPress={() => onClick("github")}
             >
                 <FaGithub size={30} />
             </Button>
@@ -24,7 +24,7 @@ export default function SocialLogin() {
                 size="lg"
                 fullWidth
                 variant="faded"
-                onClick={() => onClick("gitlab")}
+                onPress={() => onClick("gitlab")}
             >
                 <PiGitlabLogoDuotone size={30} color="orange" />
             </Button>
@@ -32,7 +32,7 @@ export default function SocialLogin() {
                 size="lg"
                 fullWidth
                 variant="faded"
-                onClick={() => onClick("google")}
+                onPress={() => onClick("google")}
             >
                 <FcGoogle size={30} />
             </Button>

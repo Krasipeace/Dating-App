@@ -27,7 +27,7 @@ export default function ProfileForm() {
                 onChange={e => setValue("gender", e.target.value)}
             >
                 {genders.map(item => (
-                    <SelectItem key={item.value} value={item.value}>
+                    <SelectItem key={item.value}>
                         {item.label}
                     </SelectItem>
                 ))}

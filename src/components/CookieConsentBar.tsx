@@ -43,8 +43,8 @@ const CookieConsentBar: React.FC = () => {
                 </Link>
             </p>
             <div className="flex gap-2">
-                <Button onClick={handleAccept}>Accept</Button>
-                <Button onClick={handleDecline}>Decline</Button>
+                <Button onPress={handleAccept}>Accept</Button>
+                <Button onPress={handleDecline}>Decline</Button>
             </div>
         </div>
     );

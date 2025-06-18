@@ -76,7 +76,7 @@ export default async function TopNav() {
                                 as={Link}
                                 href="/login"
                                 variant="light"
-                                    className="text-xl text-yellow-300"
+                                className="text-xl text-yellow-300"
                                 aria-label="Click to go to login page"
                             >
                                 Login
@@ -85,7 +85,7 @@ export default async function TopNav() {
                                 as={Link}
                                 href="/register"
                                 variant="light"
-                                    className="text-xl text-yellow-300"
+                                className="text-xl text-yellow-300"
                                 aria-label="Click to go to register page"
                             >
                                 Register

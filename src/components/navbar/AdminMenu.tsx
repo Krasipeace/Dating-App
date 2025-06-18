@@ -34,23 +34,50 @@ export default function AdminMenu({ userInfo }: MenuProps) {
             </DropdownTrigger>
             <DropdownMenu variant="flat" aria-label="User actions menu">
                 <DropdownSection showDivider>
-                    <DropdownItem isReadOnly as="span" className="h-14 flex flex-row" aria-label="username">
+                    <DropdownItem
+                        key="username"
+                        isReadOnly as="span"
+                        className="h-14 flex flex-row"
+                        aria-label="username">
                         Logged in as <span className="font-semibold">{userInfo?.name}</span>
                     </DropdownItem>
                 </DropdownSection>
-                <DropdownItem as={Link} href="/admin/logs" endContent={<TbLogs size={20} className="text-blue-800" />}>
+                <DropdownItem
+                    key="logs"
+                    as={Link} href="/admin/logs"
+                    endContent={<TbLogs size={20} className="text-blue-800" />}
+                >
                     Check Logs
                 </DropdownItem>
-                <DropdownItem as={Link} href="/admin/edit-users" endContent={<FaUsersCog size={20} className="text-blue-800" />}>
+                <DropdownItem
+                    key="edit_users"
+                    as={Link}
+                    href="/admin/edit-users"
+                    endContent={<FaUsersCog size={20} className="text-blue-800" />}
+                >
                     Edit Users
                 </DropdownItem>
-                <DropdownItem as={Link} href="/admin/messages" endContent={<TbMessageSearch size={20} className="text-blue-800" />}>
+                <DropdownItem
+                    key="reported_messages"
+                    as={Link}
+                    href="/admin/messages"
+                    endContent={<TbMessageSearch size={20} className="text-blue-800" />}
+                >
                     Reported Messages
                 </DropdownItem>
-                <DropdownItem as={Link} href="/admin/photos" endContent={<TbPhotoSearch size={20} className="text-blue-800" />}>
+                <DropdownItem
+                    key="admin_photos"
+                    as={Link}
+                    href="/admin/photos"
+                    endContent={<TbPhotoSearch size={20} className="text-blue-800" />}
+                >
                     User&apos;s photos
                 </DropdownItem>
-                <DropdownItem color="danger" onClick={async () => signOutUser()} endContent={<GiExitDoor size={20} className="text-blue-800" />}>
+                <DropdownItem
+                    key="logout"
+                    color="danger"
+                    onClick={async () => signOutUser()} endContent={<GiExitDoor size={20} className="text-blue-800" />}
+                >
                     Log out
                 </DropdownItem>
             </DropdownMenu>

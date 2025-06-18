@@ -55,7 +55,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                         <Button
                             isIconOnly
                             variant="light"
-                            onClick={() => onDeleteOpen()}
+                            onPress={() => onDeleteOpen()}
                             isLoading={isDeleting}
                             aria-label="Delete this message"
                         >
@@ -74,7 +74,7 @@ export default function MessageTableCell({ item, columnKey, isOutbox, deleteMess
                         <Button
                             isIconOnly
                             variant="light"
-                            onClick={() => onReportOpen()}
+                            onPress={() => onReportOpen()}
                             isLoading={isReporting}
                             aria-label="Report this message"
                         >

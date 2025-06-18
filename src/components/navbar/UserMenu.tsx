@@ -35,11 +35,16 @@ export default function UserMenu({ userInfo }: MenuProps) {
             </DropdownTrigger>
             <DropdownMenu variant="flat" aria-label="User actions menu">
                 <DropdownSection showDivider>
-                    <DropdownItem isReadOnly as="span" className="h-14 flex flex-row" aria-label="Your username">
+                    <DropdownItem
+                        key="username"
+                        isReadOnly as="span"
+                        className="h-14 flex flex-row"
+                        aria-label="Your username">
                         Logged in as <span className="font-semibold">{userInfo?.name}</span>
                     </DropdownItem>
                 </DropdownSection>
                 <DropdownItem
+                    key="edit_profile"
                     as={Link}
                     href="/members/edit"
                     endContent={<LiaUserEditSolid size={20} className="text-purple-800" />}
@@ -48,6 +53,7 @@ export default function UserMenu({ userInfo }: MenuProps) {
                     Profile
                 </DropdownItem>
                 <DropdownItem
+                    key="edit_photos"
                     as={Link}
                     href="/members/edit/photos"
                     endContent={<MdOutlinePhotoLibrary size={20} className="text-purple-800" />}
@@ -56,6 +62,7 @@ export default function UserMenu({ userInfo }: MenuProps) {
                     Photos
                 </DropdownItem>
                 <DropdownItem
+                    key="logout"
                     color="danger"
                     onClick={async () => signOutUser()}
                     endContent={<GiExitDoor size={20} className="text-purple-800" />}

@@ -31,7 +31,7 @@ export default function ApproveButton({ photoId }: ApprovePhotoProps) {
     return (
         <Tooltip content="Approve photo" placement="top" aria-live="polite">
             <Button
-                onClick={approve}
+                onPress={approve}
                 color="success"
                 variant="light"
                 fullWidth

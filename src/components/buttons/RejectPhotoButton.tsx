@@ -31,7 +31,7 @@ export default function RejectButton({ photo }: RejectButtonProps) {
     return (
         <Tooltip content="Reject photo" placement="top" aria-live="polite">
             <Button
-                onClick={reject}
+                onPress={reject}
                 color="danger"
                 variant="light"
                 fullWidth

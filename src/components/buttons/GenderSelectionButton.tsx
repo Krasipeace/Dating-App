@@ -11,7 +11,7 @@ export default function GenderSelectionButton({ icon: Icon, value, isSelected, o
                     size="md"
                     isIconOnly
                     color={isSelected ? "secondary" : "default"}
-                    onClick={onClick}
+                    onPress={onClick}
                     aria-label={value}
                     aria-describedby="tooltip-text"
                 >

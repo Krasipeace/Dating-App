@@ -19,7 +19,7 @@ export default function ThumpsUpButton({ messageId }: ThumbsButtonProps) {
         <Tooltip content="Let message stay" placement="top" aria-live="polite">
             <Button
                 color="success"
-                onClick={() => declineReportedMessage(messageId)}
+                onPress={() => declineReportedMessage(messageId)}
                 aria-label="Approve message button"
             >
                 <FaRegThumbsUp color="success" size={20} aria-hidden="true" />

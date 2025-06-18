@@ -46,7 +46,7 @@ export default function MessageTable({ initialMessages, nextCursor }: MessageTab
                         color="secondary"
                         isLoading={loadingMoreMessages}
                         isDisabled={!hasMoreMessages}
-                        onClick={loadMoreMessages}
+                        onPress={loadMoreMessages}
                     >
                         {hasMoreMessages ? "Load more messages" : "No more messages"}
                     </Button>
