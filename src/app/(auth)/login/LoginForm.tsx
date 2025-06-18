@@ -3,7 +3,7 @@
 import { signInUser } from "@/app/actions/authActions";
 import { LoginSchema, loginSchema } from "@/lib/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, CardBody, CardHeader, Input, Link } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Input, Link } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { GiPadlock } from "react-icons/gi";

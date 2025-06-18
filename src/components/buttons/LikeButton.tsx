@@ -1,7 +1,7 @@
 "use client";
 
 import { LikeButtonProps } from "@/types/buttonProps";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { PiSpinnerGapBold } from "react-icons/pi";
 

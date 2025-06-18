@@ -1,6 +1,6 @@
 "use client";
 
-import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
+import { Input, Select, SelectItem, Textarea } from "@heroui/react";
 import { useFormContext } from "react-hook-form";
 import { FaTreeCity } from "react-icons/fa6";
 import { MdOutlinePlace } from "react-icons/md";

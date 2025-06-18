@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody } from "@heroui/react";
 import { LogsProps } from "@/types/uiProps";
 
 export default function Logs({ logs }: LogsProps) {

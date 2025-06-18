@@ -1,6 +1,6 @@
 "use client"
 
-import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@nextui-org/react";
+import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@heroui/react";
 import Link from "next/link";
 import { GiExitDoor } from "react-icons/gi";
 import { LiaUserEditSolid } from "react-icons/lia";

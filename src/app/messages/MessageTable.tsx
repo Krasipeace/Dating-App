@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { Button, Card, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/react";
 import MessageTableCell from "./MessageTableCell";
 import { useMessages } from "@/hooks/useMessages";
 import { MessageTableProps } from "@/types/messageProps";

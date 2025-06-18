@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { ImProfile } from "react-icons/im";
 import ProfileForm from "../register/ProfileForm";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { completeSocialProfile } from "@/app/actions/authActions";
 import { signIn } from "next-auth/react";
 

@@ -4,7 +4,7 @@ import { registerUser } from "@/app/actions/authActions";
 import { RegisterSchema, profileSchema, registerSchema } from "@/lib/schemas/registerSchema";
 import { handleFormServerErrors } from "@/lib/utilities";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Link } from "@heroui/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { GiArchiveRegister } from "react-icons/gi";
 import { toast } from "react-toastify";

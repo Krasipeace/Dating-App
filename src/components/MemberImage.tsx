@@ -1,7 +1,7 @@
 "use client";
 
 import { CldImage } from "next-cloudinary";
-import { Image, useDisclosure } from "@nextui-org/react";
+import { Image, useDisclosure } from "@heroui/react";
 import { useRole } from "@/hooks/useRole";
 import { useRouter } from "next/navigation";
 import ModalWrapper from "./ModalWrapper";

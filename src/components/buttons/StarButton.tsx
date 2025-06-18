@@ -1,5 +1,5 @@
 import { StarButtonProps } from "@/types/buttonProps";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 import { GoStar, GoStarFill } from "react-icons/go";
 import { ImSpinner2 } from "react-icons/im";
 

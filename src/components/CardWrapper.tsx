@@ -1,5 +1,5 @@
 import { CardWrapperProps } from "@/types/wrapperProps";
-import { CardHeader, Divider, CardBody, CardFooter } from "@nextui-org/react";
+import { CardHeader, Divider, CardBody, CardFooter } from "@heroui/react";
 
 /**
  * CardWrapper component

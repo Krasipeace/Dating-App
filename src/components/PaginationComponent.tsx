@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Pagination } from "@nextui-org/react";
+import { Pagination } from "@heroui/react";
 import usePaginationStore from "@/hooks/usePaginationStore";
 
 /**

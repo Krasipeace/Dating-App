@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useCallback, useEffect, useRef } from "react";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { usePresenceChannel } from "@/hooks/usePresenceChannel";
@@ -49,10 +49,10 @@ export default function Providers({ children, userId, profileComplete }: { child
     return (
         <CookieConsentProvider>
             <SessionProvider>
-                <NextUIProvider>
+                <HeroUIProvider>
                     <ToastContainer position="bottom-right" className="z-50" pauseOnHover />
                     {children}
-                </NextUIProvider>
+                </HeroUIProvider>
             </SessionProvider>
         </CookieConsentProvider>
     )

@@ -1,7 +1,7 @@
 "use client";
 
 import { AgeSliderButtonProps as AgeSliderButtonProps } from "@/types/buttonProps";
-import { Slider } from "@nextui-org/react";
+import { Slider } from "@heroui/react";
 import { useState } from "react";
 
 /**

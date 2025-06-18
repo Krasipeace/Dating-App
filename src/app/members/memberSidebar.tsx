@@ -3,7 +3,7 @@
 import PresenceIndicator from "@/components/PresenceIndicator";
 import { calculateAge, calculateNameLength, transformImageUrl } from "@/lib/utilities";
 import { MemberSidebarProps } from "@/types/memberProps";
-import { Button, Card, CardBody, CardFooter, Divider, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, Divider, Image } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react"

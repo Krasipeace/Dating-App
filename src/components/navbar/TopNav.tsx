@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
+import { Button, ButtonGroup, Navbar, NavbarBrand, NavbarContent } from "@heroui/react";
 import { GiHalfHeart } from "react-icons/gi";
 import Link from "next/link";
 import { auth } from "@/auth";
@@ -17,7 +17,7 @@ import AdminMenu from "./AdminMenu";
  */
 export default async function TopNav() {
     const session = await auth();
-    const userInfo = session?.user && await getUserInfo();
+    const userInfo = session?.user && (await getUserInfo());
     const role = session?.user.role;
     const userLinks = [
         { href: "/members", label: "People" },

@@ -1,6 +1,6 @@
 import { getNonApprovedPhotos } from "@/app/actions/adminActions"
 import MemberPhotos from "@/components/MemberPhotos";
-import { Card } from "@nextui-org/react";
+import { Card } from "@heroui/react";
 
 export const dynamic = "force-dynamic";
 

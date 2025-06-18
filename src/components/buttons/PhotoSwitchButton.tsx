@@ -1,7 +1,7 @@
 "use client";
 
 import { PhotoSwitchButtonProps } from "@/types/buttonProps";
-import { Switch } from "@nextui-org/react";
+import { Switch } from "@heroui/react";
 
 /**
  * PhotoSwitchButton component

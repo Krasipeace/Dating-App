@@ -1,7 +1,7 @@
 import { verifyEmail } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
 import AuthWrapper from "@/components/AuthWrapper";
-import { Spinner } from "@nextui-org/react";
+import { Spinner } from "@heroui/react";
 import { BsMailbox2Flag } from "react-icons/bs";
 
 export default async function VerifyEmailPage({ searchParams }: { searchParams: { token: string } }) {

@@ -1,7 +1,7 @@
 "use client";
 
 import EyeToggleButton from "@/components/buttons/EyeToggleButton";
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { MdEmail, MdOutlinePermIdentity } from "react-icons/md";

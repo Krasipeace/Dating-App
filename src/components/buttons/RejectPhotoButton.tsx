@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Tooltip } from "@nextui-org/react";
+import { Button, Tooltip } from "@heroui/react";
 import { TbPhotoCancel } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { rejectPhoto } from "@/app/actions/adminActions";

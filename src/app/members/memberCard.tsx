@@ -3,7 +3,7 @@
 import LikeButton from "@/components/buttons/LikeButton";
 import PresenceIndicator from "@/components/PresenceIndicator";
 import { calculateAge, longNameHandler, transformImageUrl } from "@/lib/utilities";
-import { Card, CardFooter, Image } from "@nextui-org/react";
+import { Card, CardFooter, Image } from "@heroui/react";
 import Link from "next/link";
 import { useState } from "react";
 import { toggleLikeMember } from "../actions/likeActions";

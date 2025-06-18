@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import LoadingComponent from './LoadingComponent';
 
-jest.mock('@nextui-org/react', () => ({
+jest.mock('@heroui/react', () => ({
     Spinner: ({ label = 'Loading...', color = 'warning', labelColor = 'warning' }: { label?: string; color?: string; labelColor?: string }) => (
         <div
             data-testid="spinner"

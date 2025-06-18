@@ -1,5 +1,5 @@
 import { AuthWrapperProps } from "@/types/wrapperProps";
-import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Button } from "@heroui/react";
 
 /**
  * UniversalWrapper component

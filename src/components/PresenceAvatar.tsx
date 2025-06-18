@@ -1,6 +1,6 @@
 import usePresenceStore from "@/hooks/usePresenceStore";
 import { PresenceAvatarProps } from "@/types/uiProps";
-import { Avatar, Badge } from "@nextui-org/react";
+import { Avatar, Badge } from "@heroui/react";
 
 /**
  * PresenceAvatar component

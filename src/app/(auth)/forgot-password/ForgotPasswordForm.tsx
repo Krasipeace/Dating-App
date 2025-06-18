@@ -4,7 +4,7 @@ import { resetPasswordEmail } from "@/app/actions/authActions";
 import ResultMessage from "@/components/ResultMessage";
 import AuthWrapper from "@/components/AuthWrapper";
 import { ActionResult } from "@/types";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input } from "@heroui/react";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form"
 import { GiHouseKeys } from "react-icons/gi";

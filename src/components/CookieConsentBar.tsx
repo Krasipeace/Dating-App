@@ -1,7 +1,7 @@
 "use client";
 
 import { useCookieConsent } from "@/hooks/useCookieConsent";
-import { Button, Link } from "@nextui-org/react";
+import { Button, Link } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";

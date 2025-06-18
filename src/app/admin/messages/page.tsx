@@ -1,7 +1,7 @@
 import { getReportedMessages } from "@/app/actions/adminActions";
 import ThumbsDownButton from "@/components/buttons/ThumbsDownButton";
 import ThumpsUpButton from "@/components/buttons/ThumpsUpButton";
-import { Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody } from "@heroui/react";
 
 export const dynamic = "force-dynamic";
 

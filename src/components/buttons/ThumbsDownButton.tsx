@@ -2,7 +2,7 @@
 
 import { deleteMessage } from "@/app/actions/messageActions";
 import { ThumbsButtonProps } from "@/types/buttonProps";
-import { Button, Tooltip } from "@nextui-org/react";
+import { Button, Tooltip } from "@heroui/react";
 import { FaRegThumbsDown } from "react-icons/fa";
 
 /**

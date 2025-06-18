@@ -1,5 +1,5 @@
 import { usePathname, useRouter } from "next/navigation";
-import { Selection } from "@nextui-org/react";
+import { Selection } from "@heroui/react";
 import { FaFemale, FaMale } from "react-icons/fa"
 import useFilterStore from "./useFilterStore";
 import { ChangeEvent, useEffect, useTransition } from "react";

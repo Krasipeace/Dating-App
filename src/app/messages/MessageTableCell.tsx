@@ -3,7 +3,7 @@ import PresenceAvatar from "@/components/PresenceAvatar";
 import { longMessageHandler } from "@/lib/utilities";
 import { MessageDto } from "@/types";
 import { MessageTableCellProps } from "@/types/messageProps";
-import { Button, useDisclosure } from "@nextui-org/react";
+import { Button, useDisclosure } from "@heroui/react";
 import { MdReportGmailerrorred } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 

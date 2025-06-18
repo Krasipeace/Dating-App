@@ -6,7 +6,7 @@ import AuthWrapper from "@/components/AuthWrapper";
 import { ForgotPasswordSchema, forgotPasswordSchema } from "@/lib/schemas/forgotPasswordSchema";
 import { ActionResult } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input } from "@heroui/react";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form"

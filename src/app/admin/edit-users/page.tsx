@@ -1,5 +1,5 @@
 import { getAllMembers } from "@/app/actions/adminActions";
-import { Card } from "@nextui-org/react";
+import { Card } from "@heroui/react";
 import EditUsersInfo from "./EditUsers";
 
 export default async function EditUsersPage() {

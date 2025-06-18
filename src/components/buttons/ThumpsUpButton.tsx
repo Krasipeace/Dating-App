@@ -2,7 +2,7 @@
 
 import { declineReportedMessage } from "@/app/actions/adminActions";
 import { ThumbsButtonProps } from "@/types/buttonProps";
-import { Button, Tooltip } from "@nextui-org/react";
+import { Button, Tooltip } from "@heroui/react";
 import { FaRegThumbsUp } from "react-icons/fa";
 
 /**

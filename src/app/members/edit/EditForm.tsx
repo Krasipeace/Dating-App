@@ -5,7 +5,7 @@ import { MemberEditSchema, memberEditSchema } from "@/lib/schemas/memberEditSche
 import { handleFormServerErrors } from "@/lib/utilities";
 import { EditFormProps } from "@/types/uiProps";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input, Textarea } from "@nextui-org/react";
+import { Button, Input, Textarea } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";

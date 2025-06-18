@@ -1,7 +1,7 @@
 "use client";
 
 import useMessageStore from "@/hooks/useMessageStore";
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { MdMoveToInbox, MdOutbox } from "react-icons/md";

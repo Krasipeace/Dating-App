@@ -1,6 +1,6 @@
 "use client";
 
-import { Spinner } from "@nextui-org/react";
+import { Spinner } from "@heroui/react";
 import { useFilters } from "@/hooks/useFilters";
 import AgeSliderButton from "../buttons/AgeSliderButton";
 import GenderSelectionButton from "../buttons/GenderSelectionButton";

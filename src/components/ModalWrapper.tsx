@@ -1,5 +1,5 @@
 import { ModalWrapperProps } from "@/types/wrapperProps";
-import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
+import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/react";
 
 /**
  * ModalWrapper component

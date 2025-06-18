@@ -1,7 +1,7 @@
 import { TiDeleteOutline, TiDelete } from "react-icons/ti";
 import { ImSpinner2 } from "react-icons/im";
 import { DeleteButtonProps } from "@/types/buttonProps";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 
 /**
  * DeleteButton component

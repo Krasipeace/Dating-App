@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
-import { ButtonProps } from "@nextui-org/react";
+import { ButtonProps } from "@heroui/react";
 
 export type CardWrapperProps = {
     header: ReactNode | string;

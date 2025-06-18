@@ -1,7 +1,7 @@
 "use client";
 
 import { OrderByFilterButtonProps } from "@/types/buttonProps";
-import { Select, SelectItem } from "@nextui-org/react";
+import { Select, SelectItem } from "@heroui/react";
 
 /**
  * OrderByFilterButton component

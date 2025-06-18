@@ -1,7 +1,7 @@
 "use client";
 
 import { GenderSelectionButtonProps } from "@/types/buttonProps";
-import { Button, Tooltip } from "@nextui-org/react";
+import { Button, Tooltip } from "@heroui/react";
 
 export default function GenderSelectionButton({ icon: Icon, value, isSelected, onClick }: GenderSelectionButtonProps) {
     return (

@@ -3,7 +3,7 @@
 import { signOutUser } from "@/app/actions/authActions";
 import { transformImageUrl } from "@/lib/utilities";
 import { MenuProps } from "@/types/uiProps";
-import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@nextui-org/react";
+import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@heroui/react";
 import Link from "next/link";
 import { FaUsersCog } from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";

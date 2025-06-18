@@ -4,7 +4,7 @@ import { createMessage } from "@/app/actions/messageActions";
 import { MessageSchema, messageSchema } from "@/lib/schemas/messageSchema";
 import { handleFormServerErrors } from "@/lib/utilities";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input } from "@heroui/react";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
